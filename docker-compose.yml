@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+
+    flask:
+        build: ./appdata
+        container_name: flask_mailer
+        restart: always
+        environment: 
+            - APP_NAME=hakromailing
+        expose: 
+            - 9293
+    
+    nginx:
+        build: ./nginx
+        container_name: nginx_mailer
+        restart: always
+        ports: 
+            - "9293:80"

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='/assets/css/main.css')}}">
+    <noscript>
+        <link rel="stylesheet" href="{{url_for('static', filename='/assets/css/noscript.css')}}" />
+    </noscript>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %} - HAKRO Mailing</title>
+    {% endblock %}
+
+</head>
+
+<body>
+    <div id="catnav">{% block catnav %}{% endblock %}</div>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer" class="center-align">
+        {% block footer %}
+        <!-- Footer -->
+        <!-- Footer -->
+        {% endblock %}
+    </div>
+    {% block javascript %}
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+    {% endblock %}
+</body>
+
+</html>
