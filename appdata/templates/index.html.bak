@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>HAKRO Campaign</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="static/assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="static/assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<a href="index.html" class="logo"><img src="{{url_for('static', filename='images/hakro-logo.png')}}" alt=""
+					style="image-resolution: auto;"></a>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">is</a></li>
+				<li><a href="#">HAKRO</a></li>
+				<li><a href="#">Haltung</a></li>
+			</ul>
+			<ul class="actions stacked">
+				<li><a href="#" class="button primary fit">WE WEAR</a></li>
+				<li><a href="#" class="button fit">HAKRO Hänlderportal</a></li>
+			</ul>
+		</nav>
+
+		<!-- Banner -->
+		<section id="banner" class="major">
+			<div class="inner">
+				<header class="major">
+					<h1>Hi, liebe Besucher des HAKRO Händlerportals</h1>
+				</header>
+				<div class="content">
+					<div>
+						<h3>HIER SIND SIE RICHTIG.</h3>
+						<p>Hinterlassen Sie gerne Ihre Kontaktdaten und wir kümmern uns um den Rest. Heute übernehemen
+							wir
+							die Kommunikation für Sie.</p>
+						<ul class="actions">
+							<li><a href="#one" class="button next scrolly">Lets Get Started</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- One -->
+			<section id="one" class="tiles">
+				<article>
+					<span class="image">
+						<img src="{{url_for('static', filename='images/image12.jpg')}}" alt="" />
+					</span>
+					<header class="major">
+						<h3><a href="landing.html" class="link">TEAMGEIST ZUM ANZIEHEN</a></h3>
+						<p>Ipsum dolor sit amet</p>
+					</header>
+				</article>
+				<article>
+					<span class="image">
+						<img src="{{url_for('static', filename='images/image10.jpg')}}" alt="" />
+					</span>
+					<header class="major">
+						<h3><a href="landing.html" class="link">UNVERGLEICHLICH HALTBAR</a></h3>
+						<p>feugiat amet tempus</p>
+					</header>
+				</article>
+				<article>
+					<span class="image">
+						<img src="{{url_for('static', filename='images/image15.jpg')}}" alt="" />
+					</span>
+					<header class="major">
+						<h3><a href="landing.html" class="link">COOLE STYLES IN 49 FARBEN</a></h3>
+						<p>Lorem etiam nullam</p>
+					</header>
+				</article>
+				<article>
+					<span class="image">
+						<img src="{{url_for('static', filename='images/image11.jpg')}}" alt="" />
+					</span>
+					<header class="major">
+						<h3><a href="landing.html" class="link">100 PROZENT KLIMANEUTRAL</a></h3>
+						<p>Nisl sed aliquam</p>
+					</header>
+				</article>
+				<article>
+					<span class="image">
+						<img src="{{url_for('static', filename='images/image14.jpg')}}" alt="" />
+					</span>
+					<header class="major">
+						<h3><a href="landing.html" class="link">AUFRICHTIG FAIR PRODUZIERT</a></h3>
+						<p>Ipsum dolor sit amet</p>
+					</header>
+				</article>
+				<article>
+					<span class="image">
+						<img src="{{url_for('static', filename='images/image16.jpg')}}" alt="" />
+					</span>
+					<header class="major">
+						<h3><a href="landing.html" class="link">IMMER AB LAGER VERFÜGBAR</a></h3>
+						<p>Feugiat amet tempus</p>
+					</header>
+				</article>
+			</section>
+
+			<!-- Two -->
+			<section id="two">
+				<div class="inner">
+					<header class="major">
+						<h2>Liebe Lesenden</h2>
+					</header>
+					<p>zufriedene, motivierte Mitarbeiter sind das Wertvollste, was sich Arbeitgeber wünschen können.
+						Wie sehr Teamwear dazu beitragen kann, wird oft
+						unterschätzt. Seit 1969 steht unser Familienbetrieb für erstklassige Unternehmensbekleidung, die
+						viele Wäschen länger hält als üblich. Sie begeistert mit
+						49 großartigen Farben, ist konsequent nachhaltig sowie fair produziert und
+						mindestens so cool wie komfortabel. Deshalb wird sie auch so gern getragen
+						und stärkt das Wir-Gefühl in Teams wie keine andere. Und deshalb nennen wir
+						sie WeWear.
+						In jedem Stoff, in jeder Naht und in jedem Knopf zeigt sich unser Anspruch, die
+						haltbarste und nachhaltigste Firmenbekleidung herzustellen. Und schon heute
+						sind unsere Produkte sowie HAKRO als Unternehmen 100 Prozent klimaneutral.
+						Die Wertschätzung der Menschen, die für und mit uns arbeiten, ist uns eine
+						Herzensangelegenheit. Was wir konkret für Nachhaltigkeit, soziale Fairness und
+						Arbeitssicherheit tun – und wie wir eine Reklamationsquote von 0,1 Prozent
+						erreichen – erfahren Sie auf den folgenden Seiten.
+						Warum also WeWear von HAKRO? WeWear sieht gut aus, ist bequem und passt
+						perfekt in allen Größen. Und weil das auch nach sehr vielen Waschzyklen so
+						bleibt, ist sie für lange Zeit das Lieblingsoutfit vieler Teams. Mit Ihrer Entscheidung für
+						HAKRO setzen Sie zudem ein starkes Zeichen für den Klimaschutz und
+						weltweit faire, sichere Arbeitsbedingungen. Und das schätzen auch immer mehr
+						Mitarbeiter und Geschäftspartner.</p>
+					<p>
+						Gerne darf die Struktur der Datei in folgender Reihenfolge sein:
+					<ul>
+						<ol>Eins</ol>
+						<ol>Zwei</ol>
+						<ol>Drei</ol>
+					</ul>
+					</p>
+					<ul class="actions">
+						<li><a href="#contact" class="button next scrolling">Lets Get Started</a></li>
+					</ul>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Contact -->
+		<section id="contact">
+			<div class="inner">
+				<section>
+					<form method="post"" enctype="multipart/form-data">
+						<div class="fields">
+							<div class="field">
+								<label for="costumer_name">Firmenname</label>
+								<input type="text" name="costumer_name" id="company_name" />
+							</div>
+							<div class="field half">
+								<label for="costumer_id">Kundenummer</label>
+								<input type="text" name="costumer_id" id="costumer_id" />
+							</div>
+							<div class="field">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" />
+							</div>
+							<div class="field half">
+								<label for="email">Email</label>
+								<input type="email" name="email" id="email" />
+							</div>
+							<div class="field half">
+								<label for="phone">Telefon</label>
+								<input type="tel" name="phone" id="phone" />
+							</div>
+							<div class="field">
+								<label for="file_data">Daten Datei (*.csv)</label>
+								<input type="file" name="file_data" id="file_data" />
+							</div>
+							<div class="field">
+								<label for="file_logo">Logo Datei (*.png)</label>
+								<input type="file" name="file_logo" id="file_logo" />
+							</div>
+							<div class="field">
+								<label for="message">Ihre Nachricht an uns:</label>
+								<textarea name="message" id="message" rows="6"></textarea>
+							</div>
+							<div class="field">
+								<input type="checkbox" id="opt1" name="opt1" value="on" required="required">
+								<label for="opt1">OPT 1 <a href="">Link zu Legalzeugs</a></label>
+							</div>
+							<div class="field">
+								<input type="checkbox" id="opt2" name="opt2" value="on" required="required">
+								<label for="opt2">OPT 2 <a href="">Link zu Daten Okay</a></label>
+							</div>
+							<div class="field">
+								<input type="checkbox" id="opt3" name="opt3" value="on" required="required">
+								<label for="opt3">OPT 3 <a href="">Link zu Whateverwhat</a></label>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Absenden" class="primary" /></li>
+							<li><input type="reset" value="Löschen" /></li>
+						</ul>
+					</form>
+				</section>
+				<section class="split">
+					<section>
+						<div class="contact-method">
+							<span class="icon solid alt fa-envelope"></span>
+							<h3>Email</h3>
+							<a href="#">info@hakro.com</a>
+						</div>
+					</section>
+					<section>
+						<div class="contact-method">
+							<span class="icon solid alt fa-phone"></span>
+							<h3>Telefon</h3>
+							<span>+49 (0) 7935 9118 - 100</span>
+						</div>
+					</section>
+					<section>
+						<div class="contact-method">
+							<span class="icon solid alt fa-home"></span>
+							<h3>Addresse</h3>
+							<span>Oberstettener Straße 41<br />
+								D-74535 Schrozberg<br />
+							</span>
+						</div>
+					</section>
+				</section>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; HAKRO 2022</li>
+					<li><a href="#">Impressum</a></li>
+					<!--	
+											<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+					-->
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="static/assets/js/jquery.min.js"></script>
+	<script src="static/assets/js/jquery.scrolly.min.js"></script>
+	<script src="static/assets/js/jquery.scrollex.min.js"></script>
+	<script src="static/assets/js/browser.min.js"></script>
+	<script src="static/assets/js/breakpoints.min.js"></script>
+	<script src="static/assets/js/util.js"></script>
+	<script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+@font-face {
+    font-family: "Conduit ITC Medium";
+    src: url(Conduit-ITC-Medium.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: "National Book";
+    src: url(National-Book_0.otf) format("opentype")
+}
+
+@font-face {
+    font-family: "National Medium";
+    src: url(National-Medium_1.otf) format("opentype")
+}
+
+h1, h2, button, input, label {
+	font-family: "Conduit ITC Medium";
+	text-transform: uppercase;
+	font-weight: 105;
+}
+
+h3, h4, h5, h6 {
+	font-family: "National Medium";
+}
+
+a, p, li, input, textarea, ol, ul {
+	font-family: "National Book";
+}
+
+li > a.scrolly {
+	font-family: "Conduit ITC Medium";
+	text-transform: uppercase;
+}
+
+
+.parental_div {
+	position: relative;
+	top: 0;
+	left: 0;
+  }
+  .image_01 {
+	position: static;
+	top: 0;
+	left: 0;
+	border: 1px white;
+  }
+  .image_02 {
+	position: relative;
+	height: 100;
+	width: 80;
+	top: -225px;
+	left: -350px;
+	border: 50px rgb(224, 228, 5);
+  }
+  .t1 {
+	position: relative;
+	font-weight: 85;
+	top: -225px;
+	left: 150px;
+	border: 1px white;
+  }
+  .qr {
+	position: relative;
+	max-height: 100px;
+	top: -290px;
+	left: 300px;
+	border: 1px white; 
+  }
+  .t2 {
+	position: relative;
+	font-weight: 85;
+	top: -200px;
+	left: 430px;
+	border: 1px white;
+  }
+
+#content {
+	position: relative;
+}
+#content img {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}

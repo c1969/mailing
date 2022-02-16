@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>HAKRO Campaign</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}">
+	<noscript>
+		<link rel="stylesheet" href="static/assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body>
+	<div id="content">
+		<a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.png')}}" alt=""></a>
+	</div>
+	<div class="container">
+		<div class="col s6">
+			<h1>Hello {{ p[4] }}</h1>
+			<h1>Ihr Auftritt im Magalog</h1>
+			<h4>Die Katalogrückseite</h4>
+			<div class="center-align parental_div">
+				<img src="{{url_for('static', filename='images/magalog_umschlag.png')}}" alt="" class="image_01">
+				<img src="{{ logo }}" class="image_02" alt="">
+				<p class="t1">{{ p[2]}}, {{ p[5] }}, {{ p[6] }} {{ p[7] }}</p>
+			</div>
+
+			<div class="center-align parental_div">
+				<img src="{{url_for('static', filename='images/inlay_gf.png')}}" alt="" class="image_01">
+				<div class="t2">
+					<h6 class="left-align">Ihr Fachhändler ist gerne für Sie da</h6>
+					<h6 class="left-align">{{ p[2]}}, {{ p[5] }}, {{ p[6] }} {{ p[7] }}</h6>
+				</div>
+			</div>
+			<p>
+				<img src="{{ qr }}" alt="" class="qr">
+			</p>
+			<div class="row">
+				<div class="input-field col s12">
+					<label for="name">Ihr Vor- und Nachname *</label>
+					<input readonly type="text" value='{{ p[4] }}' />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label for="costumer_name">Name ihrer Firma *</label>
+					<input readonly type="text" value='{{ p[2] }}' />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label for="streetname">Straße und Hausnummer *</label>
+					<input readonly type="text" value='{{ p[5] }}' />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s4">
+					<label for="plz">Postleitzahl *</label>
+					<input readonly type="text" value='{{ p[6] }}' />
+				</div>
+				<div class="input-field col s8">
+					<label for="city">Ort *</label>
+					<input readonly type="text" value='{{ p[7] }}' />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label for="email">Ihre Email Addresse *</label>
+					<input readonly type="email" value='{{ p[8] }}' />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label for="url">Ihre Webseite *</label>
+					<input readonly type="url" value='{{ p[9] }}' />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label for="phone">Ihre Telefonnummer *</label>
+					<input readonly type="tel" value='{{ p[10] }}' />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label for="costumer_id">Ihre Kundennummer *</label>
+					<input readonly type="text" value='{{ p[3] }}' />
+				</div>
+			</div>
+			<hr>
+			<h5>Wir haben {{ len_df }} Adressen erkannt </h5>
+			<h5>Zur Kontrolle zeigen wir Ihnen hier die ersten 10 Zeilen/Kunden aus ihrer Datei:</h5>
+			<p>
+			<table>
+				<thead>
+					<tr>
+						<th>Vorname</th>
+						<th>Nachname</th>
+						<th>Firma</th>
+						<th>Straße</th>
+						<th>Hausnummer</th>
+						<th>Postleitzahl</th>
+						<th>Ort</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for k, i in df.iterrows() %}
+					<tr>
+						<td>{{ i[0] }}</td>
+						<td>{{ i[1] }}</td>
+						<td>{{ i[2] }}</td>
+						<td>{{ i[3] }}</td>
+						<td>{{ i[4] }}</td>
+						<td>{{ i[5] }}</td>
+						<td>{{ i[6] }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>Vorname</th>
+						<th>Nachname</th>
+						<th>Firma</th>
+						<th>Straße</th>
+						<th>Hausnummer</th>
+						<th>Postleitzahl</th>
+						<th>Ort</th>
+					</tr>
+				</tfoot>
+			</table>
+			<hr>
+			</p>
+			<p>
+			<div>
+				<form method="POST">
+					<button class="waves-effect waves-light btn"
+						style="background-color: transparent; border-radius: 20px; border-color: black; color: black;"
+						type="submit">Absenden</button>
+				</form>
+			</div>
+			</p>
+		</div>
+	</div>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
+
+
+</body>
+
+</html>

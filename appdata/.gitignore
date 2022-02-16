@@ -1,2 +1,4 @@
 assets2/
 env/
+
+*.ipynb
