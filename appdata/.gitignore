@@ -1,4 +1,5 @@
 assets2/
 env/
+static/upload/
 
 *.ipynb
