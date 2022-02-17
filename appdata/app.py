@@ -3,6 +3,7 @@ import re
 from flask import Flask, redirect, render_template, session, url_for, request, g, make_response, flash, send_from_directory, send_file, Response, abort
 from werkzeug.utils import secure_filename
 from werkzeug.middleware.proxy_fix import ProxyFix
+from flask_consent import Consent
 
 import uuid
 import pickle
@@ -16,6 +17,8 @@ from errors import Errors
 import pandas as pd
 import numpy as np
 
+from itsdangerous import URLSafeSerializer
+
 UPLOAD_FOLDER = 'static/upload/'
 ALLOWED_EXTENSIONS_IMAGE = {'eps', 'png'}
 ALLOWED_EXTENSIONS_DATA = {'xlsx', 'csv'}
@@ -25,6 +28,12 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 app.config['SECRET_KEY'] = "fdndflkadlkadkcmnvfldksfkllmcdlkamclkmckdmadlkamkl"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['CONSENT_FULL_TEMPLATE'] = 'consent.html'
+app.config['CONSENT_BANNER_TEMPLATE'] = 'consent_banner.html'
+consent = Consent(app)
+consent.add_standard_categories()
+
+auth_s = URLSafeSerializer("blubbblubb12edoejfdolfndjnfflkjnfnlfndajlkn", "auth") 
 
 db = dbx()
 E = Errors()
@@ -57,12 +66,15 @@ def index():
 
         d['session_id'] = session_id
 
+        '''
         if d['opt1'] == "on":
-            d['opt1'] = datetime.now()
+            d['opt1'] = str(datetime.now())
         if d['opt2'] == "on":
-            d['opt2'] = datetime.now()
+            d['opt2'] = str(datetime.now())
         if d['opt3'] == "on":
-            d['opt3'] = datetime.now()
+            d['opt3'] = str(datetime.now())
+        '''
+
 
         file_data = request.files['file_data']
         file_logo = request.files['file_logo']
@@ -81,61 +93,80 @@ def index():
 
         p3 = f'{session_id}.cust'
         pickle.dump(d, open(os.path.join(app.config['UPLOAD_FOLDER'], session_id, p3), 'wb'))
-        db.set_costumer_data(d)
+        #db.set_costumer_data(d)
 
-        return redirect(url_for('checking', sid=session_id))
+        #return redirect(url_for('checking', sid=session_id))
+
+        resp = make_response(redirect(url_for('checking', sid=session_id)))
+        token = auth_s.dumps({"id": 0, "data": d})
+        resp.set_cookie('_cid', token)
+        return resp
 
     return render_template('index.html')
 
 @app.route('/checking', methods=['GET', 'POST'])
 def checking():
+
+    hash_cookie = request.cookies.get('_cid')
+    data_cookie = auth_s.loads(hash_cookie)
+    s1 = data_cookie['data']
+
     session_id = request.args.get('sid')
-    d = db.get_costumer_data(session_id)
-    if d:
-        p = d[0]
-    else:
-        return False
 
-    logo_path = os.path.join(app.config['UPLOAD_FOLDER'], p[1], p[12])
-    data_path = os.path.join(app.config['UPLOAD_FOLDER'], p[1], p[11])
+    #logo_path = os.path.join(app.config['UPLOAD_FOLDER'], p[1], p[12])
+    #data_path = os.path.join(app.config['UPLOAD_FOLDER'], p[1], p[11])
 
-
-    return redirect(url_for('summary', sid=session_id))
+    #resp = make_response(redirect(url_for('index', sid=session_id)))
+    resp = make_response(redirect(url_for('summary', sid=session_id)))
+    token = auth_s.dumps({"id": 0, "data": s1})
+    resp.set_cookie('_cid', token)
+    return resp
 
 @app.route('/summary', methods=['GET', 'POST'])
 def summary():
+
+    hash_cookie = request.cookies.get('_cid')
+    data_cookie = auth_s.loads(hash_cookie)
+    s1 = data_cookie['data']
+
     session_id = request.args.get('sid')
-    d = db.get_costumer_data(session_id)
-    if d:
-        p = d[0]
-    else:
-        return False
     
-    logo_path = os.path.join(app.config['UPLOAD_FOLDER'], p[1], p[12])
-    data_path = os.path.join(app.config['UPLOAD_FOLDER'], p[1], p[11])
+    logo_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_logo'])
+    data_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_data'])
     df = pd.read_csv(data_path, header=None, sep=';')
     len_df = len(df)
-    print(df)
     if request.method == 'POST':
+        s1['opt1'] = datetime.now()
+        s1['opt2'] = datetime.now()
+        s1['opt3'] = datetime.now()
+        db.set_costumer_data(s1)
+        d = {}
+        for k, v in df.iterrows():
+            d['session_id'] = session_id
+            d['firstname'] = v[0]
+            d['lastname'] = v[1]
+            d['company'] = v[2]
+            d['street'] = v[3]
+            d['number'] = v[4]
+            d['zipcode'] = v[5]
+            d['city'] = v[6]
+            db.set_retailer_data(d)
+
         return redirect(url_for('done'))
 
-
-    #qr_code = qrcode.make(p[9])
-    #qr_code.make_image(fill_color="black", back_color="yellow")
-    #qr_filename = os.path.join(app.config['UPLOAD_FOLDER'], p[1], f'qr_{p[1]}.png')
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=15,
         border=1,
     )
-    qr.add_data(p[9])
+    qr.add_data(s1['url'])
     qr.make(fit=True)
-    qr_filename = os.path.join(app.config['UPLOAD_FOLDER'], p[1], f'qr_{p[1]}.png')
+    qr_filename = os.path.join(app.config['UPLOAD_FOLDER'], s1['session_id'], f'qr_{s1["session_id"]}.png')
     qr_code = qr.make_image(fill_color="black", back_color="transparent")
     qr_code.save(qr_filename)
 
-    return render_template('summary.html', df=df, logo=logo_path, p=p, len_df=len_df,qr=qr_filename)
+    return render_template('summary.html', df=df, logo=logo_path, p=s1, len_df=len_df,qr=qr_filename)
 
 @app.route('/done', methods=['GET', 'POST'])
 def done():

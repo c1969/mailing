@@ -59,3 +59,18 @@ class dbx():
             return c.fetchall()
         else:
             return False
+
+    def set_retailer_data(self, d):
+        conn = sqlite3.connect(DATABASE)
+        if conn:
+            c = conn.cursor()
+            sql = 'INSERT INTO data_retailer ({}) VALUES ({})'.format(
+            ','.join(list(d.keys())),
+            ','.join(list(['?']*len(d))))
+
+            c.execute(sql, tuple(d.values()))
+            conn.commit()
+            conn.close()
+            return True
+        else:
+            return False

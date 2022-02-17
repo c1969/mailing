@@ -18,11 +18,13 @@
 </head>
 
 <body>
+	{{ flask_consent_code() }}
 	<div id="content">
 		<a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.png')}}" alt=""></a>
 	</div>
 	<div class="container">
 		<div class="col s6">
+			<br><br><br>
 			<div class="section">
 				<h1>LIEBER FACHHÄNDLER</h1>
 				<h3>Bald versenden wir den neuen HAKRO WEWEAR Katalog 2022 an unsere Kund:innen.</h3>
@@ -147,7 +149,7 @@
 						<label for="message">Ihre Nachricht an uns:</label>
 						<textarea class="materialize-textarea" name="message" id="message" rows="6"></textarea>
 					</div>
-					-->
+
 					<div class="input-field col s4">
 						<p>
 							<label>
@@ -172,6 +174,7 @@
 							</label>
 						</p>
 					</div>
+										-->
 					<div class="row">
 						<button class="waves-effect waves-light btn"
 							style="background-color: transparent; border-radius: 20px; border-color: black; color: black;"
@@ -203,33 +206,21 @@
 
 		$("#file_logo").change(function (e) {
 			var file, img;
-
-
 			if ((file = this.files[0])) {
 				img = new Image();
 				img.onload = function () {
-					if (this.width > 135 || this.height > 101){
+					if (this.width > 135 || this.height > 101) {
 						alert("Die Abmessungen des Logos sind zu groß - bitte reduzieren");
 						location.reload();
-					}
-					else {
-						alert("Die Abmessungen des Logos sind passend - vielen Dank")
 					}
 				};
 				img.onerror = function () {
 					alert("keine gültige Bilddatei: " + file.type);
 				};
 				img.src = _URL.createObjectURL(file);
-
-
 			}
-
 		});
 	</script>
-	<script>
-		location.reload();
-	</script>
-
 
 </body>
 

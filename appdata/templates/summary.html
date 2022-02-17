@@ -23,20 +23,20 @@
 	</div>
 	<div class="container">
 		<div class="col s6">
-			<h1>Hello {{ p[4] }}</h1>
+			<br><br><br>
 			<h1>Ihr Auftritt im Magalog</h1>
 			<h4>Die Katalogrückseite</h4>
 			<div class="center-align parental_div">
 				<img src="{{url_for('static', filename='images/magalog_umschlag.png')}}" alt="" class="image_01">
 				<img src="{{ logo }}" class="image_02" alt="">
-				<p class="t1">{{ p[2]}}, {{ p[5] }}, {{ p[6] }} {{ p[7] }}</p>
+				<p class="t1">{{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }} {{ p['city'] }}</p>
 			</div>
 
 			<div class="center-align parental_div">
 				<img src="{{url_for('static', filename='images/inlay_gf.png')}}" alt="" class="image_01">
 				<div class="t2">
 					<h6 class="left-align">Ihr Fachhändler ist gerne für Sie da</h6>
-					<h6 class="left-align">{{ p[2]}}, {{ p[5] }}, {{ p[6] }} {{ p[7] }}</h6>
+					<h6 class="left-align">{{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }} {{ p['city'] }}</h6>
 				</div>
 			</div>
 			<p>
@@ -45,55 +45,70 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<label for="name">Ihr Vor- und Nachname *</label>
-					<input readonly type="text" value='{{ p[4] }}' />
+					<input readonly type="text" value="{{ p['name'] }}" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
 					<label for="costumer_name">Name ihrer Firma *</label>
-					<input readonly type="text" value='{{ p[2] }}' />
+					<input readonly type="text" value="{{ p['costumer_name'] }}" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
 					<label for="streetname">Straße und Hausnummer *</label>
-					<input readonly type="text" value='{{ p[5] }}' />
+					<input readonly type="text" value="{{ p['streetname'] }}" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s4">
 					<label for="plz">Postleitzahl *</label>
-					<input readonly type="text" value='{{ p[6] }}' />
+					<input readonly type="text" value="{{ p['plz'] }}" />
 				</div>
 				<div class="input-field col s8">
 					<label for="city">Ort *</label>
-					<input readonly type="text" value='{{ p[7] }}' />
+					<input readonly type="text" value="{{ p['city'] }}" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
 					<label for="email">Ihre Email Addresse *</label>
-					<input readonly type="email" value='{{ p[8] }}' />
+					<input readonly type="email" value="{{ p['email'] }}" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
 					<label for="url">Ihre Webseite *</label>
-					<input readonly type="url" value='{{ p[9] }}' />
+					<input readonly type="url" value="{{ p['url'] }}" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
 					<label for="phone">Ihre Telefonnummer *</label>
-					<input readonly type="tel" value='{{ p[10] }}' />
+					<input readonly type="tel" value="{{ p['phone'] }}" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
 					<label for="costumer_id">Ihre Kundennummer *</label>
-					<input readonly type="text" value='{{ p[3] }}' />
+					<input readonly type="text" value="{{ p['costumer_id'] }}" />
 				</div>
 			</div>
+			<!-- Modal Trigger -->
+			<a class="waves-effect waves-light btn modal-trigger" href="#modal">Modal</a>
+
+			<!-- Modal Structure -->
+			<div id="modal" class="modal">
+				<div class="modal-content">
+					<h4>Modal Header</h4>
+					<p>A bunch of text</p>
+				</div>
+				<div class="modal-footer">
+					<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+				</div>
+
+			</div>
+
 			<hr>
 			<h5>Wir haben {{ len_df }} Adressen erkannt </h5>
 			<h5>Zur Kontrolle zeigen wir Ihnen hier die ersten 10 Zeilen/Kunden aus ihrer Datei:</h5>
@@ -153,8 +168,12 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
-
-
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var elems = document.querySelectorAll('.modal');
+			var instances = M.Modal.init(elems, options);
+		});
+	</script>
 </body>
 
 </html>
