@@ -210,7 +210,7 @@
 				img = new Image();
 				img.onload = function () {
 					if (this.width > 135 || this.height > 101) {
-						alert("Die Abmessungen des Logos sind zu groß - bitte reduzieren");
+						alert("Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)");
 						location.reload();
 					}
 				};
