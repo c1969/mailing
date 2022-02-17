@@ -16,4 +16,4 @@ services:
         container_name: nginx_mailer
         restart: always
         ports: 
-            - "9293:80"
+            - "80:80"
