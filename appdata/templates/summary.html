@@ -38,12 +38,12 @@
       <div class="col s6">
         <div class="section">
           <h1>Ihr Auftritt im Magalog</h1>
-          <p>Die Katalogrückseite</p>
+          <p style="margin-bottom: 10px">Die Katalogrückseite</p>
           <!-- <div class="center-align parental_div">
 				<img src="{{url_for('static', filename='images/magalog_umschlag.png')}}" alt="" class="image_01">
 				<img src="{{ logo }}" class="image_02" alt="">
 				<p class="t1">{{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }} {{ p['city'] }}</p>
-			</div> -->
+			  </div> -->
           <div class="container">
             <img
               src="{{url_for('static', filename='images/magalog_umschlag.png')}}"
@@ -56,6 +56,7 @@
               p['city'] }}
             </p>
           </div>
+          <p style="margin-bottom: 10px">Der QR-code im intro</p>
 
           <div class="container">
             <img
@@ -73,6 +74,7 @@
             </div>
           </div>
         </div>
+        <h1 style="margin: 40px 0">Ihre Eingaben</h1>
 
         <div class="row">
           <div class="input-field col s12">
@@ -127,12 +129,12 @@
           </div>
         </div>
         <!-- Modal Trigger -->
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal"
+        <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal"
           >Modal</a
-        >
+        > -->
 
         <!-- Modal Structure -->
-        <div id="modal" class="modal">
+        <!-- <div id="modal" class="modal">
           <div class="modal-content">
             <h4>Modal Header</h4>
             <p>A bunch of text</p>
@@ -142,25 +144,23 @@
               >Agree</a
             >
           </div>
-        </div>
+        </div> -->
 
-        <hr />
-        <h5>Wir haben {{ len_df }} Adressen erkannt</h5>
-        <h5>
-          Zur Kontrolle zeigen wir Ihnen hier die ersten 10 Zeilen/Kunden aus
-          ihrer Datei:
-        </h5>
-        <p></p>
-        <table>
+        <h2>Wir haben {{ len_df }} Adressen erkannt</h2>
+        <!-- <p>
+          Zur Kontrolle zeigen wir Ihnen einen Ausschnitt aus
+          ihrer hochgeladenen Datei:
+        </p> -->
+        <table style="margin-bottom: 30px">
           <thead>
             <tr>
-              <th>Vorname</th>
-              <th>Nachname</th>
-              <th>Firma</th>
-              <th>Straße</th>
+              <th style="background-color: white">Vorname</th>
+              <th style="background-color: white">Nachname</th>
+              <th style="background-color: white">Firma</th>
+              <!-- <th>Straße</th>
               <th>Hausnummer</th>
               <th>Postleitzahl</th>
-              <th>Ort</th>
+              <th>Ort</th> -->
             </tr>
           </thead>
           <tbody>
@@ -169,14 +169,14 @@
               <td>{{ i[0] }}</td>
               <td>{{ i[1] }}</td>
               <td>{{ i[2] }}</td>
-              <td>{{ i[3] }}</td>
+              <!-- <td>{{ i[3] }}</td>
               <td>{{ i[4] }}</td>
               <td>{{ i[5] }}</td>
-              <td>{{ i[6] }}</td>
+              <td>{{ i[6] }}</td> -->
             </tr>
             {% endfor %}
           </tbody>
-          <tfoot>
+          <!-- <tfoot>
             <tr>
               <th>Vorname</th>
               <th>Nachname</th>
@@ -186,13 +186,19 @@
               <th>Postleitzahl</th>
               <th>Ort</th>
             </tr>
-          </tfoot>
+          </tfoot> -->
         </table>
-        <hr />
-        <div>
-          <form method="POST">
-            <button class="button_primary" type="submit">Absenden</button>
-          </form>
+        <div class="button_row">
+          <div>
+            <form method="POST">
+              <button class="button_secondary">Zurück</button>
+            </form>
+          </div>
+          <div>
+            <form method="POST">
+              <button class="button_primary" type="submit">Absenden</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

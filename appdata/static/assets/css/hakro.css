@@ -79,7 +79,8 @@ li::before {
 }
 
 .button_primary,
-.button_secondary {
+.button_secondary,
+.button_primary_white {
   font-family: "Conduit ITC Medium";
   text-transform: uppercase;
   font-size: 20px;
@@ -141,15 +142,32 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: 0 1px 0 0 #b6c24f;
 }
 
-button {
-  margin: 0;
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
   padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
+.button_row {
+  display: flex;
+  justify-content: space-between;
+}
 .button_primary {
   color: white;
   background-color: #e4032d;
   border: 1px solid #e4032d;
+}
+
+.button_primary_white {
+  color: black;
+  background-color: white;
+  border: 1px solid white;
 }
 
 .button_secondary {
@@ -162,6 +180,12 @@ button {
   background-color: #c90226;
   cursor: pointer;
 }
+
+.button_primary_white:hover {
+  background-color: rgba(255, 255, 255, 0.845);
+  cursor: pointer;
+}
+
 .button_secondary:hover {
   background-color: rgba(0, 0, 0, 0.057);
   cursor: pointer;
@@ -258,4 +282,13 @@ button {
   position: absolute;
   top: 10px;
   left: 10px;
+}
+td,
+th {
+  padding: 20px 10px;
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+  border-radius: 2px;
+  background: #f6f6f6;
 }
