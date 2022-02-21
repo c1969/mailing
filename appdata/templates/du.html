@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>HAKRO Dialog</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}">
+	<noscript>
+		<link rel="stylesheet" href="static/assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body>
+	{{ flask_consent_code() }}
+	<div id="content">
+		<a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.png')}}" alt=""></a>
+	</div>
+	<div class="container">
+		<div class="col s6">
+			<br><br><br>
+			<div class="section">
+				<h1>Fachhändler finden,</h1>
+				<h3>unsere zahlreichen qualifizierten Fachhändler sind mit Know-how und Erfahrung immer für Sie da.
+					Einen
+					Fachhändler in Ihrer Nähe finden Sie ganz einfach mit unserer Händlersuche.</h3>
+			</div>
+			<div class="section">
+				<form method="post" enctype="multipart/form-data">
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="plz">Postleitzahl *</label>
+							<input type="text" name="plz" id="plz" required=required />
+						</div>
+					</div>
+					<button class="waves-effect waves-light btn"
+					style="background-color: transparent; border-radius: 20px; border-color: black; color: black;"
+					type="submit">Fachhändler finden</button>
+		
+			</div>
+			<div class="section">
+
+			</div>
+		</div>
+	</div>
+	<!--	Footer -->
+	<footer class="page-footer" style="background-color: #B6C24F;">
+		<div class="container">
+			<div class="row">
+				<div class="col l12 s12">
+
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container" href="https://www.hakro.com/">
+				© 2022 HAKRO
+				<a class="grey-text text-lighten-4 right" href="https://www.hakro.com/impressum">Impressum</a>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
+	<script>
+		var _URL = window.URL || window.webkitURL;
+
+		$("#file_logo").change(function (e) {
+			var file, img;
+			if ((file = this.files[0])) {
+				img = new Image();
+				img.onload = function () {
+					if (this.width > 135 || this.height > 101) {
+						alert("Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)");
+						location.reload();
+					}
+				};
+				img.onerror = function () {
+					alert("keine gültige Bilddatei: " + file.type);
+				};
+				img.src = _URL.createObjectURL(file);
+			}
+		});
+	</script>
+
+</body>
+
+</html>

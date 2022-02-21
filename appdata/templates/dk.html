@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>HAKRO Dialog</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}">
+	<noscript>
+		<link rel="stylesheet" href="static/assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body>
+	{{ flask_consent_code() }}
+	<div id="content">
+		<a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.png')}}" alt=""></a>
+	</div>
+	<div class="container">
+		<div class="col s6">
+			<br><br><br>
+			<div class="section">
+				<h1>Hallo {{d[2]}} {{d[3]}},</h1>
+				<h3>bitte prüfen Sie Ihre Kontaktdaten, ihr persönlicher Fachhändler {{ e[2] }} in {{ e[6] }} {{ e[7] }}
+					wird sich gerne mit Ihnen in Verbindung setzen.</h3>
+			</div>
+			<div class="section">
+				<form method="post" enctype="multipart/form-data">
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="name">Ihr Vor- und Nachname *</label>
+							<input type="text" name="name" id="name" value="{{d[2]}} {{d[3]}}" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="costumer_name">Name ihrer Firma *</label>
+							<input type="text" name="costumer_name" id="company_name" value="{{d[4]}}" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="streetname">Straße und Hausnummer *</label>
+							<input type="text" name="streetname" id="streetname" value="{{d[5]}} {{d[6]}}" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s4">
+							<label for="plz">Postleitzahl *</label>
+							<input type="text" name="plz" id="plz" value="{{d[7]}}" />
+						</div>
+						<div class="input-field col s8">
+							<label for="city">Ort *</label>
+							<input type="text" name="city" id="city" value="{{d[8]}}" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="email">Ihre Email Addresse *</label>
+							<input type="email" name="email" id="email" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="phone">Ihre Telefonnummer *</label>
+							<input type="tel" name="phone" id="phone" />
+						</div>
+					</div>
+					<div class="input-field col s4">
+						<p>
+							<label>
+								<input type="checkbox" id="newsletter" name="newsletter" value="on" />
+								<span>Händler Newsletter abonieren</span>
+							</label>
+						</p>
+					</div>
+					<div class="row">
+						<p>
+							* Pflichtfelder
+						</p>
+					</div>
+					<div class="row">
+						<button class="waves-effect waves-light btn"
+							style="background-color: red; border-radius: 20px; border-color: black; color: white;"
+							type="submit">Informationen anfordern</button>
+					</div>
+				</form>
+			</div>
+			<div class="section">
+
+			</div>
+		</div>
+	</div>
+	<!--	Footer -->
+	<footer class="page-footer" style="background-color: #B6C24F;">
+		<div class="container">
+			<div class="row">
+				<div class="col l12 s12">
+					<h5 class="white-text">Ihr persönlicher Fachhändler:</h5>
+					<p class="grey-text text-lighten-4">
+						{{ e[2] }}<br>
+						{{ e[4] }}<br>
+						{{ e[5] }}<br>
+						{{ e[6] }} {{ e[7] }}<br>
+						<br>
+						{{ e[9] }}<br>
+						{{ e[8] }}<br>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container" href="https://www.hakro.com/">
+				© 2022 HAKRO
+				<a class="grey-text text-lighten-4 right" href="https://www.hakro.com/impressum">Impressum</a>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
+	<script>
+		var _URL = window.URL || window.webkitURL;
+
+		$("#file_logo").change(function (e) {
+			var file, img;
+			if ((file = this.files[0])) {
+				img = new Image();
+				img.onload = function () {
+					if (this.width > 135 || this.height > 101) {
+						alert("Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)");
+						location.reload();
+					}
+				};
+				img.onerror = function () {
+					alert("keine gültige Bilddatei: " + file.type);
+				};
+				img.src = _URL.createObjectURL(file);
+			}
+		});
+	</script>
+
+</body>
+
+</html>
