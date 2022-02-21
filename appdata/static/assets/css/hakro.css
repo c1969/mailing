@@ -105,7 +105,7 @@ li::before {
 }
 
 .section {
-  padding: 15px;
+  padding: 0 15px;
 }
 
 .button_primary,
