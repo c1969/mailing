@@ -54,6 +54,14 @@ h1 {
   padding: 0;
   margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 640px) {
+  h1 {
+    font-size: 42px;
+    line-height: 44px;
+  }
+}
+
 h2 {
   font-size: 32px;
   line-height: 36px;
@@ -61,6 +69,14 @@ h2 {
   padding: 0;
   margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 640px) {
+  h2 {
+    font-size: 26px;
+    line-height: 120%;
+  }
+}
+
 p,
 ol,
 ul {
@@ -72,10 +88,24 @@ ul {
   list-style-type: circle;
 }
 
+@media only screen and (max-width: 640px) {
+  p,
+  ol,
+  ul {
+    font-size: 20px;
+    line-height: 140%;
+    margin-bottom: 20px;
+  }
+}
+
 li::before {
   content: "•";
   margin: 0 14px;
   color: black;
+}
+
+.section {
+  padding: 15px;
 }
 
 .button_primary,
@@ -86,7 +116,7 @@ li::before {
   font-size: 20px;
   letter-spacing: 2px;
   border-radius: 50px;
-  padding: 20px 40px;
+  padding: 20px 30px;
   border: none;
   float: left;
   position: relative;
@@ -96,8 +126,14 @@ li::before {
 .input-field > label {
   font-family: "National Book";
   -webkit-font-smoothing: antialiased;
-  font-size: 26px;
+  font-size: 24px;
   color: #979797;
+}
+
+@media only screen and (max-width: 640px) {
+  .input-field > label {
+    font-size: 20px;
+  }
 }
 
 .input-field > label:not(.label-icon).active {
@@ -105,6 +141,7 @@ li::before {
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
 }
+
 input:not([type]),
 input[type="text"]:not(.browser-default),
 input[type="password"]:not(.browser-default),
@@ -119,9 +156,27 @@ input[type="number"]:not(.browser-default),
 input[type="search"]:not(.browser-default),
 textarea.materialize-textarea {
   transform: translateY(-7px) scale(1);
-  font-size: 26px;
+  font-size: 24px;
   border-bottom: 1px solid #d9d9d9;
   height: 2.4rem;
+}
+
+@media only screen and (max-width: 640px) {
+  input:not([type]),
+  input[type="text"]:not(.browser-default),
+  input[type="password"]:not(.browser-default),
+  input[type="email"]:not(.browser-default),
+  input[type="url"]:not(.browser-default),
+  input[type="time"]:not(.browser-default),
+  input[type="date"]:not(.browser-default),
+  input[type="datetime"]:not(.browser-default),
+  input[type="datetime-local"]:not(.browser-default),
+  input[type="tel"]:not(.browser-default),
+  input[type="number"]:not(.browser-default),
+  input[type="search"]:not(.browser-default),
+  textarea.materialize-textarea {
+    font-size: 20px;
+  }
 }
 
 input:not([type]):focus:not([readonly]),
@@ -194,9 +249,17 @@ input[type="reset"] {
 .main {
   max-width: 700px;
 }
+
 .header {
   margin: 50px 50px 50px 30px;
 }
+
+@media only screen and (max-width: 640px) {
+  .header {
+    margin: 50px 50px 50px 16px;
+  }
+}
+
 .footer {
   background-color: #b6c24f;
   margin-top: 100px;
@@ -206,6 +269,7 @@ input[type="reset"] {
 .brand-logo {
   width: 100px;
 }
+
 .parental_div {
   position: relative;
   top: 0;

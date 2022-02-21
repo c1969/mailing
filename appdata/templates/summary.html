@@ -39,11 +39,7 @@
         <div class="section">
           <h1>Ihr Auftritt im Magalog</h1>
           <p style="margin-bottom: 10px">Die Katalogrückseite</p>
-          <!-- <div class="center-align parental_div">
-				<img src="{{url_for('static', filename='images/magalog_umschlag.png')}}" alt="" class="image_01">
-				<img src="{{ logo }}" class="image_02" alt="">
-				<p class="t1">{{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }} {{ p['city'] }}</p>
-			  </div> -->
+
           <div class="container">
             <img
               src="{{url_for('static', filename='images/magalog_umschlag.png')}}"
@@ -74,67 +70,69 @@
             </div>
           </div>
         </div>
-        <h1 style="margin: 40px 0">Ihre Eingaben</h1>
 
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="name">Ihr Vor- und Nachname *</label>
-            <input readonly type="text" value="{{ p['name'] }}" />
+        <div class="section">
+          <h1 style="margin: 40px 0">Ihre Eingaben</h1>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="name">Ihr Vor- und Nachname *</label>
+              <input readonly type="text" value="{{ p['name'] }}" />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="costumer_name">Name ihrer Firma *</label>
-            <input readonly type="text" value="{{ p['costumer_name'] }}" />
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="costumer_name">Name ihrer Firma *</label>
+              <input readonly type="text" value="{{ p['costumer_name'] }}" />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="streetname">Straße und Hausnummer *</label>
-            <input readonly type="text" value="{{ p['streetname'] }}" />
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="streetname">Straße und Hausnummer *</label>
+              <input readonly type="text" value="{{ p['streetname'] }}" />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s4">
-            <label for="plz">Postleitzahl *</label>
-            <input readonly type="text" value="{{ p['plz'] }}" />
+          <div class="row">
+            <div class="input-field col s4">
+              <label for="plz">Postleitzahl *</label>
+              <input readonly type="text" value="{{ p['plz'] }}" />
+            </div>
+            <div class="input-field col s8">
+              <label for="city">Ort *</label>
+              <input readonly type="text" value="{{ p['city'] }}" />
+            </div>
           </div>
-          <div class="input-field col s8">
-            <label for="city">Ort *</label>
-            <input readonly type="text" value="{{ p['city'] }}" />
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="email">Ihre Email Addresse *</label>
+              <input readonly type="email" value="{{ p['email'] }}" />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="email">Ihre Email Addresse *</label>
-            <input readonly type="email" value="{{ p['email'] }}" />
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="url">Ihre Webseite *</label>
+              <input readonly type="url" value="{{ p['url'] }}" />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="url">Ihre Webseite *</label>
-            <input readonly type="url" value="{{ p['url'] }}" />
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="phone">Ihre Telefonnummer *</label>
+              <input readonly type="tel" value="{{ p['phone'] }}" />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="phone">Ihre Telefonnummer *</label>
-            <input readonly type="tel" value="{{ p['phone'] }}" />
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="costumer_id">Ihre Kundennummer *</label>
+              <input readonly type="text" value="{{ p['costumer_id'] }}" />
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="costumer_id">Ihre Kundennummer *</label>
-            <input readonly type="text" value="{{ p['costumer_id'] }}" />
-          </div>
-        </div>
-        <!-- Modal Trigger -->
-        <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal"
+          <!-- Modal Trigger -->
+          <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal"
           >Modal</a
         > -->
 
-        <!-- Modal Structure -->
-        <!-- <div id="modal" class="modal">
+          <!-- Modal Structure -->
+          <!-- <div id="modal" class="modal">
           <div class="modal-content">
             <h4>Modal Header</h4>
             <p>A bunch of text</p>
@@ -146,37 +144,37 @@
           </div>
         </div> -->
 
-        <h2>Wir haben {{ len_df }} Adressen erkannt</h2>
-        <!-- <p>
+          <h2>Wir haben {{ len_df }} Adressen erkannt</h2>
+          <!-- <p>
           Zur Kontrolle zeigen wir Ihnen einen Ausschnitt aus
           ihrer hochgeladenen Datei:
         </p> -->
-        <table style="margin-bottom: 30px">
-          <thead>
-            <tr>
-              <th style="background-color: white">Vorname</th>
-              <th style="background-color: white">Nachname</th>
-              <th style="background-color: white">Firma</th>
-              <!-- <th>Straße</th>
+          <table style="margin-bottom: 30px">
+            <thead>
+              <tr>
+                <th style="background-color: white">Vorname</th>
+                <th style="background-color: white">Nachname</th>
+                <th style="background-color: white">Firma</th>
+                <!-- <th>Straße</th>
               <th>Hausnummer</th>
               <th>Postleitzahl</th>
               <th>Ort</th> -->
-            </tr>
-          </thead>
-          <tbody>
-            {% for k, i in df.iterrows() %}
-            <tr>
-              <td>{{ i[0] }}</td>
-              <td>{{ i[1] }}</td>
-              <td>{{ i[2] }}</td>
-              <!-- <td>{{ i[3] }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              {% for k, i in df.iterrows() %}
+              <tr>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[1] }}</td>
+                <td>{{ i[2] }}</td>
+                <!-- <td>{{ i[3] }}</td>
               <td>{{ i[4] }}</td>
               <td>{{ i[5] }}</td>
               <td>{{ i[6] }}</td> -->
-            </tr>
-            {% endfor %}
-          </tbody>
-          <!-- <tfoot>
+              </tr>
+              {% endfor %}
+            </tbody>
+            <!-- <tfoot>
             <tr>
               <th>Vorname</th>
               <th>Nachname</th>
@@ -187,17 +185,18 @@
               <th>Ort</th>
             </tr>
           </tfoot> -->
-        </table>
-        <div class="button_row">
-          <div>
-            <form method="POST">
-              <button class="button_secondary">Zurück</button>
-            </form>
-          </div>
-          <div>
-            <form method="POST">
-              <button class="button_primary" type="submit">Absenden</button>
-            </form>
+          </table>
+          <div class="button_row">
+            <div>
+              <form method="POST">
+                <button class="button_secondary">Zurück</button>
+              </form>
+            </div>
+            <div>
+              <form method="POST">
+                <button class="button_primary" type="submit">Absenden</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
