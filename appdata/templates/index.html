@@ -1,150 +1,182 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Forty by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
+  <head>
+    <title>HAKRO Campaign</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='assets/css/hakro.css')}}"
+    />
+    <noscript>
+      <link rel="stylesheet" href="static/assets/css/noscript.css" />
+    </noscript>
+  </head>
 
-<head>
-	<title>HAKRO Campaign</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}">
-	<noscript>
-		<link rel="stylesheet" href="static/assets/css/noscript.css" />
-	</noscript>
-</head>
+  <body>
+    <!-- {{ flask_consent_code() }} -->
+    <div id="content"></div>
+    <div class="header">
+      <a href="/" class="brand-logo"
+        ><img
+          src="{{url_for('static', filename='images/hakro-logo.svg')}}"
+          alt=""
+      /></a>
+    </div>
+    <div class="container main">
+      <div></div>
 
-<body>
-	{{ flask_consent_code() }}
-	<div id="content">
-		<a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.png')}}" alt=""></a>
-	</div>
-	<div class="container">
-		<div class="col s6">
-			<br><br><br>
-			<div class="section">
-				<h1>LIEBER FACHHÄNDLER</h1>
-				<h3>Bald versenden wir den neuen HAKRO WEWEAR Katalog 2022 an unsere Kund:innen.</h3>
-				<div class="center-align">
-					<img src="{{url_for('static', filename='images/magalog_umschlag.png')}}" alt=""
-						class="responsive-img">
-				</div>
+      <div class="col s6">
+        <div class="section">
+          <h1>LIEBER FACHHÄNDLER</h1>
+          <h2>
+            Bald versenden wir den neuen HAKRO WEWEAR Katalog 2022 an unsere
+            Kund:innen.
+          </h2>
+          <p>
+            Damit Kunden sofort den richtigen Fachhändler finden, drucken wir
+            die Addresse und Logo der Fachhändler direkt und individuell auf die
+            Rückseite des Kataloges und senden diesen direkt an die Kunden.
+            Hierzu benötigen wir lediglich eine Liste ihrer Kunden als .csv oder
+            .xlsx Datei.
+          </p>
+          <div class="center-align">
+            <img
+              src="{{url_for('static', filename='images/magalog_umschlag.png')}}"
+              alt=""
+              class="responsive-img"
+            />
+          </div>
+        </div>
+        <div class="section">
+          <form method="post" enctype="multipart/form-data">
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="name">Ihr Vor- und Nachname *</label>
+                <input type="text" name="name" id="name" required="reuqired" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="costumer_name">Name ihrer Firma *</label>
+                <input type="text" name="costumer_name" id="company_name" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="streetname">Straße und Hausnummer *</label>
+                <input
+                  type="text"
+                  name="streetname"
+                  id="streetname"
+                  required="required"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s4">
+                <label for="plz">Postleitzahl *</label>
+                <input type="text" name="plz" id="plz" />
+              </div>
+              <div class="input-field col s8">
+                <label for="city">Ort *</label>
+                <input type="text" name="city" id="city" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="email">Ihre Email Addresse *</label>
+                <input type="email" name="email" id="email" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="url">Ihre Webseite *</label>
+                <input type="url" name="url" id="url" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="phone">Ihre Telefonnummer *</label>
+                <input type="tel" name="phone" id="phone" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="costumer_id">Ihre Kundennummer *</label>
+                <input type="text" name="costumer_id" id="costumer_id" />
+              </div>
+            </div>
+            <div class="row">
+              <p>
+                Bitte laden Sie ihr Firmenlogo als Vektordatei (.eps) oder
+                hochauflösende portable Network Graphic (.png) hoch. Farbige
+                Logos werden in Graustufen gedruckt
+              </p>
+              <div class="input-field col s12">
+                <div class="file-field input-field">
+                  <div class="button_secondary">
+                    <span>Datei</span>
+                    <input type="file" name="file_logo" id="file_logo" />
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input
+                      class="file-path validate"
+                      type="text"
+                      placeholder="Firmenlogo als .png oder .eps *"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <p>
+                Bitte laden Sie eine Lise Ihrer Kunden hoch, an die der Katalog
+                gesendet werden soll. Diese Liste muss hierfür wie folgt
+                strukturirert sein.
+              </p>
+              <ul>
+                <li>Vorname</li>
+                <li>Nachname</li>
+                <li>Firma</li>
+                <li>Strasse</li>
+                <li>Hausnummer</li>
+                <li>Postleitzahl</li>
+                <li>Ort</li>
+              </ul>
+              <div class="input-field col s12">
+                <div class="file-field input-field">
+                  <div class="button_secondary">
+                    <span>Datei</span>
+                    <input type="file" name="file_data" id="file_data" />
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input
+                      class="file-path validate"
+                      type="text"
+                      placeholder="Kundenliste als .csv oder .xslx *"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <p>* Pflichtfelder</p>
+            </div>
 
-				<h6>Damit Kunden sofort den richtigen Fachhändler finden, drucken wir die Addresse und Logo der
-					Fachhändler direkt und individuell auf die Rückseite des Kataloges und senden diesen direkt an die
-					Kunden. Hierzu benötigen wir lediglich eine Liste ihrer Kunden als .csv oder .xlsx Datei.</h6>
-			</div>
-			<div class="section">
-				<form method="post" enctype="multipart/form-data">
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="name">Ihr Vor- und Nachname *</label>
-							<input type="text" name="name" id="name" required=reuqired />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="costumer_name">Name ihrer Firma *</label>
-							<input type="text" name="costumer_name" id="company_name" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="streetname">Straße und Hausnummer *</label>
-							<input type="text" name="streetname" id="streetname" required=required />
-						</div>
-					</div>
-					<div class="row">
-
-						<div class="input-field col s4">
-							<label for="plz">Postleitzahl *</label>
-							<input type="text" name="plz" id="plz" />
-						</div>
-						<div class="input-field col s8">
-							<label for="city">Ort *</label>
-							<input type="text" name="city" id="city" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="email">Ihre Email Addresse *</label>
-							<input type="email" name="email" id="email" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="url">Ihre Webseite *</label>
-							<input type="url" name="url" id="url" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="phone">Ihre Telefonnummer *</label>
-							<input type="tel" name="phone" id="phone" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="costumer_id">Ihre Kundennummer *</label>
-							<input type="text" name="costumer_id" id="costumer_id" />
-						</div>
-					</div>
-					<div class="row">
-						<p>Bitte laden Sie ihr Firmenlogo als Vektordatei (.eps) oder hochauflösende portable Network
-							Graphic (.png)
-							hoch. Farbige Logos werden in Graustufen gedruckt</p>
-						<div class="input-field col s12">
-							<div class="file-field input-field">
-								<div class="btn"
-									style="background-color: transparent; border-radius: 20px; border-color: black; color: black;">
-									<span>DATEI</span>
-									<input type="file" name="file_logo" id="file_logo">
-
-								</div>
-								<div class="file-path-wrapper">
-									<input class="file-path validate" type="text"
-										placeholder="Firmenlogo als .png oder .eps *">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<p>Bitte laden Sie eine Lise Ihrer Kunden hoch, an die der Katalog gesendet werden soll. Diese
-							Liste muss hierfür wie folgt strukturirert sein.</p>
-						<ul>
-							<ol>Vorname</ol>
-							<ol>Nachname</ol>
-							<ol>Firma</ol>
-							<ol>Strasse</ol>
-							<ol>Hausnummer</ol>
-							<ol>Postleitzahl</ol>
-							<ol>Ort</ol>
-						</ul>
-						<div class="input-field col s12">
-							<div class="file-field input-field">
-								<div class="btn"
-									style="background-color: transparent; border-radius: 20px; border-color: black; color: black;">
-									<span>DATEI</span>
-									<input type="file" name="file_data" id="file_data">
-								</div>
-								<div class="file-path-wrapper">
-									<input class="file-path validate" type="text"
-										placeholder="Kundenliste als .csv oder .xslx *">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<p>
-							* Pflichtfelder
-						</p>
-					</div>
-
-
-					<!--
+            <!--
 											<div class="input-field col s4">
 						<label for="message">Ihre Nachricht an uns:</label>
 						<textarea class="materialize-textarea" name="message" id="message" rows="6"></textarea>
@@ -175,53 +207,64 @@
 						</p>
 					</div>
 										-->
-					<div class="row">
-						<button class="waves-effect waves-light btn"
-							style="background-color: transparent; border-radius: 20px; border-color: black; color: black;"
-							type="submit">Weiter</button>
-					</div>
+            <div class="row">
+              <!--
+                              <button class="button_primary" type="submit">Weiter</button>
+              -->
 
-				</form>
-			</div>
-			<div class="section">
+              <!-- <input type="submit" class="button_primary" value="Weiter"> -->
+              <div>
+                <button class="button_primary" type="submit">Weiter</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div></div>
+    </div>
+    <div class="footer"></div>
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >Agree</a
+        >
+      </div>
+    </div>
+    <!-- Scripts -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-2.1.1.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='assets/js/hakro.js')}}"
+    ></script>
+    <script>
+      var _URL = window.URL || window.webkitURL;
 
-			</div>
-		</div>
-	</div>
-	<div id="modal1" class="modal">
-		<div class="modal-content">
-			<h4>Modal Header</h4>
-			<p>A bunch of text</p>
-		</div>
-		<div class="modal-footer">
-			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-		</div>
-	</div>
-	<!-- Scripts -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
-	<script>
-		var _URL = window.URL || window.webkitURL;
-
-		$("#file_logo").change(function (e) {
-			var file, img;
-			if ((file = this.files[0])) {
-				img = new Image();
-				img.onload = function () {
-					if (this.width > 135 || this.height > 101) {
-						alert("Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)");
-						location.reload();
-					}
-				};
-				img.onerror = function () {
-					alert("keine gültige Bilddatei: " + file.type);
-				};
-				img.src = _URL.createObjectURL(file);
-			}
-		});
-	</script>
-
-</body>
-
+      $("#file_logo").change(function (e) {
+        var file, img;
+        if ((file = this.files[0])) {
+          img = new Image();
+          img.onload = function () {
+            if (this.width > 135 || this.height > 101) {
+              alert(
+                "Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)"
+              );
+              location.reload();
+            }
+          };
+          img.onerror = function () {
+            alert("keine gültige Bilddatei: " + file.type);
+          };
+          img.src = _URL.createObjectURL(file);
+        }
+      });
+    </script>
+  </body>
 </html>
