@@ -20,7 +20,7 @@ import numpy as np
 from itsdangerous import URLSafeSerializer
 
 UPLOAD_FOLDER = 'static/upload/'
-ALLOWED_EXTENSIONS_IMAGE = {'eps', 'png', 'jpg', 'jpeg', 'tiff'}
+ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'tiff'}
 ALLOWED_EXTENSIONS_DATA = {'xlsx', 'csv'}
 
 app = Flask(__name__)

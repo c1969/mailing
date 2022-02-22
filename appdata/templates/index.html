@@ -84,7 +84,7 @@
           <div class="row">
             <div class="input-field col s12">
               <label for="name">Ihr Vor- und Nachname *</label>
-              <input type="text" name="name" id="name" pattern="[a-zA-Z]+" required="reuqired" class="validate" />
+              <input type="text" name="name" id="name" pattern="^[a-zA-Z].{1,}" required="reuqired" class="validate" />
             </div>
           </div>
           <div class="row">
@@ -102,11 +102,11 @@
           <div class="row">
             <div class="input-field col s4">
               <label for="plz">Postleitzahl *</label>
-              <input type="text" name="plz" id="plz" required="reuqired" class="validate" />
+              <input type="text" name="plz" id="plz" required="reuqired" pattern="^[0-9].{1,}" class="validate" />
             </div>
             <div class="input-field col s8">
               <label for="city">Ort *</label>
-              <input type="text" name="city" id="city" required="reuqired" pattern="[a-zA-Z]+"
+              <input type="text" name="city" id="city" required="reuqired" pattern="^[a-zA-Z\s]+"
                 oninvalid="setCustomValidity('Bitte nur Buchstaben')" class="validate" />
             </div>
           </div>
@@ -120,7 +120,7 @@
           <div class="row">
             <div class="input-field col s12">
               <label for="phone">Ihre Telefonnummer *</label>
-              <input type="tel" name="phone" id="phone" required="reuqired" />
+              <input type="tel" name="phone" id="phone" required="reuqired" class="validate" />
             </div>
           </div>
           <div class="row">
@@ -139,7 +139,7 @@
               <div class="file-field input-field">
                 <div class="button_secondary">
                   <span>Datei</span>
-                  <input type="file" name="file_logo" id="file_logo" />
+                  <input type="file" name="file_logo" id="file_logo"  accept=".png, .jpg, .jpeg, .tiff"  required="required" class="validate" />
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text" placeholder=".png oder .eps *" />
@@ -212,7 +212,7 @@
                   <input type="file" name="file_data" id="file_data" />
                 </div>
                 <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text" placeholder=".csv oder .xslx *" />
+                  <input class="file-path validate" type="text"  placeholder=".csv oder .xslx *" />
                 </div>
               </div>
             </div>
@@ -253,9 +253,9 @@
       if ((file = this.files[0])) {
         img = new Image();
         img.onload = function () {
-          if (this.width > 135 || this.height > 101) {
+          if (this.width < 500 || this.height < 500) {
             alert(
-              "Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)"
+              "Das Logo unterschreitet die minimale maximale Größe von 500 x 500 Pixeln"
             );
             location.reload();
           }
