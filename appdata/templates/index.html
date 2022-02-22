@@ -43,21 +43,14 @@
           <h1>Liebe HAKRO-Partner,</h1>
           <h2>Nur noch <span id="countdown"></span>!</h2>
           <p>
-            Die Premiere des ersten HAKRO-Verkaufsmailings mit Händlereindruck
-            steht kurz bevor. Wir brauchen nur noch einige wenige Angaben und
-            Dateien von Ihnen – schon sind Sie dabei.
+            Der Countdown zur Teilnahme am ersten HAKRO-Verkaufs-Mailing mit
+            Händlereindruck läuft. Wir brauchen nur noch einige wenige Angaben
+            und Dateien von Ihnen – schon sind Sie dabei.
+
             <br />
             Und so könnte Ihr individualisiertes Mailing aussehen:
           </p>
-          <!-- <iframe
-            src="https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
-            width="720"
-            height="500"
-            seamless="seamless"
-            scrolling="no"
-            frameborder="0"
-            allowfullscreen
-          ></iframe> -->
+
           <div class="center-align">
             <img
               src="{{url_for('static', filename='images/umschlag_beispiel.png')}}"
@@ -65,12 +58,8 @@
               class="responsive-img"
             />
           </div>
-          <h2>
-            Personalisierte Rückseite:
-          </h2>
-          <!-- <p style="font-weight: 700; margin-bottom: 10px">
-            Personalisierte Rückseite:
-          </p> -->
+          <h2 style="margin-top: 0">Personalisierte Rückseite:</h2>
+
           <ul>
             <li>Eindruck Ihrer Empfängeradressen</li>
             <li>+ Ihr Logo und Ihre Absenderdaten</li>
@@ -82,31 +71,28 @@
               class="responsive-img"
             />
           </div>
-          <h2>
-            Personalisiertes Vorwort:
-          </h2>
-          <!-- <p style="font-weight: 700; margin-bottom: 10px">
-            Personalisiertes Vorwort:
-          </p> -->
+          <h2 style="margin-top: 0">Personalisiertes Vorwort:</h2>
+
           <ul>
             <li>Eindruck des Empfängernamens in der Anrede</li>
-            <li>
-              + QR-Code als Direktlink zu Ihrer Website. Den Link generieren wir
-              für Sie. Wir benötigen nur Ihre URL
-            </li>
+            <li>Ihre Firma mit direktem Ansprechpartner und Kontaktdaten</li>
+            <li>QR-Code über den Ihr Newsletter abonniert werden kann</li>
           </ul>
-          <h1 style="margin-bottom: 60px">
-            Bitte ausfüllen und Dateien hochladen
-          </h1>
+          <a
+            href="https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
+            target="blank"
+            >Hier können Sie das Mailing als Flipbook ansehen</a
+          >
+          <!-- <h1>Bitte ausfüllen und Dateien hochladen</h1> -->
+          <h2>Bitte ausfüllen und Dateien hochladen</h2>
+          <!-- <h2>Ihre Daten zum Druck</h2> -->
+          <p>
+            Hier tragen Sie bitte die Angaben ein, die wir für Sie eindrucken
+            sollen.
+          </p>
         </div>
         <div class="section">
           <form method="post" enctype="multipart/form-data">
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="name">Ihr Vor- und Nachname *</label>
-                <input type="text" name="name" id="name" required="reuqired" />
-              </div>
-            </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="costumer_name">Name ihrer Firma *</label>
@@ -136,14 +122,28 @@
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <label for="email">Ihre Email Adresse *</label>
+                <label for="name"
+                  >Ihr Ansprechpartner für die Empfänger (ggf. frei lassen)
+                </label>
+                <input type="text" name="name" id="name" required="reuqired" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="email"
+                  >E-Mail-Adresse Ihres Ansprechpartners (ggf. allgemeine
+                  Mailadresse) *</label
+                >
                 <input type="email" name="email" id="email" />
               </div>
             </div>
-      
+
             <div class="row">
               <div class="input-field col s12">
-                <label for="phone">Ihre Telefonnummer *</label>
+                <label for="phone"
+                  >Telefonnummer Ihres Ansprechpartners (ggf. allgemeine
+                  Telefonnummer) *</label
+                >
                 <input type="tel" name="phone" id="phone" />
               </div>
             </div>
@@ -154,7 +154,8 @@
               </div>
             </div>
             <div class="row section">
-              <p>
+              <h2>Ihr Firmenlogo</h2>
+              <p style="margin-bottom: 0">
                 Bitte laden Sie ihr Firmenlogo als Vektordatei (.eps) oder
                 hochauflösende portable Network Graphic (.png) hoch. Farbige
                 Logos werden in Graustufen gedruckt
@@ -176,51 +177,57 @@
               </div>
             </div>
             <div class="row section">
+              <h2>Ihre Empfängeradressen</h2>
               <p>
                 Bitte laden Sie eine wie folgt strukturierte Liste Ihrer
-                Empfängeradressen hoch:
+                Empfängeradressen hoch.
+                <a href="mailto:kontakt@hakro.com" target="blank"
+                  >Bitte kontaktieren Sie uns</a
+                >
+                vor dem Upload wenn Ihre Liste mehr als 2.500 Empfänger enthält.
               </p>
-              <div style="overflow: scroll; margin-bottom: 40px">
+              <div style="overflow: scroll">
                 <table>
                   <thead>
                     <tr>
-                      <th style="background-color: white">Vorname</th>
-                      <th style="background-color: white">Nachname</th>
-                      <th style="background-color: white">Firma</th>
-                      <th style="background-color: white">Straße</th>
-                      <th style="background-color: white">Nr.</th>
-                      <th style="background-color: white">PLZ</th>
-                      <th style="background-color: white">Ort</th>
+                      <th style="background-color: white">Spalte 1</th>
+                      <th style="background-color: white">Spalte 2</th>
+                      <th style="background-color: white">Spalte 3</th>
+                      <th style="background-color: white">Spalte 4</th>
+                      <th style="background-color: white">Spalte 5</th>
+                      <th style="background-color: white">Spalte 6</th>
+                      <th style="background-color: white">Spalte 7</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Max</td>
-                      <td>Mustermann</td>
-                      <td>Musterfirma</td>
-                      <td>Musterstraße</td>
-                      <td>1</td>
-                      <td>12345</td>
-                      <td>Musterstadt</td>
+                      <td>Vorname</td>
+                      <td>Nachname</td>
+                      <td>Firma</td>
+                      <td>Straße</td>
+                      <td>Hausnr.</td>
+                      <td>PLZ</td>
+                      <td>Ort</td>
                     </tr>
                     <tr>
-                      <td>Hans</td>
-                      <td>Mustermann</td>
-                      <td>Musterfirma</td>
-                      <td>Musterstraße</td>
-                      <td>2</td>
-                      <td>12345</td>
-                      <td>Musterstadt</td>
+                      <td>Vorname</td>
+                      <td>Nachname</td>
+                      <td>Firma</td>
+                      <td>Straße</td>
+                      <td>Hausnr.</td>
+                      <td>PLZ</td>
+                      <td>Ort</td>
                     </tr>
                     <tr>
-                      <td>Moritz</td>
-                      <td>Mustermann</td>
-                      <td>Musterfirma</td>
-                      <td>Musterstraße</td>
-                      <td>3</td>
-                      <td>12345</td>
-                      <td>Musterstadt</td>
+                      <td>Vorname</td>
+                      <td>Nachname</td>
+                      <td>Firma</td>
+                      <td>Straße</td>
+                      <td>Hausnr.</td>
+                      <td>PLZ</td>
+                      <td>Ort</td>
                     </tr>
+
                     <tr>
                       <td>...</td>
                       <td>...</td>
@@ -233,6 +240,12 @@
                   </tbody>
                 </table>
               </div>
+              <a
+                style="font-size: 18px; padding-top: 100px"
+                src="{{url_for('static', filename='template/kundenliste_template.xlsx')}}"
+                download
+                >Excel Template herunterladen</a
+              >
               <div class="input-field col s12" style="padding: 0">
                 <div class="file-field input-field">
                   <div class="button_secondary">
@@ -249,19 +262,27 @@
                 </div>
               </div>
             </div>
-            <div class="row section">
-              <p>* Pflichtfelder</p>
-            </div>
 
+            <div>
+              <h2>Hinweis zum Datenschutz:</h2>
+              <p>
+                Ihre Daten sind sicher: Wir haben zu keinem Zeitpunkt Zugriff
+                darauf. Die Daten werden ausschließlich von einem externen
+                Lettershop-Anbieter für den einmaligen Versand genutzt und
+                danach sofort gelöscht.
+              </p>
+            </div>
             <div class="row section">
               <div>
                 <button class="button_primary" type="submit">Weiter</button>
               </div>
             </div>
+            <div class="row section">
+              <p style="font-size: 20px ; margin: 30px 0 0 -5px">* Pflichtfelder</p>
+            </div>
           </form>
         </div>
       </div>
-      <div></div>
     </div>
     <div class="footer"></div>
     <div id="modal1" class="modal">

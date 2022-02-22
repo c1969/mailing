@@ -37,14 +37,12 @@
     <div class="container main">
       <div class="col s6">
         <div class="section">
-          <h1>Ihr Auftritt im Magalog</h1>
-          <!-- <p style="margin-bottom: 10px">Die Katalogrückseite</p> -->
-          <h2>Die Katalogrückseite</h2>
-          <p style="margin-bottom: 10px">
-            Ihr Logo wird samt Ihrer Adresse wie abgebildet auf die Rückseite
-            des Kataloges eingedruckt:
+          <h1>Ihr Auftritt im HAKRO-Mailing</h1>
+          <p>
+            Bitte prüfen Sie hier Ihre Angaben und Ihre Dateien. Mit dem finalen
+            Upload Ihrer Daten bestätigen Sie Ihre Teilnahme und die
+            Druckfreigabe für das HAKRO-Verkaufs-Mailing.
           </p>
-
           <div class="container">
             <img
               src="{{url_for('static', filename='images/magalog_umschlag.png')}}"
@@ -57,12 +55,13 @@
               p['city'] }}
             </p>
           </div>
+          <h2 style="margin-top: 0">Personalisierte Rückseite:</h2>
+          <ul>
+            <li>Eindruck Ihrer Empfängeradressen</li>
+            <li>+ Ihr Logo und Ihre Absenderdaten</li>
+          </ul>
+
           <!-- <p style="margin-bottom: 10px">Der QR-code im intro</p> -->
-          <h2>Der QR-code im Vorwort</h2>
-          <p style="margin-bottom: 10px">
-            Ihr Name etc wird wie abgebildet neben den QR code im Vorwort
-            gedruckt:
-          </p>
           <div class="container">
             <img
               src="{{url_for('static', filename='images/inlay_gf.png')}}"
@@ -78,11 +77,18 @@
               >
             </div>
           </div>
+          <h2 style="margin-top: 0">Personalisiertes Vorwort:</h2>
+          <ul>
+            <li>Eindruck des Empfängernamens in der Anrede</li>
+            <li>Ihre Angaben neben dem QR-Code für das Newsletter-Abo</li>
+          </ul>
         </div>
 
         <div class="section">
           <!-- <h1 style="margin: 40px 0">Ihre Eingaben</h1> -->
-          <h2 style="margin: 40px 0">Bitte kontrollieren Sie ihre Eingaben:</h2>
+          <h2 style="margin-bottom: 40px; margin-top: 90px">
+            Bitte kontrollieren Sie ihre Eingaben:
+          </h2>
 
           <div class="row">
             <div class="input-field col s12">
@@ -154,7 +160,7 @@
                 </tr>
               </thead>
               <tbody>
-                {% for k, i in df.iterrows() %}
+                {% for k, i in dfx.iterrows() %}
                 <tr>
                   <td>{{ i[0] }}</td>
                   <td>{{ i[1] }}</td>
@@ -168,6 +174,16 @@
               </tbody>
             </table>
           </div>
+
+          <div>
+            <h1>Nicht vergessen: der Countdown läuft.</h1>
+            <h2 style="margin-top: 0">7 Tage, 14 Stunden, 3 Minuten!</h2>
+            <p style="margin-bottom: 60px"> 
+              Um dabei zu sein, müssen Sie den Upload abschließen bis
+              spätestens: 31.04.2022
+            </p>
+          </div>
+
           <div style="margin-bottom: 50px">
             <div>
               <label>
@@ -187,12 +203,16 @@
           <div class="button_row">
             <div>
               <form method="POST">
-                <button class="button_secondary">Zurück</button>
+                <button class="button_secondary" onclick="history(-1)">
+                  Bearbeiten
+                </button>
               </form>
             </div>
             <div>
               <form method="POST">
-                <button class="button_primary" type="submit">Absenden</button>
+                <button class="button_primary" type="submit">
+                  Upload senden
+                </button>
               </form>
             </div>
           </div>

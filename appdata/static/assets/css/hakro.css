@@ -69,6 +69,7 @@ h2 {
   margin: 0;
   padding: 0;
   margin-bottom: 20px;
+  margin-top: 60px;
 }
 
 @media only screen and (max-width: 640px) {
@@ -78,6 +79,7 @@ h2 {
   }
 }
 
+a,
 p,
 ol,
 ul {
@@ -85,8 +87,14 @@ ul {
   line-height: 30px;
   margin: 0;
   padding: 0;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   list-style-type: circle;
+  transition: 0.2s;
+}
+
+a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 640px) {
