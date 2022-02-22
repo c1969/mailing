@@ -1,47 +1,67 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Forty by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
+  <head>
+    <title>HAKRO Campaign</title>
+	<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
 
-<head>
-	<title>HAKRO Dialog</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}">
-	<noscript>
-		<link rel="stylesheet" href="static/assets/css/noscript.css" />
-	</noscript>
-</head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='assets/css/hakro.css')}}"
+    />
+    <noscript>
+      <link rel="stylesheet" href="static/assets/css/noscript.css" />
+    </noscript>
+  </head>
 
-<body style="background-color: #A9C774;">
-	<div id="content">
-		<a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.png')}}" alt=""></a>
-	</div>
+  <body style="background-color: #b6c24f">
+    <div class="header">
+      <a href="/" class="brand-logo"
+        ><img
+          src="{{url_for('static', filename='images/hakro-logo-ww.svg')}}"
+          alt=""
+      /></a>
+    </div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col s8"><br><br><br><br><br>
-				<h1 style="color: white;">Geschafft!</h1>
-				<h3 style="color: white;">
-					Sie haben Ihre Daten erfolgreich hochgeladen. Der neue Magalog wird an Ihre Kunden gesendet.
-				</h3>
-				<a href="https://portal.hakro.com" class="waves-effect waves-light btn"
-					style="background-color: white; border-radius: 20px; border-color: black; color: black;">Weiter
-					auf HAKRO.COM</a>
-			</div>
-		</div>
-	</div>
+    <div class="container main">
+      <div class="row section">
+        <h1 style="color: white">Geschafft! 🎉</h1>
+        <h2 style="color: white; margin-bottom: 100px">
+          Sie haben Ihre Daten erfolgreich hochgeladen. Der neue Magalog wird an
+          Ihre Kunden gesendet.
+        </h2>
 
-	<!-- Scripts -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
+        <a
+          href="http://www.hakro.com"
+          class="button_primary_white"
+          target="blank"
+          >Weiter auf HAKRO.COM</a
+        >
+      </div>
+    </div>
 
-
-</body>
-
+    <!-- Scripts -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-2.1.1.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='assets/js/hakro.js')}}"
+    ></script>
+  </body>
 </html>

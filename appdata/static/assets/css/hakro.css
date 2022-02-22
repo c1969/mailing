@@ -1,84 +1,377 @@
 @font-face {
-    font-family: "Conduit ITC Medium";
-    src: url(Conduit-ITC-Medium.ttf) format("truetype")
+  font-family: "Conduit ITC Medium";
+  src: url(Conduit-ITC-Medium.ttf) format("truetype");
 }
 
 @font-face {
-    font-family: "National Book";
-    src: url(National-Book_0.otf) format("opentype")
+  font-family: "National Book";
+  src: url(National-Book_0.otf) format("opentype");
 }
 
 @font-face {
-    font-family: "National Medium";
-    src: url(National-Medium_1.otf) format("opentype")
+  font-family: "National Medium";
+  src: url(National-Medium_1.otf) format("opentype");
 }
 
-h1, h2, button, input, label {
-	font-family: "Conduit ITC Medium";
-	text-transform: uppercase;
-	font-weight: 105;
+h1,
+button {
+  font-family: "Conduit ITC Medium";
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
 }
 
-h3, h4, h5, h6 {
-	font-family: "National Medium";
+input,
+label,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "National Book";
+  -webkit-font-smoothing: antialiased;
 }
 
-a, p, li, input, textarea, ol, ul {
-	font-family: "National Book";
+a,
+p,
+li,
+input,
+textarea,
+ol,
+ul {
+  font-family: "National Book";
+  -webkit-font-smoothing: antialiased;
 }
 
 li > a.scrolly {
-	font-family: "Conduit ITC Medium";
-	text-transform: uppercase;
+  font-family: "Conduit ITC Medium";
+  text-transform: uppercase;
 }
 
+h1 {
+  font-size: 60px;
+  line-height: 60px;
+  margin: 0;
+  padding: 0;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 640px) {
+  h1 {
+    font-size: 42px;
+    line-height: 44px;
+  }
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 640px) {
+  h2 {
+    font-size: 26px;
+    line-height: 120%;
+  }
+}
+
+p,
+ol,
+ul {
+  font-size: 24px;
+  line-height: 30px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 50px;
+  list-style-type: circle;
+}
+
+@media only screen and (max-width: 640px) {
+  p,
+  ol,
+  ul {
+    font-size: 20px;
+    line-height: 140%;
+    margin-bottom: 20px;
+  }
+}
+
+li::before {
+  content: "•";
+  margin: 0 14px;
+  color: black;
+}
+
+.section {
+  padding: 0 15px;
+}
+
+.button_primary,
+.button_secondary,
+.button_primary_white {
+  font-family: "Conduit ITC Medium";
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 2px;
+  border-radius: 50px;
+  padding: 20px 30px;
+  border: none;
+  float: left;
+  position: relative;
+  transition: 0.2s;
+}
+
+.input-field > label {
+  font-family: "National Book";
+  -webkit-font-smoothing: antialiased;
+  font-size: 24px;
+  color: #979797;
+}
+
+@media only screen and (max-width: 640px) {
+  .input-field > label {
+    font-size: 20px;
+  }
+}
+
+.input-field > label:not(.label-icon).active {
+  transform: translateY(-15px) scale(0.6);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+input:not([type]),
+input[type="text"]:not(.browser-default),
+input[type="password"]:not(.browser-default),
+input[type="email"]:not(.browser-default),
+input[type="url"]:not(.browser-default),
+input[type="time"]:not(.browser-default),
+input[type="date"]:not(.browser-default),
+input[type="datetime"]:not(.browser-default),
+input[type="datetime-local"]:not(.browser-default),
+input[type="tel"]:not(.browser-default),
+input[type="number"]:not(.browser-default),
+input[type="search"]:not(.browser-default),
+textarea.materialize-textarea {
+  transform: translateY(-7px) scale(1);
+  font-size: 24px;
+  border-bottom: 1px solid #d9d9d9;
+  height: 2.4rem;
+}
+
+@media only screen and (max-width: 640px) {
+  input:not([type]),
+  input[type="text"]:not(.browser-default),
+  input[type="password"]:not(.browser-default),
+  input[type="email"]:not(.browser-default),
+  input[type="url"]:not(.browser-default),
+  input[type="time"]:not(.browser-default),
+  input[type="date"]:not(.browser-default),
+  input[type="datetime"]:not(.browser-default),
+  input[type="datetime-local"]:not(.browser-default),
+  input[type="tel"]:not(.browser-default),
+  input[type="number"]:not(.browser-default),
+  input[type="search"]:not(.browser-default),
+  textarea.materialize-textarea {
+    font-size: 20px;
+  }
+}
+
+input:not([type]):focus:not([readonly]),
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]),
+input[type="email"]:not(.browser-default):focus:not([readonly]),
+input[type="url"]:not(.browser-default):focus:not([readonly]),
+input[type="time"]:not(.browser-default):focus:not([readonly]),
+input[type="date"]:not(.browser-default):focus:not([readonly]),
+input[type="datetime"]:not(.browser-default):focus:not([readonly]),
+input[type="datetime-local"]:not(.browser-default):focus:not([readonly]),
+input[type="tel"]:not(.browser-default):focus:not([readonly]),
+input[type="number"]:not(.browser-default):focus:not([readonly]),
+input[type="search"]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #b6c24f;
+  -webkit-box-shadow: 0 1px 0 0 #b6c24f;
+  box-shadow: 0 1px 0 0 #b6c24f;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.button_row {
+  display: flex;
+  justify-content: space-between;
+}
+.button_primary {
+  color: white;
+  background-color: #e4032d;
+  border: 1px solid #e4032d;
+}
+
+.button_primary_white {
+  color: black;
+  background-color: white;
+  border: 1px solid white;
+}
+
+.button_secondary {
+  color: black;
+  background-color: transparent;
+  border-color: black;
+  border: 1px solid black;
+}
+.button_primary:hover {
+  background-color: #c90226;
+  cursor: pointer;
+}
+
+.button_primary_white:hover {
+  background-color: rgba(255, 255, 255, 0.845);
+  cursor: pointer;
+}
+
+.button_secondary:hover {
+  background-color: rgba(0, 0, 0, 0.057);
+  cursor: pointer;
+}
+
+.main {
+  max-width: 700px;
+}
+
+.header {
+  margin: 50px 50px 50px 30px;
+}
+
+@media only screen and (max-width: 640px) {
+  .header {
+    margin: 50px 50px 50px 16px;
+  }
+}
+
+.footer {
+  background-color: #b6c24f;
+  margin-top: 100px;
+  height: 30px;
+}
+
+.brand-logo {
+  width: 100px;
+}
 
 .parental_div {
-	position: relative;
-	top: 0;
-	left: 0;
-  }
-  .image_01 {
-	position: static;
-	top: 0;
-	left: 0;
-	border: 1px white;
-  }
-  .image_02 {
-	position: relative;
-	height: 100;
-	width: 80;
-	top: -225px;
-	left: -350px;
-	border: 50px rgb(224, 228, 5);
-  }
-  .t1 {
-	position: relative;
-	font-weight: 85;
-	top: -225px;
-	left: 150px;
-	border: 1px white;
-  }
-  .qr {
-	position: relative;
-	max-height: 100px;
-	top: -290px;
-	left: 300px;
-	border: 1px white; 
-  }
-  .t2 {
-	position: relative;
-	font-weight: 85;
-	top: -200px;
-	left: 430px;
-	border: 1px white;
-  }
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  line-height: 0;
+}
+
+.container img {
+  max-width: 100%;
+}
+
+.overlay_logo {
+  width: 16%;
+  position: absolute;
+  top: 60%;
+  left: 64.2%;
+}
+.overlay_logo_text {
+  width: 31%;
+  position: absolute;
+  top: 72.125%;
+  left: 56.75%;
+  text-align: center;
+  font-size: 10px;
+}
+
+.overlay_qr {
+  width: 10%;
+  position: absolute;
+  top: 78.8%;
+  left: 18.3%;
+}
+.overlay_qr_text {
+  font-size: 12px;
+  line-height: 20px;
+  width: 54%;
+  position: absolute;
+  top: 80.666%;
+  left: 30.09%;
+}
+
+.t1 {
+  position: relative;
+  font-weight: 85;
+  top: -225px;
+  left: 150px;
+  border: 1px white;
+}
+.qr {
+  position: relative;
+  max-height: 100px;
+  top: -290px;
+  left: 300px;
+  border: 1px white;
+}
+.t2 {
+  position: relative;
+  font-weight: 85;
+  top: -200px;
+  left: 430px;
+  border: 1px white;
+}
 
 #content {
-	position: relative;
+  position: relative;
 }
 #content img {
-	position: absolute;
-	top: 10px;
-	left: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
+td,
+th {
+  font-family: 'Courier New', Courier, monospace;
+  color: #555555;
+  font-weight: 500;
+  padding: 7px 14px;
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+  border-radius: 2px;
+  background: #f6f6f6;
+  line-height: 16px;
+  white-space: nowrap;
+
+}
+
+ul {
+  list-style: none;
+  text-indent: -35px;
+  margin-left: 28px;
+}
+
+li::before {
+  content: "• ";
+  color: #c90226;
+}
+
