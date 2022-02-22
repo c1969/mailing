@@ -38,7 +38,12 @@
       <div class="col s6">
         <div class="section">
           <h1>Ihr Auftritt im Magalog</h1>
-          <p style="margin-bottom: 10px">Die Katalogrückseite</p>
+          <!-- <p style="margin-bottom: 10px">Die Katalogrückseite</p> -->
+          <h2>Die Katalogrückseite</h2>
+          <p style="margin-bottom: 10px">
+            Ihr Logo wird samt Ihrer Adresse wie abgebildet auf die Rückseite
+            des Kataloges eingedruckt:
+          </p>
 
           <div class="container">
             <img
@@ -52,8 +57,12 @@
               p['city'] }}
             </p>
           </div>
-          <p style="margin-bottom: 10px">Der QR-code im intro</p>
-
+          <!-- <p style="margin-bottom: 10px">Der QR-code im intro</p> -->
+          <h2>Der QR-code im Vorwort</h2>
+          <p style="margin-bottom: 10px">
+            Ihr Name etc wird wie abgebildet neben den QR code im Vorwort
+            gedruckt:
+          </p>
           <div class="container">
             <img
               src="{{url_for('static', filename='images/inlay_gf.png')}}"
@@ -72,7 +81,8 @@
         </div>
 
         <div class="section">
-          <h1 style="margin: 40px 0">Ihre Eingaben</h1>
+          <!-- <h1 style="margin: 40px 0">Ihre Eingaben</h1> -->
+          <h2 style="margin: 40px 0">Bitte kontrollieren Sie ihre Eingaben:</h2>
 
           <div class="row">
             <div class="input-field col s12">
@@ -106,12 +116,6 @@
             <div class="input-field col s12">
               <label for="email">Ihre Email Addresse *</label>
               <input readonly type="email" value="{{ p['email'] }}" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <label for="url">Ihre Webseite *</label>
-              <input readonly type="url" value="{{ p['url'] }}" />
             </div>
           </div>
           <div class="row">
