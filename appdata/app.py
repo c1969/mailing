@@ -20,7 +20,7 @@ import numpy as np
 from itsdangerous import URLSafeSerializer
 
 UPLOAD_FOLDER = 'static/upload/'
-ALLOWED_EXTENSIONS_IMAGE = {'eps', 'png'}
+ALLOWED_EXTENSIONS_IMAGE = {'eps', 'png', 'jpg', 'jpeg', 'tiff'}
 ALLOWED_EXTENSIONS_DATA = {'xlsx', 'csv'}
 
 app = Flask(__name__)
@@ -142,6 +142,7 @@ def summary():
         db.set_costumer_data(s1)
         d = {}
         for k, v in df.iterrows():
+            qrid = str(uuid.uuid4())
             d['session_id'] = session_id
             d['firstname'] = v[0]
             d['lastname'] = v[1]
@@ -150,6 +151,8 @@ def summary():
             d['number'] = v[4]
             d['zipcode'] = v[5]
             d['city'] = v[6]
+            d['qr'] = qrid
+            d['url'] = f'https://dialog.hakro.com/qr/{qrid}'
             db.set_retailer_data(d)
 
         return redirect(url_for('done'))
@@ -160,7 +163,7 @@ def summary():
         box_size=15,
         border=1,
     )
-    qr.add_data(s1['url'])
+    qr.add_data('https://hakro.com')
     qr.make(fit=True)
     qr_filename = os.path.join(app.config['UPLOAD_FOLDER'], s1['session_id'], f'qr_{s1["session_id"]}.png')
     qr_code = qr.make_image(fill_color="black", back_color="transparent")
@@ -172,6 +175,34 @@ def summary():
 def done():
 
     return render_template('done.html')
+
+@app.route('/qr/<qrid>', methods=['GET', 'POST'])
+def qr(qrid):
+    if qrid == None:
+        return abort(404)
+    d = db.get_retailer_by_qr(qrid)
+    if d: #dealer known
+        e = db.get_dealer_for_retailer(d[0][1])
+        if e:
+            return redirect(url_for('dk', qrid=qrid))
+        else:
+            return redirect(url_for('du', qrid=qrid))
+    else: #dealer unknown
+        return redirect(url_for('du', qrid=0))
+
+@app.route('/dk', methods=['GET', 'POST'])
+def dk():
+    qrid = request.args.get('qrid', True)
+    d = db.get_retailer_by_qr(qrid)
+    e = db.get_dealer_for_retailer(d[0][1])
+
+    return render_template('dk.html', d=d[0], e=e[0])
+
+@app.route('/du', methods=['GET', 'POST'])
+def du():
+    qrid = request.args.get('qrid', True)
+
+    return render_template('du.html', e=None)
 
 @app.route('/error', methods=['GET', 'POST'])
 def error():

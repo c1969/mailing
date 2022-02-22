@@ -74,3 +74,23 @@ class dbx():
             return True
         else:
             return False
+
+    def get_retailer_by_qr(self, qr):
+        conn = sqlite3.connect(DATABASE)
+        if conn:
+            c = conn.cursor()
+            sql = 'SELECT * FROM data_retailer WHERE qr = ?'
+            c.execute(sql, (qr, ))
+            return c.fetchall()
+        else:
+            return False
+
+    def get_dealer_for_retailer(self, sid):
+        conn = sqlite3.connect(DATABASE)
+        if conn:
+            c = conn.cursor()
+            sql = 'SELECT * FROM data_costumer WHERE session_id = ?'
+            c.execute(sql, (sid, ))
+            return c.fetchall()
+        else:
+            return False
