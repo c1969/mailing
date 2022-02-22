@@ -144,48 +144,39 @@
           </div>
         </div> -->
 
-          <h2>Wir haben {{ len_df }} Adressen erkannt</h2>
+          <p>Wir haben <span style="font-weight: 800; color: #b6c24f">{{ len_df }}</span> Adressen erkannt:</p>
           <!-- <p>
           Zur Kontrolle zeigen wir Ihnen einen Ausschnitt aus
           ihrer hochgeladenen Datei:
         </p> -->
-          <table style="margin-bottom: 30px">
-            <thead>
-              <tr>
-                <th style="background-color: white">Vorname</th>
-                <th style="background-color: white">Nachname</th>
-                <th style="background-color: white">Firma</th>
-                <!-- <th>Straße</th>
-              <th>Hausnummer</th>
-              <th>Postleitzahl</th>
-              <th>Ort</th> -->
-              </tr>
-            </thead>
-            <tbody>
-              {% for k, i in df.iterrows() %}
-              <tr>
-                <td>{{ i[0] }}</td>
-                <td>{{ i[1] }}</td>
-                <td>{{ i[2] }}</td>
-                <!-- <td>{{ i[3] }}</td>
-              <td>{{ i[4] }}</td>
-              <td>{{ i[5] }}</td>
-              <td>{{ i[6] }}</td> -->
-              </tr>
-              {% endfor %}
-            </tbody>
-            <!-- <tfoot>
-            <tr>
-              <th>Vorname</th>
-              <th>Nachname</th>
-              <th>Firma</th>
-              <th>Straße</th>
-              <th>Hausnummer</th>
-              <th>Postleitzahl</th>
-              <th>Ort</th>
-            </tr>
-          </tfoot> -->
-          </table>
+          <div style="overflow: scroll; margin-bottom: 100px">
+            <table>
+              <thead >
+                <tr >
+                  <th style="background-color: white">Vorname</th>
+                  <th style="background-color: white">Nachname</th>
+                  <th style="background-color: white">Firma</th>
+                  <th style="background-color: white">Straße</th>
+                  <th style="background-color: white">Hausnummer</th>
+                  <th style="background-color: white">Postleitzahl</th>
+                  <th style="background-color: white">Ort</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for k, i in df.iterrows() %}
+                <tr>
+                  <td>{{ i[0] }}</td>
+                  <td>{{ i[1] }}</td>
+                  <td>{{ i[2] }}</td>
+                  <td>{{ i[3] }}</td>
+                  <td>{{ i[4] }}</td>
+                  <td>{{ i[5] }}</td>
+                  <td>{{ i[6] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
           <div class="button_row">
             <div>
               <form method="POST">
