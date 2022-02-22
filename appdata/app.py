@@ -135,19 +135,19 @@ def summary():
     data_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_data'])
     if s1['file_data'].endswith('.csv') or s1['file_data'].endswith('.CSV') :
             df = pd.read_csv(data_path, header=None, sep=';')
-            dfx = df.iloc[:10]
     elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX'):
             df = pd.read_excel(data_path, header=None)
     elif s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
-            pass
+            df = pd.read_excel(data_path, header=None)
     else:
         return redirect(url_for('error', e=200))
 
+    dfx = df.iloc[:10]
 
     len_df = len(df)
     if request.method == 'POST':
-        s1['opt1'] = datetime.now()
-        s1['opt2'] = datetime.now()
+        s1['opt1'] = request.form.get('d_ok', True)
+        s1['opt2'] = request.form.get('e_ok', True)
         s1['opt3'] = datetime.now()
         db.set_costumer_data(s1)
         d = {}
@@ -183,8 +183,17 @@ def summary():
 
 @app.route('/done', methods=['GET', 'POST'])
 def done():
+    hash_cookie = request.cookies.get('_cid')
+    data_cookie = auth_s.loads(hash_cookie)
+    s1 = data_cookie['data']
 
-    return render_template('done.html')
+    #session_id = s1['session_id']
+    s1 = {}
+
+    resp = make_response(render_template('done.html'))
+    token = auth_s.dumps({"id": 0, "data": s1})
+    resp.set_cookie('_cid', token)
+    return resp
 
 @app.route('/qr/<qrid>', methods=['GET', 'POST'])
 def qr(qrid):

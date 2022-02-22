@@ -104,13 +104,13 @@
             <div class="row">
               <div class="input-field col s12">
                 <label for="name">Ihr Vor- und Nachname *</label>
-                <input type="text" name="name" id="name" required="reuqired" />
+                <input type="text" name="name" id="name" pattern="[a-zA-Z]+" required="reuqired" class="validate/>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="costumer_name">Name ihrer Firma *</label>
-                <input type="text" name="costumer_name" id="company_name" />
+                <input type="text" name="costumer_name" id="company_name" required="reuqired" />
               </div>
             </div>
             <div class="row">
@@ -127,30 +127,30 @@
             <div class="row">
               <div class="input-field col s4">
                 <label for="plz">Postleitzahl *</label>
-                <input type="text" name="plz" id="plz" pattern=[0-9] />
+                <input type="text" name="plz" id="plz" required="reuqired" class="validate"/>
               </div>
               <div class="input-field col s8">
                 <label for="city">Ort *</label>
-                <input type="text" name="city" id="city" />
+                <input type="text" name="city" id="city" required="reuqired" pattern="[a-zA-Z]+" oninvalid="setCustomValidity('Bitte nur Buchstaben')" class="validate"/>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="email">Ihre Email Adresse *</label>
-                <input type="email" name="email" id="email" />
+                <input type="email" name="email" id="email" required="reuqired" class="validate" />
               </div>
             </div>
       
             <div class="row">
               <div class="input-field col s12">
                 <label for="phone">Ihre Telefonnummer *</label>
-                <input type="tel" name="phone" id="phone" />
+                <input type="tel" name="phone" id="phone" required="reuqired" />
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="costumer_id">Ihre Kundennummer *</label>
-                <input type="text" name="costumer_id" id="costumer_id" />
+                <input type="text" name="costumer_id" id="costumer_id" required="reuqired" />
               </div>
             </div>
             <div class="row section">

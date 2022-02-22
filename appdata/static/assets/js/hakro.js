@@ -18,3 +18,7 @@ function checkImage() {
     }
   });
 }
+
+$(document).ready(function() {
+  M.updateTextFields();
+});
