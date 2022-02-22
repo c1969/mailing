@@ -41,7 +41,7 @@
       <div class="col s6">
         <div class="section">
           <h1>Liebe HAKRO-Partner,</h1>
-          <h2>Nur noch 7 Tage, 14 Stunden, 3 Minuten!</h2>
+          <h2>Nur noch <span id="countdown"></span>!</h2>
           <p>
             Die Premiere des ersten HAKRO-Verkaufsmailings mit Händlereindruck
             steht kurz bevor. Wir brauchen nur noch einige wenige Angaben und
@@ -65,9 +65,12 @@
               class="responsive-img"
             />
           </div>
-          <p style="font-weight: 700; margin-bottom: 10px">
+          <h2>
             Personalisierte Rückseite:
-          </p>
+          </h2>
+          <!-- <p style="font-weight: 700; margin-bottom: 10px">
+            Personalisierte Rückseite:
+          </p> -->
           <ul>
             <li>Eindruck Ihrer Empfängeradressen</li>
             <li>+ Ihr Logo und Ihre Absenderdaten</li>
@@ -79,9 +82,12 @@
               class="responsive-img"
             />
           </div>
-          <p style="font-weight: 700; margin-bottom: 10px">
+          <h2>
             Personalisiertes Vorwort:
-          </p>
+          </h2>
+          <!-- <p style="font-weight: 700; margin-bottom: 10px">
+            Personalisiertes Vorwort:
+          </p> -->
           <ul>
             <li>Eindruck des Empfängernamens in der Anrede</li>
             <li>
@@ -130,16 +136,11 @@
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <label for="email">Ihre Email Addresse *</label>
+                <label for="email">Ihre Email Adresse *</label>
                 <input type="email" name="email" id="email" />
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="url">Ihre Webseite *</label>
-                <input type="url" name="url" id="url" />
-              </div>
-            </div>
+      
             <div class="row">
               <div class="input-field col s12">
                 <label for="phone">Ihre Telefonnummer *</label>
@@ -179,15 +180,59 @@
                 Bitte laden Sie eine wie folgt strukturierte Liste Ihrer
                 Empfängeradressen hoch:
               </p>
-              <ul>
-                <li>Vorname</li>
-                <li>Nachname</li>
-                <li>Firma</li>
-                <li>Strasse</li>
-                <li>Hausnummer</li>
-                <li>Postleitzahl</li>
-                <li>Ort</li>
-              </ul>
+              <div style="overflow: scroll; margin-bottom: 40px">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="background-color: white">Vorname</th>
+                      <th style="background-color: white">Nachname</th>
+                      <th style="background-color: white">Firma</th>
+                      <th style="background-color: white">Straße</th>
+                      <th style="background-color: white">Nr.</th>
+                      <th style="background-color: white">PLZ</th>
+                      <th style="background-color: white">Ort</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Max</td>
+                      <td>Mustermann</td>
+                      <td>Musterfirma</td>
+                      <td>Musterstraße</td>
+                      <td>1</td>
+                      <td>12345</td>
+                      <td>Musterstadt</td>
+                    </tr>
+                    <tr>
+                      <td>Hans</td>
+                      <td>Mustermann</td>
+                      <td>Musterfirma</td>
+                      <td>Musterstraße</td>
+                      <td>2</td>
+                      <td>12345</td>
+                      <td>Musterstadt</td>
+                    </tr>
+                    <tr>
+                      <td>Moritz</td>
+                      <td>Mustermann</td>
+                      <td>Musterfirma</td>
+                      <td>Musterstraße</td>
+                      <td>3</td>
+                      <td>12345</td>
+                      <td>Musterstadt</td>
+                    </tr>
+                    <tr>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <div class="input-field col s12" style="padding: 0">
                 <div class="file-field input-field">
                   <div class="button_secondary">
@@ -261,6 +306,38 @@
           img.src = _URL.createObjectURL(file);
         }
       });
+    </script>
+    <script>
+      // Set the date we're counting down to
+      var countDownDate = new Date("Apr 1, 2022 15:37:25").getTime();
+
+      // Update the count down every 1 second
+      var x = setInterval(function () {
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="countdown"
+        document.getElementById("countdown").innerHTML =
+          // days + " Tage " + hours + " Stunden " + minutes + " Minuten " + seconds + " Sekunden";
+          days + " Tage, " + hours + " Stunden, " + minutes + " Minuten";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+      }, 1000);
     </script>
   </body>
 </html>
