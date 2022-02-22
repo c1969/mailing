@@ -126,39 +126,26 @@
               <input readonly type="text" value="{{ p['costumer_id'] }}" />
             </div>
           </div>
-          <!-- Modal Trigger -->
-          <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal"
-          >Modal</a
-        > -->
 
-          <!-- Modal Structure -->
-          <!-- <div id="modal" class="modal">
-          <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-              >Agree</a
-            >
-          </div>
-        </div> -->
-
-          <p>Wir haben <span style="font-weight: 800; color: #b6c24f">{{ len_df }}</span> Adressen erkannt:</p>
-          <!-- <p>
-          Zur Kontrolle zeigen wir Ihnen einen Ausschnitt aus
-          ihrer hochgeladenen Datei:
-        </p> -->
-          <div style="overflow: scroll; margin-bottom: 100px">
+          <h2>
+            Wir haben
+            <span style="font-weight: 800; color: #b6c24f">{{ len_df }}</span>
+            Adressen erkannt. <br />
+          </h2>
+          <p>
+            Zur Kontrolle zeigen wir Ihnen einen Ausschnitt aus ihrer
+            hochgeladenen Datei:
+          </p>
+          <div style="overflow: scroll; margin-bottom: 40px">
             <table>
-              <thead >
-                <tr >
+              <thead>
+                <tr>
                   <th style="background-color: white">Vorname</th>
                   <th style="background-color: white">Nachname</th>
                   <th style="background-color: white">Firma</th>
                   <th style="background-color: white">Straße</th>
-                  <th style="background-color: white">Hausnummer</th>
-                  <th style="background-color: white">Postleitzahl</th>
+                  <th style="background-color: white">Hausnr.</th>
+                  <th style="background-color: white">PLZ</th>
                   <th style="background-color: white">Ort</th>
                 </tr>
               </thead>
@@ -177,6 +164,22 @@
               </tbody>
             </table>
           </div>
+          <div style="margin-bottom: 50px">
+            <div>
+              <label>
+                <input type="checkbox" class="filled-in" checked="checked" />
+                <span>Ich akzeptiere lorem ipsum</span>
+              </label>
+            </div>
+
+            <div>
+              <label>
+                <input type="checkbox" class="filled-in" checked="checked" />
+                <span>Ich akzeptiere lorem ipsum</span>
+              </label>
+            </div>
+          </div>
+
           <div class="button_row">
             <div>
               <form method="POST">
