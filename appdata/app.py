@@ -133,7 +133,17 @@ def summary():
     
     logo_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_logo'])
     data_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_data'])
-    df = pd.read_csv(data_path, header=None, sep=';')
+    if s1['file_data'].endswith('.csv') or s1['file_data'].endswith('.CSV') :
+            df = pd.read_csv(data_path, header=None, sep=';')
+            dfx = df.iloc[:10]
+    elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX'):
+            df = pd.read_excel(data_path, header=None)
+    elif s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
+            pass
+    else:
+        return redirect(url_for('error', e=200))
+
+
     len_df = len(df)
     if request.method == 'POST':
         s1['opt1'] = datetime.now()
@@ -169,7 +179,7 @@ def summary():
     qr_code = qr.make_image(fill_color="black", back_color="transparent")
     qr_code.save(qr_filename)
 
-    return render_template('summary.html', df=df, logo=logo_path, p=s1, len_df=len_df,qr=qr_filename)
+    return render_template('summary.html', df=df, logo=logo_path, p=s1, len_df=len_df,qr=qr_filename, dfx=dfx)
 
 @app.route('/done', methods=['GET', 'POST'])
 def done():
