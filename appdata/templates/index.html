@@ -5,370 +5,315 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-  <head>
-    <title>HAKRO Campaign</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='assets/css/hakro.css')}}"
-    />
-    <noscript>
-      <link rel="stylesheet" href="static/assets/css/noscript.css" />
-    </noscript>
-  </head>
 
-  <body>
-    <div class="header">
-      <a href="/" class="brand-logo"
-        ><img
-          src="{{url_for('static', filename='images/hakro-logo.svg')}}"
-          alt=""
-      /></a>
-    </div>
-    <div class="mobile">
-      <h2>Bitte rufen sie diese Seite über Ihren Mac oder PC auf.</h2>
-      <a href="https://www.hakro.com">Weiter zu Hakro.com</a>
-    </div>
-    <div class="desktop">
-      <!-- {{ flask_consent_code() }} -->
+<head>
+  <title>HAKRO Campaign</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}" />
+  <noscript>
+    <link rel="stylesheet" href="static/assets/css/noscript.css" />
+  </noscript>
+</head>
 
-      <div class="container main">
-        <div></div>
+<body>
+  <div class="header">
+    <a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
+  </div>
+  <div class="mobile">
+    <h2>Bitte rufen sie diese Seite über Ihren Mac oder PC auf.</h2>
+    <a href="https://www.hakro.com">Weiter zu Hakro.com</a>
+  </div>
+  <div class="desktop">
+    <!-- {{ flask_consent_code() }} -->
 
-        <div class="col s6">
-          <div class="section">
-            <h1>Liebe HAKRO-Partner,</h1>
-            <h2>Nur noch <span id="countdown"></span>!</h2>
-            <p>
-              Der Countdown zur Teilnahme am ersten HAKRO-Verkaufs-Mailing mit
-              Händlereindruck läuft. Wir brauchen nur noch einige wenige Angaben
-              und Dateien von Ihnen – schon sind Sie dabei.
+    <div class="container main">
+      <div></div>
 
-              <br /><br />
-              Und so könnte Ihr individualisiertes Mailing aussehen:
-            </p>
+      <div class="col s6">
+        <div class="section">
+          <h1>Liebe HAKRO-Partner,</h1>
+          <h2>Nur noch <span id="countdown"></span>!</h2>
+          <p>
+            Der Countdown zur Teilnahme am ersten HAKRO-Verkaufs-Mailing mit
+            Händlereindruck läuft. Wir brauchen nur noch einige wenige Angaben
+            und Dateien von Ihnen – schon sind Sie dabei.
 
-            <div class="center-align">
-              <img
-                src="{{url_for('static', filename='images/umschlag_beispiel.png')}}"
-                alt=""
-                class="responsive-img"
-              />
-            </div>
-            <h2 style="margin-top: 0">Personalisierte Rückseite:</h2>
+            <br /><br />
+            Und so könnte Ihr individualisiertes Mailing aussehen:
+          </p>
 
-            <ul>
-              <li>Eindruck Ihrer Empfängeradressen</li>
-              <li>+ Ihr Logo und Ihre Absenderdaten</li>
-            </ul>
-            <div class="center-align">
-              <img
-                src="{{url_for('static', filename='images/vorwort_beispiel.png')}}"
-                alt=""
-                class="responsive-img"
-              />
-            </div>
-            <h2 style="margin-top: 0">Personalisiertes Vorwort:</h2>
-
-            <ul>
-              <li>Eindruck des Empfängernamens in der Anrede</li>
-              <li>Ihre Firma mit direktem Ansprechpartner und Kontaktdaten</li>
-              <li>QR-Code über den Ihr Newsletter abonniert werden kann</li>
-            </ul>
-            <a
-              href="https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
-              target="blank"
-              >Hier können Sie das Mailing als Flipbook ansehen</a
-            >
-            <!-- <h1>Bitte ausfüllen und Dateien hochladen</h1> -->
-            <h2>Hier personalisieren Sie Ihren Eindruck im Mailing</h2>
-            <!-- <h2>Ihre Daten zum Druck</h2> -->
-            <p>
-              Bitte tragen Sie die Angaben ein, die wir für Sie eindrucken
-              sollen. Bei Fragen zu unserem Verkaufsmailing hilft Ihnen gerne
-              Herr Hakro unter 040 1234567 oder per E-Mail unter
-              <a href="mailto:kontakt@hakro.com" target="blank"
-                >herrhakro@hakro.com</a
-              >
-            </p>
+          <div class="center-align">
+            <img src="{{url_for('static', filename='images/umschlag_beispiel.png')}}" alt="" class="responsive-img" />
           </div>
-          <div class="section">
-            <form method="post" enctype="multipart/form-data">
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="costumer_name">Name Ihrer Firma *</label>
-                  <input type="text" name="costumer_name" id="company_name" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="streetname">Straße und Hausnummer *</label>
-                  <input
-                    type="text"
-                    name="streetname"
-                    id="streetname"
-                    required="required"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s4">
-                  <label for="plz">Postleitzahl *</label>
-                  <input type="text" name="plz" id="plz" />
-                </div>
-                <div class="input-field col s8">
-                  <label for="city">Ort *</label>
-                  <input type="text" name="city" id="city" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="name">Ansprechpartner </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    required="reuqired"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="email">E-Mail-Adresse *</label>
-                  <input type="email" name="email" id="email" />
-                </div>
-              </div>
+          <h2 style="margin-top: 0">Personalisierte Rückseite:</h2>
 
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="phone">Telefonnummer *</label>
-                  <input type="tel" name="phone" id="phone" />
-                </div>
+          <ul>
+            <li>Eindruck Ihrer Empfängeradressen</li>
+            <li>+ Ihr Logo und Ihre Absenderdaten</li>
+          </ul>
+          <div class="center-align">
+            <img src="{{url_for('static', filename='images/vorwort_beispiel.png')}}" alt="" class="responsive-img" />
+          </div>
+          <h2 style="margin-top: 0">Personalisiertes Vorwort:</h2>
+
+          <ul>
+            <li>Eindruck des Empfängernamens in der Anrede</li>
+            <li>Ihre Firma mit direktem Ansprechpartner und Kontaktdaten</li>
+            <li>QR-Code über den Ihr Newsletter abonniert werden kann</li>
+          </ul>
+          <a href="https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu" target="blank">Hier können Sie das
+            Mailing als Flipbook ansehen</a>
+          <!-- <h1>Bitte ausfüllen und Dateien hochladen</h1> -->
+          <h2>Hier personalisieren Sie Ihren Eindruck im Mailing</h2>
+          <!-- <h2>Ihre Daten zum Druck</h2> -->
+          <p>
+            Bitte tragen Sie die Angaben ein, die wir für Sie eindrucken
+            sollen. Bei Fragen zu unserem Verkaufsmailing hilft Ihnen gerne
+            Herr Hakro unter 040 1234567 oder per E-Mail unter
+            <a href="mailto:kontakt@hakro.com" target="blank">herrhakro@hakro.com</a>
+          </p>
+        </div>
+        <div class="section">
+          <form method="post" enctype="multipart/form-data">
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="costumer_name">Name Ihrer Firma *</label>
+                <input type="text" name="costumer_name" id="company_name" />
               </div>
-              <!-- <h2>Kundennummer?</h2>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="streetname">Straße und Hausnummer *</label>
+                <input type="text" name="streetname" id="streetname" required="required" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s4">
+                <label for="plz">Postleitzahl *</label>
+                <input type="text" name="plz" id="plz" />
+              </div>
+              <div class="input-field col s8">
+                <label for="city">Ort *</label>
+                <input type="text" name="city" id="city" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="name">Ansprechpartner </label>
+                <input type="text" name="name" id="name" required="reuqired" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="email">E-Mail-Adresse *</label>
+                <input type="email" name="email" id="email" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="phone">Telefonnummer *</label>
+                <input type="tel" name="phone" id="phone" />
+              </div>
+            </div>
+            <!-- <h2>Kundennummer?</h2>
               <div class="row">
                 <div class="input-field col s12">
                   <label for="costumer_id">Ihre Kundennummer *</label>
                   <input type="text" name="costumer_id" id="costumer_id" />
                 </div>
               </div> -->
-              <div class="row section">
-                <h2>Ihr Firmenlogo</h2>
-                <p style="margin-bottom: 0">
-                  Bitte laden Sie ihr Firmenlogo als Vektordatei (.eps) oder
-                  hochauflösende portable Network Graphic (.png) hoch. Farbige
-                  Logos werden in Graustufen gedruckt
-                </p>
-                <div class="input-field col s12" style="padding: 0">
-                  <div class="file-field input-field">
-                    <div class="button_secondary">
-                      <span>Datei</span>
-                      <input type="file" name="file_logo" id="file_logo" />
-                    </div>
-                    <div class="file-path-wrapper">
-                      <input
-                        class="file-path validate"
-                        type="text"
-                        placeholder=".png oder .eps *"
-                      />
-                    </div>
+            <div class="row section">
+              <h2>Ihr Firmenlogo</h2>
+              <p style="margin-bottom: 0">
+                Bitte laden Sie ihr Firmenlogo als Vektordatei (.eps) oder
+                hochauflösende portable Network Graphic (.png) hoch. Farbige
+                Logos werden in Graustufen gedruckt
+              </p>
+              <div class="input-field col s12" style="padding: 0">
+                <div class="file-field input-field">
+                  <div class="button_secondary">
+                    <span>Datei</span>
+                    <input type="file" name="file_logo" id="file_logo" />
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder=".png oder .eps *" />
                   </div>
                 </div>
               </div>
-              <div class="row section">
-                <h2>Ihre Empfängeradressen</h2>
-                <p>
-                  Bitte laden Sie eine wie folgt strukturierte Liste Ihrer
-                  Empfängeradressen hoch.
-                  <a href="mailto:kontakt@hakro.com" target="blank"
-                    >Bitte kontaktieren Sie uns</a
-                  >
-                  vor dem Upload wenn Ihre Liste mehr als 2.500 Empfänger
-                  enthält.
-                </p>
-                <div style="overflow: scroll">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th style="background-color: white">Spalte 1</th>
-                        <th style="background-color: white">Spalte 2</th>
-                        <th style="background-color: white">Spalte 3</th>
-                        <th style="background-color: white">Spalte 4</th>
-                        <th style="background-color: white">Spalte 5</th>
-                        <th style="background-color: white">Spalte 6</th>
-                        <th style="background-color: white">Spalte 7</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Vorname</td>
-                        <td>Nachname</td>
-                        <td>Firma</td>
-                        <td>Straße</td>
-                        <td>Hausnr.</td>
-                        <td>PLZ</td>
-                        <td>Ort</td>
-                      </tr>
-                      <tr>
-                        <td>Vorname</td>
-                        <td>Nachname</td>
-                        <td>Firma</td>
-                        <td>Straße</td>
-                        <td>Hausnr.</td>
-                        <td>PLZ</td>
-                        <td>Ort</td>
-                      </tr>
-                      <tr>
-                        <td>Vorname</td>
-                        <td>Nachname</td>
-                        <td>Firma</td>
-                        <td>Straße</td>
-                        <td>Hausnr.</td>
-                        <td>PLZ</td>
-                        <td>Ort</td>
-                      </tr>
+            </div>
+            <div class="row section">
+              <h2>Ihre Empfängeradressen</h2>
+              <p>
+                Bitte laden Sie eine wie folgt strukturierte Liste Ihrer
+                Empfängeradressen hoch.
+                <a href="mailto:kontakt@hakro.com" target="blank">Bitte kontaktieren Sie uns</a>
+                vor dem Upload wenn Ihre Liste mehr als 2.500 Empfänger
+                enthält.
+              </p>
+              <div style="overflow: scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="background-color: white">Spalte 1</th>
+                      <th style="background-color: white">Spalte 2</th>
+                      <th style="background-color: white">Spalte 3</th>
+                      <th style="background-color: white">Spalte 4</th>
+                      <th style="background-color: white">Spalte 5</th>
+                      <th style="background-color: white">Spalte 6</th>
+                      <th style="background-color: white">Spalte 7</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Vorname</td>
+                      <td>Nachname</td>
+                      <td>Firma</td>
+                      <td>Straße</td>
+                      <td>Hausnr.</td>
+                      <td>PLZ</td>
+                      <td>Ort</td>
+                    </tr>
+                    <tr>
+                      <td>Vorname</td>
+                      <td>Nachname</td>
+                      <td>Firma</td>
+                      <td>Straße</td>
+                      <td>Hausnr.</td>
+                      <td>PLZ</td>
+                      <td>Ort</td>
+                    </tr>
+                    <tr>
+                      <td>Vorname</td>
+                      <td>Nachname</td>
+                      <td>Firma</td>
+                      <td>Straße</td>
+                      <td>Hausnr.</td>
+                      <td>PLZ</td>
+                      <td>Ort</td>
+                    </tr>
 
-                      <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <a
-                  style="font-size: 18px; padding-top: 100px"
-                  src="{{url_for('static', filename='template/kundenliste_template.xlsx')}}"
-                  download
-                  >Excel Template herunterladen</a
-                >
-                <div class="input-field col s12" style="padding: 0">
-                  <div class="file-field input-field">
-                    <div class="button_secondary">
-                      <span>Datei</span>
-                      <input type="file" name="file_data" id="file_data" />
-                    </div>
-                    <div class="file-path-wrapper">
-                      <input
-                        class="file-path validate"
-                        type="text"
-                        placeholder=".csv oder .xslx *"
-                      />
-                    </div>
+                    <tr>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                      <td>...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <a style="font-size: 18px; padding-top: 100px"
+                src="{{url_for('static', filename='template/kundenliste_template.xlsx')}}" download>Excel Template
+                herunterladen</a>
+              <div class="input-field col s12" style="padding: 0">
+                <div class="file-field input-field">
+                  <div class="button_secondary">
+                    <span>Datei</span>
+                    <input type="file" name="file_data" id="file_data" />
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder=".csv oder .xslx *" />
                   </div>
                 </div>
               </div>
+            </div>
 
+            <div>
+              <h2>Hinweis zum Datenschutz:</h2>
+              <p>
+                Ihre Daten sind sicher: Die Daten werden ausschließlich von einem externen
+                Lettershop-Anbieter für den einmaligen Versand genutzt und
+                danach sofort gelöscht.
+              </p>
+            </div>
+            <div class="row section">
               <div>
-                <h2>Hinweis zum Datenschutz:</h2>
-                <p>
-                  Ihre Daten sind sicher: Die Daten werden ausschließlich von einem externen
-                  Lettershop-Anbieter für den einmaligen Versand genutzt und
-                  danach sofort gelöscht.
-                </p>
+                <button class="button_primary" type="submit">Weiter</button>
               </div>
-              <div class="row section">
-                <div>
-                  <button class="button_primary" type="submit">Weiter</button>
-                </div>
-              </div>
-              <div class="row section">
-                <p style="font-size: 20px; margin: 30px 0 0 -5px">
-                  * Pflichtfelder
-                </p>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="row section">
+              <p style="font-size: 20px; margin: 30px 0 0 -5px">
+                * Pflichtfelder
+              </p>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="footer"></div>
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-            >Agree</a
-          >
-        </div>
-      </div>
-      <!-- Scripts -->
-      <script
-        type="text/javascript"
-        src="https://code.jquery.com/jquery-2.1.1.min.js"
-      ></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script
-        type="text/javascript"
-        src="{{url_for('static', filename='assets/js/hakro.js')}}"
-      ></script>
-      <script>
-        var _URL = window.URL || window.webkitURL;
-
-        $("#file_logo").change(function (e) {
-          var file, img;
-          if ((file = this.files[0])) {
-            img = new Image();
-            img.onload = function () {
-              if (this.width > 135 || this.height > 101) {
-                alert(
-                  "Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)"
-                );
-                location.reload();
-              }
-            };
-            img.onerror = function () {
-              alert("keine gültige Bilddatei: " + file.type);
-            };
-            img.src = _URL.createObjectURL(file);
-          }
-        });
-      </script>
-      <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date("Apr 1, 2022 15:37:25").getTime();
-
-        // Update the count down every 1 second
-        var x = setInterval(function () {
-          // Get today's date and time
-          var now = new Date().getTime();
-
-          // Find the distance between now and the count down date
-          var distance = countDownDate - now;
-
-          // Time calculations for days, hours, minutes and seconds
-          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          var hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-          // Output the result in an element with id="countdown"
-          document.getElementById("countdown").innerHTML =
-            // days + " Tage " + hours + " Stunden " + minutes + " Minuten " + seconds + " Sekunden";
-            days + " Tage, " + hours + " Stunden, " + minutes + " Minuten";
-
-          // If the count down is over, write some text
-          if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("countdown").innerHTML = "EXPIRED";
-          }
-        }, 1000);
-      </script>
     </div>
-  </body>
+    <div class="footer"></div>
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
+    <script>
+      var _URL = window.URL || window.webkitURL;
+
+      $("#file_logo").change(function (e) {
+        var file, img;
+        if ((file = this.files[0])) {
+          img = new Image();
+          img.onload = function () {
+            if (this.width > 135 || this.height > 101) {
+              alert(
+                "Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)"
+              );
+              location.reload();
+            }
+          };
+          img.onerror = function () {
+            alert("keine gültige Bilddatei: " + file.type);
+          };
+          img.src = _URL.createObjectURL(file);
+        }
+      });
+    </script>
+    <script>
+      // Set the date we're counting down to
+      var countDownDate = new Date("Apr 1, 2022 15:37:25").getTime();
+
+      // Update the count down every 1 second
+      var x = setInterval(function () {
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="countdown"
+        document.getElementById("countdown").innerHTML =
+          // days + " Tage " + hours + " Stunden " + minutes + " Minuten " + seconds + " Sekunden";
+          days + " Tage, " + hours + " Stunden, " + minutes + " Minuten";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    </script>
+  </div>
+</body>
+
 </html>
