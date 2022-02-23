@@ -339,18 +339,35 @@ input[type="reset"] {
 }
 
 .overlay_qr {
-  width: 10%;
+  width: 15%;
   position: absolute;
-  top: 78.8%;
+  top: 72.8%;
   left: 18.3%;
 }
-.overlay_qr_text {
-  font-size: 12px;
-  line-height: 20px;
-  width: 54%;
+
+.overlay_qr_small {
+  width: 4.6%;
   position: absolute;
-  top: 80.666%;
-  left: 30.09%;
+  top: 59.1%;
+  left: 11.9%;
+}
+
+.overlay_qr_text {
+  font-size: 15px;
+  line-height: 20px;
+  width: 49%;
+  position: absolute;
+  top: 71.466%;
+  left: 37.09%;
+}
+
+.overlay_qr_text_small {
+  font-size: 4.7px;
+  line-height: 6.4px;
+  width: 23%;
+  position: absolute;
+  top: 58.666%;
+  left: 17.79%;
 }
 
 .t1 {

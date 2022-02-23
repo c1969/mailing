@@ -54,10 +54,16 @@
         <div class="container">
           <img src="{{url_for('static', filename='images/vorwort_leer.png')}}" alt="" class="image_01" />
           <img src="{{ qr }}" alt="" class="overlay_qr" />
+          <img src="{{ qr }}" alt="" class="overlay_qr_small" />
           <div class="overlay_qr_text">
             <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
-            <span>{{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }}
-              {{ p['city'] }}</span>
+            <span>{{ p['costumer_name']}}<br /> {{ p['streetname'] }}<br /> {{ p['plz'] }}
+              {{ p['city'] }} <br /> {{ p['email'] }} <br /> {{ p['phone'] }} </span>
+          </div>
+          <div class="overlay_qr_text_small">
+            <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
+            <span>{{ p['costumer_name']}}<br /> {{ p['streetname'] }}<br /> {{ p['plz'] }}
+              {{ p['city'] }} <br /> {{ p['email'] }} <br /> {{ p['phone'] }} </span>
           </div>
         </div>
       </div>
