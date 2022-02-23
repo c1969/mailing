@@ -25,52 +25,57 @@
   <div class="container main">
     <div class="col s6">
       <div class="section">
-        <h1>Ihr Auftritt im Magalog</h1>
-        <!-- <p style="margin-bottom: 10px">Die Katalogrückseite</p> -->
-        <h2>Die Katalogrückseite</h2>
-        <p style="margin-bottom: 10px">
-          Ihr Logo wird samt Ihrer Adresse wie abgebildet auf die Rückseite
-          des Kataloges eingedruckt:
+        <h1>Ihr Auftritt im HAKRO-Mailing</h1>
+        <p>
+          Bitte prüfen Sie hier Ihre Angaben und Ihre Dateien. Mit dem finalen
+          Upload Ihrer Daten bestätigen Sie Ihre Teilnahme und die
+          Druckfreigabe für das HAKRO-Verkaufs-Mailing.
         </p>
-
+        <h2>Ihre personalisierte Rückseite:</h2>
+        <ul>
+          <li>Eindruck Ihrer Empfängeradressen</li>
+          <li>Ihr Firmenlogo und Ihre Absenderdaten</li>
+        </ul>
         <div class="container">
-          <img src="{{url_for('static', filename='images/magalog_umschlag.png')}}" alt="" class="image_01" />
+          <img src="{{url_for('static', filename='images/umschlag_leer.png')}}" alt="" class="image_01" />
           <img src="{{ logo }}" class="overlay_logo" alt="" />
           <p class="overlay_logo_text">
             {{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }} {{
             p['city'] }}
           </p>
         </div>
+
         <!-- <p style="margin-bottom: 10px">Der QR-code im intro</p> -->
-        <h2>Der QR-code im Vorwort</h2>
-        <p style="margin-bottom: 10px">
-          Ihr Name etc wird wie abgebildet neben den QR code im Vorwort
-          gedruckt:
-        </p>
+        <h2>Ihr personalisiertes Vorwort:</h2>
+        <ul>
+          <li>Eindruck des Empfängernamens in der Anrede</li>
+          <li>Ihre Angaben neben dem QR-Code für das Newsletter-Abo</li>
+        </ul>
         <div class="container">
-          <img src="{{url_for('static', filename='images/inlay_gf.png')}}" alt="" class="image_01" />
+          <img src="{{url_for('static', filename='images/vorwort_leer.png')}}" alt="" class="image_01" />
           <img src="{{ qr }}" alt="" class="overlay_qr" />
+          <img src="{{ qr }}" alt="" class="overlay_qr_small" />
           <div class="overlay_qr_text">
-            <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
-            <span>{{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }}
-              {{ p['city'] }}</span>
+            <span style="font-weight: bold">Ihr Fachhändler ist gerne für Sie da:</span><br />{{ p['name'] }}<br />
+            <span>{{ p['costumer_name']}}<br />{{ p['streetname'] }}<br />{{ p['plz'] }} {{ p['city'] }}
+              <br />E-Mail: {{ p['email'] }}<br />Telefon: {{ p['phone'] }} </span>
+          </div>
+          <div class="overlay_qr_text_small">
+            <span style="font-weight: bold">Ihr Fachhändler ist gerne für Sie da:</span><br />
+            <span>{{ p['costumer_name']}}<br />{{ p['streetname'] }}<br />{{ p['plz'] }} {{ p['city'] }}
+              <br />E-Mail: {{ p['email'] }}<br />Telefon: {{ p['phone'] }} </span>
           </div>
         </div>
       </div>
 
       <div class="section">
-        <!-- <h1 style="margin: 40px 0">Ihre Eingaben</h1> -->
-        <h2 style="margin: 40px 0">Bitte kontrollieren Sie ihre Eingaben:</h2>
+        <h2 style="margin-bottom: 40px; margin-top: 90px">
+          Ihre Eingaben im Überblick:
+        </h2>
 
         <div class="row">
           <div class="input-field col s12">
-            <label for="name">Ihr Vor- und Nachname *</label>
-            <input readonly type="text" value="{{ p['name'] }}" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="costumer_name">Name ihrer Firma *</label>
+            <label for="costumer_name">Name Ihrer Firma *</label>
             <input readonly type="text" value="{{ p['costumer_name'] }}" />
           </div>
         </div>
@@ -92,7 +97,13 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <label for="email">Ihre Email Adresse *</label>
+            <label for="name">Ansprechpartner</label>
+            <input readonly type="text" value="{{ p['name'] }}" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="email">E-Mail Adresse *</label>
             <input readonly type="email" value="{{ p['email'] }}" />
           </div>
         </div>
@@ -102,13 +113,9 @@
             <input readonly type="tel" value="{{ p['phone'] }}" />
           </div>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="costumer_id">Ihre Kundennummer *</label>
-            <input readonly type="text" value="{{ p['costumer_id'] }}" />
-          </div>
-        </div>
+      </div>
 
+      <div class="section">
         <h2>
           Wir haben
           <span style="font-weight: 800; color: #b6c24f">{{ len_df }}</span>
@@ -146,36 +153,50 @@
             </tbody>
           </table>
         </div>
-        <form method="POST">
-          <div style="margin-bottom: 50px">
-            <div>
-              <label>
-                <input type="checkbox" class="filled-in" id="d_ok" name="d_ok" value="ok"  required="required" />
-                <span>Ich akzeptiere lorem ipsum</span>
-              </label>
-            </div>
 
-            <div>
-              <label>
-                <input type="checkbox" class="filled-in" id="e_ok" name="e_ok" value="ok" required="required" />
-                <span>Ich akzeptiere lorem ipsum</span>
-              </label>
-            </div>
+        <!-- <div>
+          <h1>Nicht vergessen: der Countdown läuft.</h1>
+          <h2 style="margin-top: 0">7 Tage, 14 Stunden, 3 Minuten!</h2>
+          <p style="margin-bottom: 60px">
+            Um dabei zu sein, müssen Sie den Upload abschließen bis
+            spätestens: 31.04.2022
+          </p>
+        </div> -->
+
+        <!-- <div style="margin-bottom: 50px">
+          <div>
+            <label>
+              <input type="checkbox" class="filled-in" checked="checked" />
+              <span>Ich akzeptiere lorem ipsum</span>
+            </label>
           </div>
 
-          <div class="button_row">
-            <div>
-              <a class="button_secondary" href="javascript:history.back()">Zurück</a>
-            </div>
-            <div>
-              <button class="button_primary" type="submit">Absenden</button>
-            </div>
+          <div>
+            <label>
+              <input type="checkbox" class="filled-in" checked="checked" />
+              <span>Ich akzeptiere lorem ipsum</span>
+            </label>
           </div>
-        </form>
+        </div> -->
+
+        <div class="button_row">
+          <div>
+            <form method="POST">
+              <button class="button_secondary" onclick="window.history.go(-1); return false;">
+                Zurück
+              </button>
+            </form>
+          </div>
+          <div>
+            <form method="POST">
+              <button class="button_primary" type="submit">
+                Upload senden
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
   </div>
   <div class="footer"></div>
 

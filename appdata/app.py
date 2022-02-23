@@ -59,10 +59,10 @@ def index():
         cid = db.get_costumer_id()
         cid = cid
         d = dict(request.form)
-        for c in cid:
-            print(c, d['costumer_id'])
-            if str(c[0]) == str(d['costumer_id']):
-                return redirect(url_for('error', e=100))
+        # for c in cid:
+        #     print(c, d['costumer_id'])
+        #     if str(c[0]) == str(d['costumer_id']):
+        #         return redirect(url_for('error', e=100))
 
         d['session_id'] = session_id
 
