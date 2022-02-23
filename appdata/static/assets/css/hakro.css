@@ -291,10 +291,6 @@ input[type="reset"] {
   cursor: pointer;
 }
 
-.main {
-  max-width: 700px;
-}
-
 .header {
   margin: 50px 50px 50px 30px;
 }
@@ -326,6 +322,7 @@ input[type="reset"] {
   width: 100%;
   max-width: 700px;
   line-height: 0;
+  padding: 0 15px;
 }
 
 .container img {
