@@ -31,7 +31,7 @@
           Upload Ihrer Daten bestätigen Sie Ihre Teilnahme und die
           Druckfreigabe für das HAKRO-Verkaufs-Mailing.
         </p>
-        <h2>Personalisierte Rückseite:</h2>
+        <h2>Ihre personalisierte Rückseite:</h2>
         <ul>
           <li>Eindruck Ihrer Empfängeradressen</li>
           <li>Ihr Firmenlogo und Ihre Absenderdaten</li>
@@ -46,7 +46,7 @@
         </div>
 
         <!-- <p style="margin-bottom: 10px">Der QR-code im intro</p> -->
-        <h2>Personalisiertes Vorwort:</h2>
+        <h2>Ihr personalisiertes Vorwort:</h2>
         <ul>
           <li>Eindruck des Empfängernamens in der Anrede</li>
           <li>Ihre Angaben neben dem QR-Code für das Newsletter-Abo</li>
@@ -56,14 +56,14 @@
           <img src="{{ qr }}" alt="" class="overlay_qr" />
           <img src="{{ qr }}" alt="" class="overlay_qr_small" />
           <div class="overlay_qr_text">
-            <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
-            <span>{{ p['costumer_name']}}<br /> {{ p['streetname'] }}<br /> {{ p['plz'] }}
-              {{ p['city'] }} <br /> {{ p['email'] }} <br /> {{ p['phone'] }} </span>
+            <span style="font-weight: bold">Ihr Fachhändler ist gerne für Sie da:</span><br />{{ p['name'] }}<br />
+            <span>{{ p['costumer_name']}}<br />{{ p['streetname'] }}<br />{{ p['plz'] }} {{ p['city'] }}
+              <br />E-Mail: {{ p['email'] }}<br />Telefon: {{ p['phone'] }} </span>
           </div>
           <div class="overlay_qr_text_small">
-            <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
-            <span>{{ p['costumer_name']}}<br /> {{ p['streetname'] }}<br /> {{ p['plz'] }}
-              {{ p['city'] }} <br /> {{ p['email'] }} <br /> {{ p['phone'] }} </span>
+            <span style="font-weight: bold">Ihr Fachhändler ist gerne für Sie da:</span><br />
+            <span>{{ p['costumer_name']}}<br />{{ p['streetname'] }}<br />{{ p['plz'] }} {{ p['city'] }}
+              <br />E-Mail: {{ p['email'] }}<br />Telefon: {{ p['phone'] }} </span>
           </div>
         </div>
       </div>
@@ -75,13 +75,7 @@
 
         <div class="row">
           <div class="input-field col s12">
-            <label for="name">Ihr Vor- und Nachname *</label>
-            <input readonly type="text" value="{{ p['name'] }}" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <label for="costumer_name">Name ihrer Firma *</label>
+            <label for="costumer_name">Name Ihrer Firma *</label>
             <input readonly type="text" value="{{ p['costumer_name'] }}" />
           </div>
         </div>
@@ -103,7 +97,13 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <label for="email">Ihre Email Adresse *</label>
+            <label for="name">Ansprechpartner</label>
+            <input readonly type="text" value="{{ p['name'] }}" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="email">E-Mail Adresse *</label>
             <input readonly type="email" value="{{ p['email'] }}" />
           </div>
         </div>
