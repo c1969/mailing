@@ -114,7 +114,8 @@ li::before {
 }
 
 .section {
-  padding: 0 15px;
+  /* padding: 0 15px; */
+  /* background-color: #e4e4e4; */
 }
 
 .button_primary,
@@ -130,9 +131,11 @@ li::before {
   float: left;
   position: relative;
   transition: 0.2s;
+  left: -4px;
 }
 
-.input-field > label {
+.input-field > label,
+::placeholder {
   font-family: "National Book";
   -webkit-font-smoothing: antialiased;
   font-size: 24px;
@@ -149,6 +152,12 @@ li::before {
   transform: translateY(-15px) scale(0.6);
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
+}
+
+.file-field .file-path-wrapper {
+  overflow: hidden;
+  padding-left: 10px;
+  padding-top: 7px;
 }
 
 input:not([type]),
