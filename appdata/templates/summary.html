@@ -32,7 +32,7 @@
           Druckfreigabe für das HAKRO-Verkaufs-Mailing.
         </p>
         <div class="container">
-          <img src="{{url_for('static', filename='images/magalog_umschlag.png')}}" alt="" class="image_01" />
+          <img src="{{url_for('static', filename='images/umschlag_leer.png')}}" alt="" class="image_01" />
           <img src="{{ logo }}" class="overlay_logo" alt="" />
           <p class="overlay_logo_text">
             {{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }} {{
@@ -47,7 +47,7 @@
 
         <!-- <p style="margin-bottom: 10px">Der QR-code im intro</p> -->
         <div class="container">
-          <img src="{{url_for('static', filename='images/inlay_gf.png')}}" alt="" class="image_01" />
+          <img src="{{url_for('static', filename='images/vorwort_leer.png')}}" alt="" class="image_01" />
           <img src="{{ qr }}" alt="" class="overlay_qr" />
           <div class="overlay_qr_text">
             <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
@@ -63,7 +63,6 @@
       </div>
 
       <div class="section">
-        <!-- <h1 style="margin: 40px 0">Ihre Eingaben</h1> -->
         <h2 style="margin-bottom: 40px; margin-top: 90px">
           Bitte kontrollieren Sie ihre Eingaben:
         </h2>
@@ -108,13 +107,9 @@
             <input readonly type="tel" value="{{ p['phone'] }}" />
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="input-field col s12">
-            <label for="costumer_id">Ihre Kundennummer *</label>
-            <input readonly type="text" value="{{ p['costumer_id'] }}" />
-          </div>
-        </div> -->
+      </div>
 
+      <div class="section">
         <h2>
           Wir haben
           <span style="font-weight: 800; color: #b6c24f">{{ len_df }}</span>
@@ -153,16 +148,16 @@
           </table>
         </div>
 
-        <div>
+        <!-- <div>
           <h1>Nicht vergessen: der Countdown läuft.</h1>
           <h2 style="margin-top: 0">7 Tage, 14 Stunden, 3 Minuten!</h2>
           <p style="margin-bottom: 60px">
             Um dabei zu sein, müssen Sie den Upload abschließen bis
             spätestens: 31.04.2022
           </p>
-        </div>
+        </div> -->
 
-        <div style="margin-bottom: 50px">
+        <!-- <div style="margin-bottom: 50px">
           <div>
             <label>
               <input type="checkbox" class="filled-in" checked="checked" />
@@ -176,7 +171,7 @@
               <span>Ich akzeptiere lorem ipsum</span>
             </label>
           </div>
-        </div>
+        </div> -->
 
         <div class="button_row">
           <div>
