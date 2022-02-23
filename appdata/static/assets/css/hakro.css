@@ -69,7 +69,7 @@ h2 {
   margin: 0;
   padding: 0;
   margin-bottom: 20px;
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 @media only screen and (max-width: 640px) {
@@ -324,18 +324,18 @@ input[type="reset"] {
 }
 
 .overlay_logo {
-  width: 16%;
+  width: 15%;
   position: absolute;
-  top: 58%;
-  left: 64.2%;
+  top: 60%;
+  left: 65.2%;
 }
 .overlay_logo_text {
   width: 31%;
   position: absolute;
-  top: 72.125%;
+  top: 75.125%;
   left: 56.75%;
   text-align: center;
-  font-size: 10px;
+  font-size: 8.7px;
 }
 
 .overlay_qr {

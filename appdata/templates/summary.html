@@ -31,6 +31,11 @@
           Upload Ihrer Daten bestätigen Sie Ihre Teilnahme und die
           Druckfreigabe für das HAKRO-Verkaufs-Mailing.
         </p>
+        <h2>Personalisierte Rückseite:</h2>
+        <ul>
+          <li>Eindruck Ihrer Empfängeradressen</li>
+          <li>+ Ihr Logo und Ihre Absenderdaten</li>
+        </ul>
         <div class="container">
           <img src="{{url_for('static', filename='images/umschlag_leer.png')}}" alt="" class="image_01" />
           <img src="{{ logo }}" class="overlay_logo" alt="" />
@@ -39,13 +44,13 @@
             p['city'] }}
           </p>
         </div>
-        <h2 style="margin-top: 0">Personalisierte Rückseite:</h2>
-        <ul>
-          <li>Eindruck Ihrer Empfängeradressen</li>
-          <li>+ Ihr Logo und Ihre Absenderdaten</li>
-        </ul>
 
         <!-- <p style="margin-bottom: 10px">Der QR-code im intro</p> -->
+        <h2>Personalisiertes Vorwort:</h2>
+        <ul>
+          <li>Eindruck des Empfängernamens in der Anrede</li>
+          <li>Ihre Angaben neben dem QR-Code für das Newsletter-Abo</li>
+        </ul>
         <div class="container">
           <img src="{{url_for('static', filename='images/vorwort_leer.png')}}" alt="" class="image_01" />
           <img src="{{ qr }}" alt="" class="overlay_qr" />
@@ -55,16 +60,11 @@
               {{ p['city'] }}</span>
           </div>
         </div>
-        <h2 style="margin-top: 0">Personalisiertes Vorwort:</h2>
-        <ul>
-          <li>Eindruck des Empfängernamens in der Anrede</li>
-          <li>Ihre Angaben neben dem QR-Code für das Newsletter-Abo</li>
-        </ul>
       </div>
 
       <div class="section">
         <h2 style="margin-bottom: 40px; margin-top: 90px">
-          Bitte kontrollieren Sie ihre Eingaben:
+          Ihre Eingaben im Überblick:
         </h2>
 
         <div class="row">
