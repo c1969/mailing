@@ -49,7 +49,9 @@ def allowed_file_data(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS_DATA
 
-
+'''
+USER FLOW 1
+'''
 @app.route('/', methods=['GET', 'POST'])
 def index():
 
@@ -188,6 +190,7 @@ def done():
     s1 = data_cookie['data']
 
     #session_id = s1['session_id']
+    #TODO EXP DATE in Verganenheit
     s1 = {}
 
     resp = make_response(render_template('done.html'))
@@ -195,6 +198,10 @@ def done():
     resp.set_cookie('_cid', token)
     return resp
 
+
+'''
+USER FLOW 2
+'''
 @app.route('/qr/<qrid>', methods=['GET', 'POST'])
 def qr(qrid):
     if qrid == None:
