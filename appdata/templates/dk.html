@@ -14,7 +14,7 @@
 
 <body>
 	<div class="header">
-		<a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
+		<a href="/"><img class="brand-logo" src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
 	</div>
 	<div class="container">
 		<div class="col s6">
@@ -100,24 +100,29 @@
 		<div class="container">
 			<div class="col l12 s12">
 				<h3 class="white-text">Ihr persönlicher Fachhändler:</h3>
+				<p style="font-weight: bold;">
+					{{ e[2] }}
+				</p>
 				<p>
-					{{ e[2] }}<br>
 					{{ e[4] }}<br>
 					{{ e[5] }}<br>
 					{{ e[6] }} {{ e[7] }}<br>
-					<br>
-					{{ e[9] }}<br>
+				</p>
+				<p>
+					{{ e[9] }}<br />
 					<a href="mailto:{{ e[8] }}" style="color: white;">{{ e[8] }}</a>
 				</p>
 			</div>
 		</div>
 		<div class="footer">
 			<div class="footer_container">
-				<p class="footer_item" href="https://www.hakro.com/">
-					© 2022 HAKRO
-				</p>
 				<div>
-					<a class="footer_item" href="https://www.hakro.com/impressum">Impressum</a>
+					<a class="footer_item" target="blank" style="color: black" href="https://www.hakro.com/">© 2022
+						HAKRO</a>
+				</div>
+				<div>
+					<a class="footer_item" target="blank" style="color: black"
+						href="https://www.hakro.com/impressum">Impressum</a>
 				</div>
 
 			</div>
