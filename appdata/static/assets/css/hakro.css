@@ -561,6 +561,7 @@ li::before {
   height: 960px;
   position: absolute;
   left: 16.4%;
+  pointer-events: none
 }
 
 .sticky_element {
