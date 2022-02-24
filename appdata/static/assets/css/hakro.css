@@ -145,8 +145,8 @@ li::before {
 }
 
 .section {
-  /* padding: 0 15px; */
-  /* background-color: #e4e4e4; */
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .button_primary,
@@ -414,10 +414,11 @@ input[type="reset"] {
 .overlay_logo_text {
   width: 31%;
   position: absolute;
-  top: 78.025%;
+  top: 80.625%;
   left: 10.05%;
   text-align: center;
   font-size: 8.7px;
+  line-height: 10px;
 }
 
 .overlay_qr {
@@ -539,6 +540,8 @@ li::before {
 
 .page-footer {
   background-color: var(--hakro-green);
+  padding-top: 30px;
+  margin-top: 20px;
 }
 
 .footer {
@@ -561,36 +564,43 @@ li::before {
 .sticky_container {
   height: 870px;
   position: absolute;
-  left: 8.9%;
+  left: -2.1%;
   pointer-events: none;
 }
 
-.sticky_element {
+.sticky_element,
+.fixed_element {
   background-color: #b3c333;
   position: -webkit-sticky;
   position: sticky;
-  top: 30px;
-  width: 573px;
+  top: 0px;
+  width: 733px;
   height: 140px;
   z-index: 100;
   margin: -20px auto auto auto;
   box-shadow: 0px 7px 26px #0000004d;
 }
 
+.fixed_element {
+  position: relative;
+  top: -13px;
+  left: -48px;
+}
+
 .overlay_sticky_text {
-  width: 78%;
+  width: 79%;
   position: absolute;
   top: 20.925%;
-  left: 22.15%;
+  left: 19.05%;
   text-align: left;
   font-size: 13.7px;
   line-height: 16px;
 }
 .overlay_sticky_qr {
-  width: 14%;
+  width: 12%;
   position: absolute;
-  top: 20.8%;
-  left: 4.3%;
+  top: 19.3%;
+  left: 3.7%;
 }
 
 .qr_note {
