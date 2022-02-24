@@ -14,6 +14,7 @@
 }
 
 h1,
+h3,
 button {
   font-family: "Conduit ITC Medium";
   text-transform: uppercase;
@@ -23,7 +24,6 @@ button {
 input,
 label,
 h2,
-h3,
 h4,
 h5,
 h6 {
@@ -77,6 +77,15 @@ h2 {
     font-size: 26px;
     line-height: 120%;
   }
+}
+
+h3 {
+  font-size: 42px;
+  line-height: 46px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+  margin-top: 60px;
 }
 
 a,
@@ -459,4 +468,26 @@ li::before {
   .desktop {
     display: none;
   }
+}
+
+.page-footer {
+  background-color: #b6c24f;
+}
+
+
+.footer {
+  background-color: white;
+  padding-bottom: 100px;
+  padding-top: 50px;
+}
+.footer_container {
+display: flex;
+justify-content: space-between;
+max-width: 700px;
+margin: auto;
+color: black;
+}
+
+.footer_item {
+padding: 0 15px;
 }
