@@ -47,7 +47,8 @@
             <li>Ihr Firmenlogo und Ihre Absenderdaten</li>
           </ul>
           <div class="center-align">
-            <img src="{{url_for('static', filename='images/umschlag_beispiel.png')}}" alt="" class="responsive-img" />
+            <img class="img_shadow" src="{{url_for('static', filename='images/umschlag_beispiel.png')}}" alt=""
+              class="responsive-img" />
           </div>
         </div>
         <div class="section">
@@ -57,28 +58,26 @@
             <li>Ihre Firma mit direktem Ansprechpartner und Kontaktdaten</li>
             <li>QR-Code über den Ihr Newsletter abonniert werden kann</li>
           </ul>
-        </div>
-        <img src="{{url_for('static', filename='images/vorwort_leer_nozoom.png')}}" alt="" />
-        <div class="sticky_container">
-
-          <div class="sticky_element">
-            <img src="{{url_for('static', filename='images/qr_code.png')}}" class="overlay_sticky_qr" />
-            <div class="overlay_sticky_text">
-              <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
-              <span id="output_company_name">Ihre Firma</span>,
-              <span id="output_streetname">Ihre Straße</span>,
-              <span id="output_plz">PLZ</span>
-              <span id="output_city">Ort</span>,<br />
-              Ansprechpartner: <span id="output_name">Ansprechpartner</span><br />
-              Tel. <span id="output_phone">Telefonnummer</span>,
-              E-mail: <span id="output_email">E-Mail Adresse</span><br />
-              <div class="qr_note">FÜR WEITERE INFORMATIONEN
-                EINFACH DEN QR-CODE MIT IHREM SMARTPHONE FOTOGRAFIEREN</div>
+          <img class="img_shadow" src="{{url_for('static', filename='images/vorwort_leer_nozoom.png')}}" alt="" />
+          <div class="sticky_container">
+            <div class="sticky_element">
+              <img src="{{url_for('static', filename='images/qr_code.png')}}" class="overlay_sticky_qr" />
+              <div class="overlay_sticky_text">
+                <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
+                <span id="output_company_name">Ihre Firma</span>,
+                <span id="output_streetname">Ihre Straße</span>,
+                <span id="output_plz">PLZ</span>
+                <span id="output_city">Ort</span>,<br />
+                Ansprechpartner: <span id="output_name">Ansprechpartner</span><br />
+                Tel. <span id="output_phone">Telefonnummer</span>,
+                E-mail: <span id="output_email">E-Mail Adresse</span><br />
+                <div class="qr_note">FÜR WEITERE INFORMATIONEN
+                  EINFACH DEN QR-CODE MIT IHREM SMARTPHONE FOTOGRAFIEREN</div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div style="margin-top: 80px" class="section">
+        <div style="margin-top: 140px" class="section">
           <a href="https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu" target="blank">Hier können Sie das
             Mailing als Flipbook ansehen</a>
         </div>
@@ -100,11 +99,6 @@
                 <input type="text" name="costumer_name" id="company_name" />
               </div>
             </div>
-
-
-
-
-
             <div class="row">
               <div class="input-field col s12">
                 <label for="streetname">Straße und Hausnummer *</label>
@@ -263,15 +257,7 @@
       </div>
     </div>
     <div class="page-footer"></div>
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-      </div>
-    </div>
+
     <!-- Scripts -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

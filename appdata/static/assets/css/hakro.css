@@ -408,14 +408,14 @@ input[type="reset"] {
 .overlay_logo {
   width: 15%;
   position: absolute;
-  top: 60%;
-  left: 65.2%;
+  top: 62%;
+  left: 18.2%;
 }
 .overlay_logo_text {
   width: 31%;
   position: absolute;
-  top: 75.125%;
-  left: 56.75%;
+  top: 78.025%;
+  left: 10.05%;
   text-align: center;
   font-size: 8.7px;
 }
@@ -564,27 +564,17 @@ li::before {
   left: 8.9%;
   pointer-events: none;
 }
-.zoomed_element {
-  background-color: #b5c24e;
-  position: -webkit-sticky;
-  top: 30px;
-  width: 573px;
-  height: 140px;
-  z-index: 1000;
-  margin: -80px auto auto auto;
-  box-shadow: 0px 12px 20px #00000040;
-}
 
 .sticky_element {
-  background-color: #b5c24e;
+  background-color: #b3c333;
   position: -webkit-sticky;
   position: sticky;
   top: 30px;
   width: 573px;
   height: 140px;
   z-index: 100;
-  margin: -80px auto auto auto;
-  box-shadow: 0px 12px 20px #00000040;
+  margin: -20px auto auto auto;
+  box-shadow: 0px 7px 26px #0000004d;
 }
 
 .overlay_sticky_text {
@@ -608,4 +598,8 @@ li::before {
   line-height: 20px;
   margin-top: 0px;
   color: #005800;
+}
+
+.img_shadow {
+  box-shadow: 0 2px 8px #0000004f;
 }

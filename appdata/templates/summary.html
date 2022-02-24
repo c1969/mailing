@@ -37,7 +37,8 @@
           <li>Ihr Firmenlogo und Ihre Absenderdaten</li>
         </ul>
         <div class="container">
-          <img src="{{url_for('static', filename='images/umschlag_leer.png')}}" alt="" class="image_01" />
+          <img class="img_shadow" src="{{url_for('static', filename='images/umschlag_leer.png')}}" alt=""
+            class="image_01" />
           <img src="{{ logo }}" class="overlay_logo" alt="" />
           <p class="overlay_logo_text">
             {{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }} {{
@@ -52,18 +53,22 @@
           <li>Ihre Angaben neben dem QR-Code für das Newsletter-Abo</li>
         </ul>
         <div class="container">
-          <img src="{{url_for('static', filename='images/vorwort_leer.png')}}" alt="" class="image_01" />
-          <img src="{{ qr }}" alt="" class="overlay_qr" />
-          <img src="{{ qr }}" alt="" class="overlay_qr_small" />
-          <div class="overlay_qr_text">
-            <span style="font-weight: bold">Ihr Fachhändler ist gerne für Sie da:</span><br />{{ p['name'] }}<br />
-            <span>{{ p['costumer_name']}}<br />{{ p['streetname'] }}<br />{{ p['plz'] }} {{ p['city'] }}
-              <br />E-Mail: {{ p['email'] }}<br />Telefon: {{ p['phone'] }} </span>
-          </div>
-          <div class="overlay_qr_text_small">
-            <span style="font-weight: bold">Ihr Fachhändler ist gerne für Sie da:</span><br />
-            <span>{{ p['costumer_name']}}<br />{{ p['streetname'] }}<br />{{ p['plz'] }} {{ p['city'] }}
-              <br />E-Mail: {{ p['email'] }}<br />Telefon: {{ p['phone'] }} </span>
+          <img class="img_shadow" src="{{url_for('static', filename='images/vorwort_leer_nozoom.png')}}" alt=""
+            class="image_01" />
+          <div class="sticky_element">
+            <div class="overlay_sticky_text">
+              <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
+              <span>{{ p['costumer_name']}}</span>,
+              <span>{{ p['streetname'] }}</span>,
+              <span>{{ p['plz'] }}</span>
+              <span>{{ p['city'] }}</span>,<br />
+              Ansprechpartner: <span>{{ p['name'] }}</span><br />
+              Tel. <span>{{ p['phone'] }}</span>,
+              E-mail: <span>{{ p['email'] }}</span><br />
+              <div class="qr_note">FÜR WEITERE INFORMATIONEN
+                EINFACH DEN QR-CODE MIT IHREM SMARTPHONE FOTOGRAFIEREN</div>
+            </div>
+            <img src="{{ qr }}" alt="" class="overlay_sticky_qr" />
           </div>
         </div>
       </div>
@@ -198,7 +203,7 @@
       </div>
     </div>
   </div>
-  <div class="footer"></div>
+  <div style="margin-top: 50px" class="page-footer"></div>
 
   <!-- Scripts -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
