@@ -1,3 +1,8 @@
+:root {
+  --hakro-red: #e4032d;
+  --hakro-green: #b6c24f;
+}
+
 @font-face {
   font-family: "Conduit ITC Medium";
   src: url(Conduit-ITC-Medium.ttf) format("truetype");
@@ -219,17 +224,17 @@ input[type="tel"]:not(.browser-default):focus:not([readonly]),
 input[type="number"]:not(.browser-default):focus:not([readonly]),
 input[type="search"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #b6c24f;
-  -webkit-box-shadow: 0 1px 0 0 #b6c24f;
-  box-shadow: 0 1px 0 0 #b6c24f;
+  border-bottom: 1px solid var(--hakro-green);
+  -webkit-box-shadow: 0 1px 0 0 var(--hakro-green);
+  box-shadow: 0 1px 0 0 var(--hakro-green);
 }
 
 [type="checkbox"].filled-in:checked + span:not(.lever):after {
   top: 0;
   width: 20px;
   height: 20px;
-  border: 2px solid #b6c24f;
-  background-color: #b6c24f;
+  border: 2px solid var(--hakro-green);
+  background-color: var(--hakro-green);
   color: black;
 
   /* z-index: 0; */
@@ -269,8 +274,8 @@ input[type="reset"] {
 }
 .button_primary {
   color: white;
-  background-color: #e4032d;
-  border: 1px solid #e4032d;
+  background-color: var(--hakro-red);
+  border: 1px solid var(--hakro-red);
 }
 
 .button_primary_white {
@@ -286,7 +291,7 @@ input[type="reset"] {
   border: 1px solid black;
 }
 .button_primary:hover {
-  background-color: #c90226;
+  opacity: 0.8;
   cursor: pointer;
 }
 
@@ -311,7 +316,7 @@ input[type="reset"] {
 }
 
 .footer {
-  background-color: #b6c24f;
+  background-color: var(--hakro-green);
   margin-top: 100px;
   height: 30px;
 }
@@ -438,7 +443,7 @@ ul {
 
 li::before {
   content: "• ";
-  color: #c90226;
+  color: var(--hakro-red);
 }
 
 .mobile {
@@ -471,9 +476,8 @@ li::before {
 }
 
 .page-footer {
-  background-color: #b6c24f;
+  background-color: var(--hakro-green);
 }
-
 
 .footer {
   background-color: white;
@@ -481,13 +485,13 @@ li::before {
   padding-top: 50px;
 }
 .footer_container {
-display: flex;
-justify-content: space-between;
-max-width: 700px;
-margin: auto;
-color: black;
+  display: flex;
+  justify-content: space-between;
+  max-width: 700px;
+  margin: auto;
+  color: black;
 }
 
 .footer_item {
-padding: 0 15px;
+  padding: 0 15px;
 }
