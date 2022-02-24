@@ -29,8 +29,6 @@
     <!-- {{ flask_consent_code() }} -->
 
     <div class="container">
-      <div></div>
-
       <div class="col s12">
         <div class="section">
           <h1>Liebe HAKRO-Partner,</h1>
@@ -59,11 +57,25 @@
             <li>Ihre Firma mit direktem Ansprechpartner und Kontaktdaten</li>
             <li>QR-Code über den Ihr Newsletter abonniert werden kann</li>
           </ul>
-          <div class="center-align">
-            <img src="{{url_for('static', filename='images/vorwort_beispiel.png')}}" alt="" class="responsive-img" />
+        </div>
+        <img src="{{url_for('static', filename='images/vorwort_leer_nozoom.png')}}" alt="" />
+        <div class="sticky_container">
+
+          <div class="sticky_element">
+            <div class="overlay_sticky_text">
+              <img src="{{url_for('static', filename='images/qr_code.png')}}" class="overlay_sticky_qr" />
+              <span id="output_company_name" style="font-weight: bold;">Ihre Firma</span><br />
+              <span id="output_streetname">Ihre Straße</span><br />
+              <span id="output_plz">PLZ</span>
+              <span id="output_city">Ort</span><br />
+              <span id="output_name">Ansprechpartner</span><br />
+              <span id="output_email">E-Mail Adresse</span><br />
+              <span id="output_phone">Telefonnummer</span>
+            </div>
           </div>
         </div>
-        <div style="margin-top: 30px" class="section">
+
+        <div style="margin-top: 80px" class="section">
           <a href="https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu" target="blank">Hier können Sie das
             Mailing als Flipbook ansehen</a>
         </div>
@@ -76,6 +88,7 @@
             <a href="mailto:kontakt@hakro.com" target="blank">herrhakro@hakro.com</a>
           </p>
         </div>
+
         <div class="section">
           <form method="post" enctype="multipart/form-data">
             <div class="row">
@@ -84,6 +97,11 @@
                 <input type="text" name="costumer_name" id="company_name" />
               </div>
             </div>
+
+
+
+
+
             <div class="row">
               <div class="input-field col s12">
                 <label for="streetname">Straße und Hausnummer *</label>
@@ -316,6 +334,34 @@
         }
       }, 1000);
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#company_name").on("input", function () {
+          $("#output_company_name").text($(this).val());
+        });
+        $("#streetname").on("input", function () {
+          $("#output_streetname").text($(this).val());
+        });
+        $("#plz").on("input", function () {
+          $("#output_plz").text($(this).val());
+        });
+        $("#city").on("input", function () {
+          $("#output_city").text($(this).val());
+        });
+        $("#name").on("input", function () {
+          $("#output_name").text($(this).val());
+        });
+        $("#email").on("input", function () {
+          $("#output_email").text($(this).val());
+        });
+        $("#phone").on("input", function () {
+          $("#output_phone").text($(this).val());
+        });
+      });
+    </script>
+
+
   </div>
 </body>
 
