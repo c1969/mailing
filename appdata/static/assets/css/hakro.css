@@ -22,7 +22,8 @@
 
 h1,
 h3,
-button {
+button,
+.qr_note {
   font-family: "Conduit ITC Medium";
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
@@ -558,35 +559,53 @@ li::before {
 }
 
 .sticky_container {
-  height: 960px;
+  height: 870px;
   position: absolute;
-  left: 16.4%;
-  pointer-events: none
+  left: 8.9%;
+  pointer-events: none;
+}
+.zoomed_element {
+  background-color: #b5c24e;
+  position: -webkit-sticky;
+  top: 30px;
+  width: 573px;
+  height: 140px;
+  z-index: 1000;
+  margin: -80px auto auto auto;
+  box-shadow: 0px 12px 20px #00000040;
 }
 
 .sticky_element {
-  background-color: #b4c43b;
+  background-color: #b5c24e;
   position: -webkit-sticky;
   position: sticky;
   top: 30px;
-  width: 470px;
+  width: 573px;
   height: 140px;
   z-index: 100;
-  margin: -90px auto auto auto;
+  margin: -80px auto auto auto;
   box-shadow: 0px 12px 20px #00000040;
 }
+
 .overlay_sticky_text {
-  width: 58%;
+  width: 78%;
   position: absolute;
-  top: 15.125%;
-  left: 27.75%;
+  top: 20.925%;
+  left: 22.15%;
   text-align: left;
   font-size: 13.7px;
   line-height: 16px;
 }
 .overlay_sticky_qr {
-  width: 26%;
+  width: 14%;
   position: absolute;
-  top: 11.8%;
-  left: -36.7%;
+  top: 20.8%;
+  left: 4.3%;
+}
+
+.qr_note {
+  font-size: 12px;
+  line-height: 20px;
+  margin-top: 0px;
+  color: #005800;
 }
