@@ -140,7 +140,7 @@
                     <input type="file" name="file_logo" id="file_logo" />
                   </div>
                   <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder=".png oder .eps *" />
+                    <input class="file-path validate" type="text" id="file_path" placeholder=".png oder .eps *" />
                   </div>
                 </div>
               </div>
@@ -271,18 +271,24 @@
           img = new Image();
           img.onload = function () {
             if (this.width > 135 || this.height > 101) {
+              clearFileInput();
               alert(
                 "Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)"
               );
-              location.reload();
             }
           };
           img.onerror = function () {
+            clearFileInput();
             alert("keine gültige Bilddatei: " + file.type);
           };
           img.src = _URL.createObjectURL(file);
         }
       });
+
+      const clearFileInput = () => {
+        document.getElementById("file_logo").value = null;
+        document.getElementById("file_path").value = null;
+      };
     </script>
     <script>
       // Set the date we're counting down to
