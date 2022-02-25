@@ -371,12 +371,6 @@ input[type="reset"] {
   }
 }
 
-.footer {
-  background-color: var(--hakro-green);
-  margin-top: 100px;
-  height: 30px;
-}
-
 .brand-logo {
   width: auto;
 }
@@ -538,27 +532,42 @@ li::before {
   }
 }
 
-.page-footer {
-  background-color: var(--hakro-green);
-  padding-top: 30px;
-  margin-top: 20px;
-}
-
-.footer {
-  background-color: white;
-  padding-bottom: 100px;
-  padding-top: 50px;
-}
 .footer_container {
   display: flex;
   justify-content: space-between;
   max-width: 700px;
   margin: auto;
+}
+
+.footer_green,
+.footer_white {
+  margin-top: 100px;
+  height: 30px;
+  padding-top: 50px;
+  padding-bottom: 150px;
+  background-color: #00000009;
+}
+
+.footer_green {
+  background-color: var(--hakro-green);
+}
+
+.footer_white {
+  background-color: white;
+}
+
+.footer_item_black,
+.footer_item_white {
+  font-size: 22px;
+  padding: 0 15px;
+}
+
+.footer_item_black {
   color: black;
 }
 
-.footer_item {
-  padding: 0 15px;
+.footer_item_white {
+  color: white;
 }
 
 .sticky_container {
