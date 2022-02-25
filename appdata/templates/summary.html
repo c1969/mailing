@@ -19,57 +19,65 @@
 
 <body>
   <div class="header">
-    <a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
+    <a href="/"><img class="brand-logo" src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
   </div>
 
-  <div class="container main">
+  <div class="container">
     <div class="col s6">
       <div class="section">
         <h1>Ihr Auftritt im HAKRO-Mailing</h1>
+        <h2 style="color: #b6c24f">Ihre Daten sehen gut aus!</h2>
         <p>
           Bitte prüfen Sie hier Ihre Angaben und Ihre Dateien. Mit dem finalen
           Upload Ihrer Daten bestätigen Sie Ihre Teilnahme und die
           Druckfreigabe für das HAKRO-Verkaufs-Mailing.
         </p>
+      </div>
+      <div class="section">
         <h2>Ihre personalisierte Rückseite:</h2>
         <ul>
           <li>Eindruck Ihrer Empfängeradressen</li>
           <li>Ihr Firmenlogo und Ihre Absenderdaten</li>
         </ul>
         <div class="container">
-          <img src="{{url_for('static', filename='images/umschlag_leer.png')}}" alt="" class="image_01" />
+          <img class="img_shadow" src="{{url_for('static', filename='images/umschlag_leer.png')}}" alt=""
+            class="image_01" />
           <img src="{{ logo }}" class="overlay_logo" alt="" />
           <p class="overlay_logo_text">
             {{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }} {{
             p['city'] }}
           </p>
         </div>
-
-        <!-- <p style="margin-bottom: 10px">Der QR-code im intro</p> -->
+      </div>
+      <div class="section">
         <h2>Ihr personalisiertes Vorwort:</h2>
         <ul>
           <li>Eindruck des Empfängernamens in der Anrede</li>
           <li>Ihre Angaben neben dem QR-Code für das Newsletter-Abo</li>
         </ul>
         <div class="container">
-          <img src="{{url_for('static', filename='images/vorwort_leer.png')}}" alt="" class="image_01" />
-          <img src="{{ qr }}" alt="" class="overlay_qr" />
-          <img src="{{ qr }}" alt="" class="overlay_qr_small" />
-          <div class="overlay_qr_text">
-            <span style="font-weight: bold">Ihr Fachhändler ist gerne für Sie da:</span><br />{{ p['name'] }}<br />
-            <span>{{ p['costumer_name']}}<br />{{ p['streetname'] }}<br />{{ p['plz'] }} {{ p['city'] }}
-              <br />E-Mail: {{ p['email'] }}<br />Telefon: {{ p['phone'] }} </span>
-          </div>
-          <div class="overlay_qr_text_small">
-            <span style="font-weight: bold">Ihr Fachhändler ist gerne für Sie da:</span><br />
-            <span>{{ p['costumer_name']}}<br />{{ p['streetname'] }}<br />{{ p['plz'] }} {{ p['city'] }}
-              <br />E-Mail: {{ p['email'] }}<br />Telefon: {{ p['phone'] }} </span>
+          <img class="img_shadow" src="{{url_for('static', filename='images/vorwort_leer_nozoom.png')}}" alt=""
+            class="image_01" />
+          <div class="fixed_element">
+            <div class="overlay_sticky_text">
+              <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
+              <span>{{ p['costumer_name']}}</span>,
+              <span>{{ p['streetname'] }}</span>,
+              <span>{{ p['plz'] }}</span>
+              <span>{{ p['city'] }}</span>,<br />
+              Ansprechpartner: <span>{{ p['name'] }}</span><br />
+              Tel. <span>{{ p['phone'] }}</span>,
+              E-mail: <span>{{ p['email'] }}</span><br />
+              <div class="qr_note">FÜR WEITERE INFORMATIONEN
+                EINFACH DEN QR-CODE MIT IHREM SMARTPHONE FOTOGRAFIEREN</div>
+            </div>
+            <img src="{{ qr }}" alt="" class="overlay_sticky_qr" />
           </div>
         </div>
       </div>
 
       <div class="section">
-        <h2 style="margin-bottom: 40px; margin-top: 90px">
+        <h2 style="margin-bottom: 40px;">
           Ihre Eingaben im Überblick:
         </h2>
 
@@ -153,32 +161,6 @@
             </tbody>
           </table>
         </div>
-
-        <!-- <div>
-          <h1>Nicht vergessen: der Countdown läuft.</h1>
-          <h2 style="margin-top: 0">7 Tage, 14 Stunden, 3 Minuten!</h2>
-          <p style="margin-bottom: 60px">
-            Um dabei zu sein, müssen Sie den Upload abschließen bis
-            spätestens: 31.04.2022
-          </p>
-        </div> -->
-
-        <!-- <div style="margin-bottom: 50px">
-          <div>
-            <label>
-              <input type="checkbox" class="filled-in" checked="checked" />
-              <span>Ich akzeptiere lorem ipsum</span>
-            </label>
-          </div>
-
-          <div>
-            <label>
-              <input type="checkbox" class="filled-in" checked="checked" />
-              <span>Ich akzeptiere lorem ipsum</span>
-            </label>
-          </div>
-        </div> -->
-
         <div class="button_row">
           <div>
             <form method="POST">
@@ -198,7 +180,7 @@
       </div>
     </div>
   </div>
-  <div class="footer"></div>
+  <div style="margin-top: 50px" class="page-footer"></div>
 
   <!-- Scripts -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

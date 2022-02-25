@@ -19,7 +19,7 @@
 
 <body>
   <div class="header">
-    <a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
+    <a href="/"><img class="brand-logo" src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
   </div>
   <div class="mobile">
     <h2>Bitte rufen sie diese Seite über Ihren Mac oder PC auf.</h2>
@@ -29,8 +29,6 @@
     <!-- {{ flask_consent_code() }} -->
 
     <div class="container">
-      <div></div>
-
       <div class="col s12">
         <div class="section">
           <h1>Liebe HAKRO-Partner,</h1>
@@ -49,7 +47,8 @@
             <li>Ihr Firmenlogo und Ihre Absenderdaten</li>
           </ul>
           <div class="center-align">
-            <img src="{{url_for('static', filename='images/umschlag_beispiel.png')}}" alt="" class="responsive-img" />
+            <img class="img_shadow" src="{{url_for('static', filename='images/umschlag_beispiel.png')}}" alt=""
+              class="responsive-img" />
           </div>
         </div>
         <div class="section">
@@ -59,11 +58,26 @@
             <li>Ihre Firma mit direktem Ansprechpartner und Kontaktdaten</li>
             <li>QR-Code über den Ihr Newsletter abonniert werden kann</li>
           </ul>
-          <div class="center-align">
-            <img src="{{url_for('static', filename='images/vorwort_beispiel.png')}}" alt="" class="responsive-img" />
+          <img class="img_shadow" src="{{url_for('static', filename='images/vorwort_leer_nozoom.png')}}" alt="" />
+          <div class="sticky_container">
+            <div class="sticky_element">
+              <img src="{{url_for('static', filename='images/qr_code.png')}}" class="overlay_sticky_qr" />
+              <div class="overlay_sticky_text">
+                <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
+                <span id="output_company_name">Ihre Firma</span>,
+                <span id="output_streetname">Ihre Straße</span>,
+                <span id="output_plz">PLZ</span>
+                <span id="output_city">Ort</span>,<br />
+                Ansprechpartner: <span id="output_name">Ansprechpartner</span><br />
+                Tel. <span id="output_phone">Telefonnummer</span>,
+                E-mail: <span id="output_email">E-Mail Adresse</span><br />
+                <div class="qr_note">FÜR WEITERE INFORMATIONEN
+                  EINFACH DEN QR-CODE MIT IHREM SMARTPHONE FOTOGRAFIEREN</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div style="margin-top: 30px" class="section">
+        <div style="margin-top: 160px" class="section">
           <a href="https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu" target="blank">Hier können Sie das
             Mailing als Flipbook ansehen</a>
         </div>
@@ -76,6 +90,7 @@
             <a href="mailto:kontakt@hakro.com" target="blank">herrhakro@hakro.com</a>
           </p>
         </div>
+
         <div class="section">
           <form method="post" enctype="multipart/form-data">
             <div class="row">
@@ -108,30 +123,23 @@
             </div>
             <div class="row">
               <div class="input-field col s12">
+                <label for="phone">Telefonnummer *</label>
+                <input type="tel" name="phone" id="phone" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
                 <label for="email">E-Mail Adresse *</label>
                 <input type="email" name="email" id="email" />
               </div>
             </div>
 
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="phone">Telefonnummer *</label>
-                <input type="tel" name="phone" id="phone" />
-              </div>
-            </div>
-            <!-- <h2>Kundennummer?</h2>
-              <div class="row">
-                <div class="input-field col s12">
-                  <label for="costumer_id">Ihre Kundennummer *</label>
-                  <input type="text" name="costumer_id" id="costumer_id" />
-                </div>
-              </div> -->
             <div class="section">
               <h2>Ihr Firmenlogo</h2>
               <p style="margin-bottom: 0">
                 Bitte laden Sie ihr Firmenlogo als Vektordatei (.eps) oder
                 hochauflösende portable Network Graphic (.png) hoch. Farbige
-                Logos werden in Graustufen gedruckt
+                Logos werden in Graustufen gedruckt.
               </p>
               <div class="input-field col s12" style="padding: 0">
                 <div class="file-field input-field">
@@ -248,16 +256,8 @@
         </div>
       </div>
     </div>
-    <div class="footer"></div>
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-      </div>
-    </div>
+    <div class="page-footer"></div>
+
     <!-- Scripts -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -322,6 +322,34 @@
         }
       }, 1000);
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#company_name").on("input", function () {
+          $("#output_company_name").text($(this).val());
+        });
+        $("#streetname").on("input", function () {
+          $("#output_streetname").text($(this).val());
+        });
+        $("#plz").on("input", function () {
+          $("#output_plz").text($(this).val());
+        });
+        $("#city").on("input", function () {
+          $("#output_city").text($(this).val());
+        });
+        $("#name").on("input", function () {
+          $("#output_name").text($(this).val());
+        });
+        $("#email").on("input", function () {
+          $("#output_email").text($(this).val());
+        });
+        $("#phone").on("input", function () {
+          $("#output_phone").text($(this).val());
+        });
+      });
+    </script>
+
+
   </div>
 </body>
 
