@@ -344,10 +344,10 @@ input[type="reset"] {
   color: black;
   background-color: transparent;
   border-color: black;
-  border: 1px solid black;
+  border: 1px solid var(--hakro-darkgray);
 }
 .button_primary:hover {
-  opacity: 0.8;
+background-color: #c90025;
   cursor: pointer;
 }
 
@@ -357,7 +357,7 @@ input[type="reset"] {
 }
 
 .button_secondary:hover {
-  background-color: rgba(0, 0, 0, 0.057);
+  border: 1px solid black;
   cursor: pointer;
 }
 
