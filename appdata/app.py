@@ -8,7 +8,7 @@ from flask_wtf.csrf import CSRFProtect, CSRFError
 
 import uuid
 import pickle
-from datetime import datetime
+from datetime import datetime, timedelta
 from PIL import Image
 import qrcode
 
@@ -102,9 +102,10 @@ def index():
 
         #return redirect(url_for('checking', sid=session_id))
 
+        expire_date = datetime.now() + timedelta(minutes=5)
         resp = make_response(redirect(url_for('checking', sid=session_id)))
         token = auth_s.dumps({"id": 0, "data": d})
-        resp.set_cookie('_cid', token)
+        resp.set_cookie('_cid', token, expires=expire_date)
         return resp
 
     return render_template('index.html')
@@ -195,10 +196,11 @@ def done():
     #session_id = s1['session_id']
     #TODO EXP DATE in Verganenheit
     s1 = {}
+    expire_date = datetime.now() - timedelta(days=1)
 
     resp = make_response(render_template('done.html'))
     token = auth_s.dumps({"id": 0, "data": s1})
-    resp.set_cookie('_cid', token)
+    resp.set_cookie('_cid', token, expires=expire_date)
     return resp
 
 
