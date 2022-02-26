@@ -89,13 +89,17 @@ def index():
             #return redirect(request.url)
         if file_data and allowed_file_data(file_data.filename):
             filename_data = secure_filename(file_data.filename)
-            file_data.save(os.path.join(app.config['UPLOAD_FOLDER'], session_id, filename_data))
-            d['file_data'] = filename_data
+            fdd = filename_data.rsplit('.', 1)
+            fname_file = session_id + "." +fdd[1]
+            file_data.save(os.path.join(app.config['UPLOAD_FOLDER'], session_id, fname_file))
+            d['file_data'] = fname_file
 
         if file_logo and allowed_file_image(file_logo.filename):
             filename_logo = secure_filename(file_logo.filename)
-            file_logo.save(os.path.join(app.config['UPLOAD_FOLDER'], session_id, filename_logo))
-            d['file_logo'] = filename_logo
+            fdl = filename_logo.rsplit('.', 1)
+            fname_logo = session_id + "." +fdl[1]
+            file_logo.save(os.path.join(app.config['UPLOAD_FOLDER'], session_id, fname_logo))
+            d['file_logo'] = fname_logo
 
         p3 = f'{session_id}.cust'
         pickle.dump(d, open(os.path.join(app.config['UPLOAD_FOLDER'], session_id, p3), 'wb'))

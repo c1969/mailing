@@ -138,18 +138,17 @@
             <div class="section">
               <h2>Ihr Firmenlogo</h2>
               <p style="margin-bottom: 0">
-                Bitte laden Sie ihr Firmenlogo als Vektordatei (.eps) oder
-                hochauflösende portable Network Graphic (.png) hoch. Farbige
+                Bitte laden Sie ihr Firmenlogo in einem der folgenden Dateitypen hoch. Farbige
                 Logos werden in Graustufen gedruckt.
               </p>
               <div class="input-field col s12" style="padding: 0">
                 <div class="file-field input-field">
                   <div class="button_secondary">
                     <span>Datei</span>
-                    <input type="file" name="file_logo" id="file_logo" class="validate" required="required" />
+                    <input type="file" name="file_logo" id="file_logo" class="validate" required="required" accept="image/png, image/jpg, image/jpeg, image/tiff"/>
                   </div>
                   <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" id="file_path" placeholder=".png oder .eps *" />
+                    <input class="file-path validate" type="text" id="file_path" placeholder=".png | .jpg | .jpeg | .tiff *" />
                   </div>
                 </div>
               </div>
@@ -226,7 +225,7 @@
                 <div class="file-field input-field">
                   <div class="button_secondary">
                     <span>Datei</span>
-                    <input type="file" name="file_data" id="file_data" class="validate" required="required" />
+                    <input type="file" name="file_data" id="file_data" class="validate" required="required" accept="text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet " />
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder=".csv oder .xslx *" />
