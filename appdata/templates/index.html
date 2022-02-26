@@ -25,8 +25,25 @@
     <h2>Bitte rufen sie diese Seite über Ihren Mac oder PC auf.</h2>
     <a href="https://www.hakro.com">Weiter zu Hakro.com</a>
   </div>
-  <div class="desktop">
-    <!-- {{ flask_consent_code() }} -->
+
+  <div class="desktop" onload="Cookie()">
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Auch bei uns gibt es Cookies</h4>
+        <p>Auf der Seite https://dialog.hakro.com verwenden wir nur 1 Cookie und das ist auch noch von uns selbst.
+          Dieses Cookie nutzen wir um die sichere Datenübertragung sicherzustellen. Tatsächlich nutzen wir keinerlei
+          3t-Anbieter zur Analyse oder ähnlicher Dinge.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="https://hakro.com" class="modal-close waves-effect waves-green btn-flat">nicht für mich</a>
+        <a href="" class="modal-close waves-effect waves-green btn-flat">Einverstanden</a>
+      </div>
+    </div>
+
+    <button data-target="modal1" class="btn modal-trigger">Cookie Temp</button>
+
+
+
 
     <div class="container">
       <div class="col s12">
@@ -97,13 +114,15 @@
             <div class="row">
               <div class="input-field col s12">
                 <label for="costumer_name">Name Ihrer Firma *</label>
-                <input type="text" name="costumer_name" id="company_name" class="validate" required="required" pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
+                <input type="text" name="costumer_name" id="company_name" class="validate" required="required"
+                  pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="streetname">Straße und Hausnummer *</label>
-                <input type="text" name="streetname" id="streetname" class="validate" required="required" pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
+                <input type="text" name="streetname" id="streetname" class="validate" required="required"
+                  pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
               </div>
             </div>
             <div class="row">
@@ -113,7 +132,8 @@
               </div>
               <div class="input-field col s8">
                 <label for="city">Ort *</label>
-                <input type="text" name="city" id="city" class="validate" required="required" pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
+                <input type="text" name="city" id="city" class="validate" required="required"
+                  pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
               </div>
             </div>
             <div class="row">
@@ -131,7 +151,8 @@
             <div class="row">
               <div class="input-field col s12">
                 <label for="email">E-Mail Adresse *</label>
-                <input type="email" name="email" id="email" class="validate" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                <input type="email" name="email" id="email" class="validate" required="required"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
               </div>
             </div>
 
@@ -145,10 +166,12 @@
                 <div class="file-field input-field">
                   <div class="button_secondary">
                     <span>Datei</span>
-                    <input type="file" name="file_logo" id="file_logo" class="validate" required="required" accept="image/png, image/jpg, image/jpeg, image/tiff"/>
+                    <input type="file" name="file_logo" id="file_logo" class="validate" required="required"
+                      accept="image/png, image/jpg, image/jpeg, image/tiff" />
                   </div>
                   <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" id="file_path" placeholder=".png | .jpg | .jpeg | .tiff *" />
+                    <input class="file-path validate" type="text" id="file_path"
+                      placeholder=".png | .jpg | .jpeg | .tiff *" />
                   </div>
                 </div>
               </div>
@@ -225,7 +248,8 @@
                 <div class="file-field input-field">
                   <div class="button_secondary">
                     <span>Datei</span>
-                    <input type="file" name="file_data" id="file_data" class="validate" required="required" accept="text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet " />
+                    <input type="file" name="file_data" id="file_data" class="validate" required="required"
+                      accept="text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet " />
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder=".csv oder .xslx *" />
@@ -406,7 +430,25 @@
         M.updateTextFields();
       });
     </script>
+    <script>
+      let OSName;
+      if (navigator.appVersion.indexOf("Win") != -1) OSName = "Windows";
+      if (navigator.appVersion.indexOf("Mac") != -1) OSName = "MacOS";
+      if (navigator.appVersion.indexOf("X11") != -1) OSName = "UNIX";
+      if (navigator.appVersion.indexOf("Linux") != -1) OSName = "Linux";
 
+      console.log('Your OS: ' + OSName);
+      if (OSName == Windows) {
+        window.location.replace("http://www.hakro.com");
+      }
+    </script>
+    <script>
+      function Cookie(){
+        const elems = document.querySelectorAll('.modal');
+        const instances = M.Modal.init(elems, options);
+        instances.open();
+      }
+    </script>
 
   </div>
 </body>

@@ -19,6 +19,19 @@ function checkImage() {
   });
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   M.updateTextFields();
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.tooltipped');
+  var instances = M.Tooltip.init(elems, options);
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll(".modal");
+  var instances = M.Modal.init(elems, options);
+});
+
+
