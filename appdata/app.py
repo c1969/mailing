@@ -1,5 +1,6 @@
 import os
 import re
+import csv
 from flask import Flask, redirect, render_template, session, url_for, request, g, make_response, flash, send_from_directory, send_file, Response, abort
 from werkzeug.utils import secure_filename
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -144,15 +145,28 @@ def summary():
     logo_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_logo'])
     data_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_data'])
     if s1['file_data'].endswith('.csv') or s1['file_data'].endswith('.CSV') :
+            sniffer = csv.Sniffer()
             df = pd.read_csv(data_path, header=None, sep=';')
+            dfx = df.iloc[:10]
     elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX'):
             df = pd.read_excel(data_path, header=None)
+            dfx = df.iloc[:10]
     elif s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
             df = pd.read_excel(data_path, header=None)
+            dfx = df.iloc[:10]
     else:
         return redirect(url_for('error', e=200))
 
-    dfx = df.iloc[:10]
+    if df is not None:
+        y, x = df.shape
+        if x > 7:
+            return redirect(url_for('error', e=202))
+        if y > 2500:
+            return redirect(url_for('error', e=203))
+    else:
+        return redirect(url_for('error', e=201))
+
+    
 
     len_df = len(df)
     if request.method == 'POST':
