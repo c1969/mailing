@@ -97,41 +97,41 @@
             <div class="row">
               <div class="input-field col s12">
                 <label for="costumer_name">Name Ihrer Firma *</label>
-                <input type="text" name="costumer_name" id="company_name" />
+                <input type="text" name="costumer_name" id="company_name" class="validate" required="required" />
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="streetname">Straße und Hausnummer *</label>
-                <input type="text" name="streetname" id="streetname" required="required" />
+                <input type="text" name="streetname" id="streetname" class="validate" required="required" />
               </div>
             </div>
             <div class="row">
               <div class="input-field col s4">
                 <label for="plz">Postleitzahl *</label>
-                <input type="text" name="plz" id="plz" />
+                <input type="text" name="plz" id="plz" class="validate" required="required" />
               </div>
               <div class="input-field col s8">
                 <label for="city">Ort *</label>
-                <input type="text" name="city" id="city" />
+                <input type="text" name="city" id="city" class="validate" required="required" />
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="name">Ansprechpartner</label>
-                <input type="text" name="name" id="name" required="reuqired" />
+                <input type="text" name="name" id="name" class="validate" />
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="phone">Telefonnummer *</label>
-                <input type="tel" name="phone" id="phone" />
+                <input type="tel" name="phone" id="phone" class="validate" required="required" />
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="email">E-Mail Adresse *</label>
-                <input type="email" name="email" id="email" />
+                <input type="email" name="email" id="email" class="validate" required="required" />
               </div>
             </div>
 
@@ -146,7 +146,7 @@
                 <div class="file-field input-field">
                   <div class="button_secondary">
                     <span>Datei</span>
-                    <input type="file" name="file_logo" id="file_logo" />
+                    <input type="file" name="file_logo" id="file_logo" class="validate" required="required" />
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" id="file_path" placeholder=".png oder .eps *" />
@@ -226,7 +226,7 @@
                 <div class="file-field input-field">
                   <div class="button_secondary">
                     <span>Datei</span>
-                    <input type="file" name="file_data" id="file_data" />
+                    <input type="file" name="file_data" id="file_data" class="validate" required="required" />
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder=".csv oder .xslx *" />
@@ -400,6 +400,12 @@
     </script>
     <script type="text/javascript">
       var csrftoken = "{{ csrf_token() }}"
+    </script>
+    <script>
+      M.AutoInit();
+      $(document).ready(function () {
+        M.updateTextFields();
+      });
     </script>
 
 

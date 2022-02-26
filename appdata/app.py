@@ -114,6 +114,8 @@ def index():
 def checking():
 
     hash_cookie = request.cookies.get('_cid')
+    if hash_cookie == None:
+        return redirect(url_for('index'))
     data_cookie = auth_s.loads(hash_cookie)
     s1 = data_cookie['data']
 
@@ -132,6 +134,8 @@ def checking():
 def summary():
 
     hash_cookie = request.cookies.get('_cid')
+    if hash_cookie == None:
+        return redirect(url_for('index'))
     data_cookie = auth_s.loads(hash_cookie)
     s1 = data_cookie['data']
 
@@ -190,6 +194,8 @@ def summary():
 @app.route('/done', methods=['GET', 'POST'])
 def done():
     hash_cookie = request.cookies.get('_cid')
+    if hash_cookie == None:
+        return redirect(url_for('index'))
     data_cookie = auth_s.loads(hash_cookie)
     s1 = data_cookie['data']
 
