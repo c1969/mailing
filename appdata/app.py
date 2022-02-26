@@ -4,6 +4,7 @@ from flask import Flask, redirect, render_template, session, url_for, request, g
 from werkzeug.utils import secure_filename
 from werkzeug.middleware.proxy_fix import ProxyFix
 from flask_consent import Consent
+from flask_wtf.csrf import CSRFProtect, CSRFError
 
 import uuid
 import pickle
@@ -32,6 +33,8 @@ app.config['CONSENT_FULL_TEMPLATE'] = 'consent.html'
 app.config['CONSENT_BANNER_TEMPLATE'] = 'consent_banner.html'
 consent = Consent(app)
 consent.add_standard_categories()
+
+csrf = CSRFProtect(app)
 
 auth_s = URLSafeSerializer("blubbblubb12edoejfdolfndjnfflkjnfnlfndajlkn", "auth") 
 
@@ -236,6 +239,10 @@ def error():
     err = E.get_error(errorid=errorcode)
 
     return render_template('error.html', err=err[0])
+
+@app.errorhandler(CSRFError)
+def handle_csrf_error(e):
+    return render_template('csrf_error.html', reason=e.description), 400
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

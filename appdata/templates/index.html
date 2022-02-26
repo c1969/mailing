@@ -93,6 +93,7 @@
 
         <div class="section">
           <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <div class="row">
               <div class="input-field col s12">
                 <label for="costumer_name">Name Ihrer Firma *</label>
@@ -330,7 +331,7 @@
         // If the count down is over, write some text
         if (distance <= 0) {
           document.getElementById("countdown").innerHTML = "EXPIRED";
-          if(intervalId) {
+          if (intervalId) {
             clearInterval(intervalId);
           }
         }
@@ -338,28 +339,28 @@
         // Output the result in an element with id="countdown"
         document.getElementById("countdown").innerHTML = "Nur noch " + remainingTime;
       };
-      
+
       const getDays = (distance) => {
         return {
           value: Math.floor(distance / MILLISECONDS_PER_DAY),
           unit: "Tage"
         };
       }
-      
+
       const getHours = (distance) => {
         return {
           value: Math.floor((distance % MILLISECONDS_PER_DAY) / MILLISECONDS_PER_HOUR),
           unit: "Stunden"
         };
       };
-      
+
       const getMinutes = (distance) => {
         return {
           value: Math.floor((distance % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE),
           unit: "Minuten"
         };
       };
-      
+
       const getSeconds = (distance) => {
         return {
           value: Math.floor((distance % MILLISECONDS_PER_MINUTE) / MILLISECONDS_PER_SECOND),
@@ -396,6 +397,9 @@
           $("#output_phone").text($(this).val());
         });
       });
+    </script>
+    <script type="text/javascript">
+      var csrftoken = "{{ csrf_token() }}"
     </script>
 
 
