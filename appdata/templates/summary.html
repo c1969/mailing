@@ -172,6 +172,7 @@
           <div>
             <form method="POST">
               <button class="button_primary" type="submit">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 Upload senden
               </button>
             </form>
@@ -203,6 +204,10 @@
       var instances = M.Modal.init(elems, options);
     });
   </script>
+  <script type="text/javascript">
+    var csrftoken = "{{ csrf_token() }}"
+  </script>
+
 </body>
 
 </html>

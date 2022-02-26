@@ -242,7 +242,8 @@ def error():
 
 @app.errorhandler(CSRFError)
 def handle_csrf_error(e):
-    return render_template('csrf_error.html', reason=e.description), 400
+    csrf_err = True
+    return render_template('error.html', err=e.description, csrf_err=csrf_err), 400
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
