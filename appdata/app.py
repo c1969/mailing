@@ -37,7 +37,7 @@ consent.add_standard_categories()
 
 csrf = CSRFProtect(app)
 
-auth_s = URLSafeSerializer("blubbblubb12edoejfdolfndjnfflkjnfnlfndajlkn", "auth") 
+auth_s = URLSafeSerializer("blubbblubfdfsdb12edoejfdolfndjnfflkjnfnlfndajlkn", "auth") 
 
 db = dbx()
 E = Errors()
