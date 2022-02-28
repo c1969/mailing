@@ -115,6 +115,7 @@
                 <label for="costumer_name">Name Ihrer Firma *</label>
                 <input type="text" name="costumer_name" id="company_name" class="validate" required="required"
                   pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
+                <div class="helper-text" data-error="Bitte geben Sie ihre Firma ein"></div>
               </div>
             </div>
             <div class="row">
@@ -122,29 +123,35 @@
                 <label for="streetname">Straße und Hausnummer *</label>
                 <input type="text" name="streetname" id="streetname" class="validate" required="required"
                   pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
+                <span class="helper-text" data-error="Bitte geben Sie ihre Straße und Hausnummer ein"></span>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s4">
                 <label for="plz">Postleitzahl *</label>
                 <input type="text" name="plz" id="plz" class="validate" required="required" pattern="\d*" />
+                <span class="helper-text" data-error="Bitte geben Ihre Posleitzahl ein"></span>
               </div>
               <div class="input-field col s8">
                 <label for="city">Ort *</label>
                 <input type="text" name="city" id="city" class="validate" required="required"
                   pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
+                <span class="helper-text" data-error="Bitte geben Sie ihren Ort ein"></span>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="name">Ansprechpartner</label>
                 <input type="text" name="name" id="name" class="validate" />
+                <span class="helper-text" data-error="Bitte geben Sie Ihren Ansprechpartner ein"></span>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <label for="phone">Telefonnummer *</label>
                 <input type="tel" name="phone" id="phone" class="validate" required="required" pattern="\d*" />
+                <span class="helper-text"
+                  data-error="Bitte geben Sie ihre Telefonnummer ohne Leer- oder Sonderzeichen ein"></span>
               </div>
             </div>
             <div class="row">
@@ -152,9 +159,9 @@
                 <label for="email">E-Mail Adresse *</label>
                 <input type="email" name="email" id="email" class="validate" required="required"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                <span class="helper-text" data-error="Bitte geben Sie eine gültige E-Mail Adresse"></span>
               </div>
             </div>
-
             <div class="section">
               <h2>Ihr Firmenlogo</h2>
               <p style="margin-bottom: 0">
@@ -271,7 +278,7 @@
               </div>
             </div>
             <div class="section">
-              <p style="font-size: 20px; margin-top: 30px">
+              <p style="font-size: 16px; margin-top: 50px;">
                 * Pflichtfelder
               </p>
             </div>

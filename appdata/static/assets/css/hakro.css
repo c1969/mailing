@@ -186,7 +186,7 @@ li::before {
 }
 
 .input-field > label:not(.label-icon).active {
-  transform: translateY(-15px) scale(0.6);
+  transform: translateY(-10px) scale(0.6);
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
 }
@@ -447,7 +447,7 @@ input[type="reset"] {
   width: 15%;
   position: absolute;
   top: 62%;
-  left: 18.2%;
+  left: 17.5%;
 }
 .overlay_logo_text {
   width: 31%;
@@ -570,6 +570,7 @@ li::before {
 .desktop {
   display: block;
 }
+
 @media only screen and (max-width: 640px) {
   .desktop {
     display: none;
@@ -581,6 +582,14 @@ li::before {
   justify-content: space-between;
   max-width: 700px;
   margin: auto;
+}
+
+@media only screen and (max-width: 640px) {
+  .footer_container {
+    flex-direction: column;
+    align-items: center;
+    line-height: 50px;
+  }
 }
 
 .footer_green,
@@ -604,6 +613,14 @@ li::before {
 .footer_item_white {
   font-size: 20px;
   padding: 0 30px;
+}
+
+@media only screen and (max-width: 640px) {
+  .footer_item_black,
+  .footer_item_white {
+    padding: 0 0;
+    text-align: center;
+  }
 }
 
 .footer_item_black {
