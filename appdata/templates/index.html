@@ -291,6 +291,15 @@
         </div>
       </div>
     </div>
+    <div id="notification" class="modal">
+      <div class="modal-content">
+        <h4>Hinweis</h4>
+        <p id="notification-message"></p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Schlie&szlig;en</a>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -304,20 +313,25 @@
         if ((file = this.files[0])) {
           img = new Image();
           img.onload = function () {
-            if (this.width > 135 || this.height > 101) {
+            if (this.width > 135 || this.height > 100) {
               clearFileInput();
-              alert(
-                "Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)"
-              );
+              showNotification("Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)");
             }
           };
           img.onerror = function () {
             clearFileInput();
-            alert("keine gültige Bilddatei: " + file.type);
+            showNotification("keine gültige Bilddatei: " + file.type);
           };
           img.src = _URL.createObjectURL(file);
         }
       });
+
+      const showNotification = (message) => {
+        $("#notification-message").text(message);
+        const element = document.getElementById("notification");
+        const modal = M.Modal.init(element);
+        modal.open();
+      };
 
       const clearFileInput = () => {
         document.getElementById("file_logo").value = null;
