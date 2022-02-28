@@ -44,7 +44,7 @@
           <li>Eindruck Ihrer Empfängeradressen</li>
           <li>Ihr Firmenlogo und Ihre Absenderdaten</li>
         </ul>
-        <div class="container">
+        <div class="img_preview">
           <img class="img_shadow" src="{{url_for('static', filename='images/umschlag_leer.png')}}" alt=""
             class="image_01" />
           <img src="{{ logo }}" class="overlay_logo" alt="" />
@@ -60,7 +60,7 @@
           <li>Eindruck des Empfängernamens in der Anrede</li>
           <li>Ihre Angaben neben dem QR-Code für das Newsletter-Abo</li>
         </ul>
-        <div class="container">
+        <div class="img_preview">
           <img class="img_shadow" src="{{url_for('static', filename='images/vorwort_leer_nozoom.png')}}" alt=""
             class="image_01" />
           <div class="fixed_element">
@@ -181,7 +181,8 @@
           <div>
             <form method="POST">
               {% if not p['name'] %}
-              <button class="button_primary tooltipped" data-position="bottom" data-tooltip="Gerne können Sie noch einen Ansprechpartner hinterlassen. Einfach auf Zurück klicken."
+              <button class="button_primary tooltipped" data-position="bottom"
+                data-tooltip="Gerne können Sie noch einen Ansprechpartner hinterlassen. Einfach auf Zurück klicken."
                 type="submit">Upload senden</button>
               {% else %}
               <button class="button_primary" type="submit">Upload senden</button>
