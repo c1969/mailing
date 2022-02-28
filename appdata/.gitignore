@@ -1,6 +1,6 @@
 assets2/
 env/
-static/upload/
+static/upload/*/*
 templates/*.bak
 
 *.ipynb
