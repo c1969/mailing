@@ -61,7 +61,7 @@ def index():
 
     if request.method == "POST":
         session_id = set_session_id()
-        os.mkdir(os.path.join(os.path.join(app.config['UPLOAD_FOLDER'], session_id)))
+        os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
         cid = db.get_costumer_id()
         cid = cid
         d = dict(request.form)
