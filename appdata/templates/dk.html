@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}">
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/dk.css')}}">
 	<noscript>
 		<link rel="stylesheet" href="static/assets/css/noscript.css" />
 	</noscript>
@@ -75,16 +76,8 @@
 					<h2 style="margin-top: 60px;">
 						HAKRO-Teamwear interessiert mich:
 					</h2>
-					<!-- <div class="input-field col s4">
-						<p>
-							<label>
-								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
-								<span>HAKRO-Teamwear interessiert mich.</span>
-							</label>
-						</p>
-					</div> -->
 					<div class="input-field col s4">
-						<p>
+						<p style="margin-bottom: 0px;">
 							<label>
 								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
 								<span>Bitte schicken Sie mir eine E-Mail.</span>
@@ -99,7 +92,7 @@
 						</div>
 					</div>
 					<div class="input-field col s4">
-						<p>
+						<p style="margin-bottom: 0px;">
 							<label>
 								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
 								<span>Bitte rufen Sie mich an.</span>
@@ -119,7 +112,7 @@
 
 	<!-- Waschtest -->
 
-	<!-- <div>
+	<div class="washtest">
 		<div class="shirt_container white_text">
 			<div class="shirt_wrapper">
 				<div class="shirt_text">
@@ -146,7 +139,7 @@
 						<p>
 							<label>
 								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
-								<span>Ja, gratis T-Shirt anfordern</span>
+								<span>Ja, Gratis-Shirt anfordern.</span>
 							</label>
 						</p>
 					</div>
@@ -154,9 +147,9 @@
 				</form>
 			</div>
 		</div>
-	</div> -->
+	</div>
 
-	<div class="container" style="height: 80px;">
+	<div class="container" style="height: 90px;">
 		<div class="col s6">
 			<div class="section">
 				<button class="button_primary" type="submit">senden</button>
@@ -167,55 +160,61 @@
 
 	<!-- Dealer -->
 
-	<footer class="page-footer" style="background-color: #B6C24F; padding-bottom: 70px;">
-		<div class="container">
-			<div class="col l12 s12">
-				<h3 class="white-text">Ihr persönlicher Fachhändler:</h3>
-				<p style="font-weight: bold;">
-					{{ e[2] }}
-				</p>
-				<p>
-					{{ e[4] }}<br>
-					{{ e[5] }}<br>
-					{{ e[6] }} {{ e[7] }}<br>
-				</p>
-				<p>
-					{{ e[9] }}<br />
-					<a href="mailto:{{ e[8] }}" style="color: white;">{{ e[8] }}</a>
-				</p>
+	<div class="no-washtest">
+		<footer class="page-footer" style="background-color: #B6C24F; padding-bottom: 40px;">
+			<div class="container">
+				<div class="col l12 s12">
+					<h3 style="margin-top: 30px;" class="white-text">Ihr persönlicher Fachhändler:</h3>
+					<p style="font-weight: bold;">
+						{{ e[2] }}
+					</p>
+					<p>
+						{{ e[4] }}<br>
+						{{ e[5] }}<br>
+						{{ e[6] }} {{ e[7] }}<br>
+					</p>
+					<p>
+						{{ e[9] }}<br />
+						<a href="mailto:{{ e[8] }}" style="color: white;">{{ e[8] }}</a>
+					</p>
+				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
+	</div>
 
 	<!-- White Footer -->
 
-	<div class="footer_white">
-		<div class="footer_container">
-			<div>
-				<a class="footer_item_black" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
-			</div>
-			<div>
-				<a class="footer_item_black" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
-					rights
-					reserved</a>
+	<div class="no-washtest">
+		<div class="footer_white">
+			<div class="footer_container">
+				<div>
+					<a class="footer_item_black" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
+				</div>
+				<div>
+					<a class="footer_item_black" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
+						rights
+						reserved</a>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- Green Footer-->
 
-	<!-- <div class="footer_green">
-		<div class="footer_container">
-			<div>
-				<a class="footer_item_white" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
-			</div>
-			<div>
-				<a class="footer_item_white" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
-					rights
-					reserved</a>
+	<div class="washtest">
+		<div class="footer_green" style="margin-top: 0px;">
+			<div class="footer_container">
+				<div>
+					<a class="footer_item_white" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
+				</div>
+				<div>
+					<a class="footer_item_white" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
+						rights
+						reserved</a>
+				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

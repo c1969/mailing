@@ -1,0 +1,8 @@
+.washtest {
+  /* display: none; */
+  display: block;
+}
+.no-washtest {
+  display: none;
+  /* display: block; */
+}
