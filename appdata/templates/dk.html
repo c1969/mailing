@@ -18,28 +18,30 @@
 	</div>
 	<div class="container">
 		<div class="col s6">
+
 			<div class="section">
 				<h1>Hallo {{d[2]}} {{d[3]}},</h1>
-				<h2>schön, dass Sie sich für HAKRO entschieden haben.</h2>
+				<h2>schön, dass Sie sich für nachhaltige, faire und haltbare Teambekleidung von HAKRO interessieren.
+				</h2>
 				<p>
-					Ihr persönlicher Fachhändler {{ e[2] }} in {{
-					e[6] }} {{ e[7] }}
-					wird sich gerne mit Ihnen in Verbindung setzen. Bitte prüfen Sie noch einmal Ihre Daten bevor Sie
-					Kontakt aufnehmen.
+					Ihr
+					Fachhändler xyz berät Sie gerne persönlich, schickt Ihnen weitere Informationen
+					und hält Sie mit seinem Newsletter auf dem Laufenden. Ganz wie Sie möchten. Bitte prüfen Sie
+					noch einmal Ihre Daten bevor Sie Kontakt aufnehmen.
 				</p>
 			</div>
+
 			<div class="section">
-				<h2 style="margin-bottom: 30px; color: #b6c24f"">Bitte prüfen Sie Ihre Daten:</h2>
 				<form method=" post" enctype="multipart/form-data">
 					<div class="row">
 						<div class="input-field col s12">
-							<label for="name">Ihr Vor- und Nachname *</label>
+							<label for="name">Vor- und Nachname *</label>
 							<input type="text" name="name" id="name" value="{{d[2]}} {{d[3]}}" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
-							<label for="costumer_name">Name ihrer Firma *</label>
+							<label for="costumer_name">Firma *</label>
 							<input type="text" name="costumer_name" id="company_name" value="{{d[4]}}" />
 						</div>
 					</div>
@@ -59,43 +61,110 @@
 							<input type="text" name="city" id="city" value="{{d[8]}}" />
 						</div>
 					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="email">Ihre Email Addresse *</label>
-							<input type="email" name="email" id="email" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="phone">Ihre Telefonnummer *</label>
-							<input type="tel" name="phone" id="phone" />
-						</div>
-					</div>
 					<p style="font-size: 16px">
 						* Pflichtfelder
 					</p>
-
-					<div class="section">
-						<div class="input-field col s4">
-							<p>
-								<label>
-									<input type="checkbox" id="newsletter" name="newsletter" value="on" />
-									<span>Händler Newsletter abonieren</span>
-								</label>
-							</p>
+					<div class="input-field col s4">
+						<p>
+							<label>
+								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
+								<span>Ja, ich möchte Ihren Newsletter abonnieren.</span>
+							</label>
+						</p>
+					</div>
+					<div class="input-field col s4">
+						<p>
+							<label>
+								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
+								<span>HAKRO-Teamwear interessiert mich.</span>
+							</label>
+						</p>
+					</div>
+					<div class="input-field col s4">
+						<p>
+							<label>
+								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
+								<span>Bitte schicken Sie mir eine E-Mail:</span>
+							</label>
+						</p>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="email">Meine E-Mail-Adresse
+							</label>
+							<input type="email" name="email" id="email" />
 						</div>
-
-						<div>
-							<button class="button_primary" type="submit">Informationen anfordern</button>
+					</div>
+					<div class="input-field col s4">
+						<p>
+							<label>
+								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
+								<span>Bitte rufen Sie mich an:</span>
+							</label>
+						</p>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="phone">Meine Telefonnummer</label>
+							<input type="tel" name="phone" id="phone" />
 						</div>
 					</div>
 
-					</form>
 			</div>
 		</div>
 	</div>
-	<!--	Footer -->
-	<footer class="page-footer" style="background-color: #B6C24F; margin-top:100px">
+
+	<!-- Waschtest -->
+
+	<div>
+		<div class="shirt_container white_text">
+			<div class="shirt_wrapper">
+				<div class="shirt_text">
+					<h1 style="margin-top: 24px;">hält länger als jede Waschmaschine</h1>
+					<p>
+						Mach mit beim Waschtest und überzeuge
+						dich selbst von der herausragenden Qualität
+						und Langlebigkeit unserer Produkte.
+					</p>
+					<p style="font-weight: bold;">
+						Jetzt Gratis-Shirt anfordern!
+					</p>
+				</div>
+				<div>
+					<img class="shirt_img" src="{{url_for('static', filename='images/waschtest.png')}}" />
+				</div>
+			</div>
+
+		</div>
+		<div class="container">
+			<div class="col s6">
+				<div class="section">
+					<div class="input-field col s4">
+						<p>
+							<label>
+								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
+								<span>Ja, gratis T-Shirt anfordern</span>
+							</label>
+						</p>
+					</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" style="height: 80px;">
+		<div class="col s6">
+			<div class="section">
+				<button class="button_primary" type="submit">Informationen anfordern</button>
+			</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Dealer -->
+	<!-- 
+	<footer class="page-footer" style="background-color: #B6C24F; padding-bottom: 70px;">
 		<div class="container">
 			<div class="col l12 s12">
 				<h3 class="white-text">Ihr persönlicher Fachhändler:</h3>
@@ -113,20 +182,37 @@
 				</p>
 			</div>
 		</div>
-		<div class="footer_white">
-			<div class="footer_container">
-				<div>
-					<a class="footer_item_black" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
-				</div>
-				<div>
-					<a class="footer_item_black" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
-						rights
-						reserved</a>
-				</div>
+	</footer> -->
+
+	<!-- White Footer -->
+	<!-- 
+	<div class="footer_white">
+		<div class="footer_container">
+			<div>
+				<a class="footer_item_black" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
+			</div>
+			<div>
+				<a class="footer_item_black" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
+					rights
+					reserved</a>
 			</div>
 		</div>
-	</footer>
+	</div> -->
 
+	<!-- Green Footer-->
+
+	<div class="footer_green">
+		<div class="footer_container">
+			<div>
+				<a class="footer_item_white" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
+			</div>
+			<div>
+				<a class="footer_item_white" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
+					rights
+					reserved</a>
+			</div>
+		</div>
+	</div>
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

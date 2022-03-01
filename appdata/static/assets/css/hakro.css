@@ -67,14 +67,14 @@ h1 {
 @media only screen and (max-width: 640px) {
   h1 {
     font-size: 36px;
-    line-height: 44px;
+    line-height: 38px;
     margin-top: 0px;
   }
 }
 
 h2 {
   font-size: 28px;
-  line-height: 28px;
+  line-height: 30px;
   margin: 0;
   padding: 0;
   margin-bottom: 20px;
@@ -122,6 +122,10 @@ ul {
   transition: 0.2s;
 }
 
+.white_text {
+  color: white;
+}
+
 a:hover {
   opacity: 0.8;
   text-decoration: underline;
@@ -133,7 +137,7 @@ a:hover {
   ol,
   ul {
     font-size: 20px;
-    line-height: 140%;
+    line-height: 24px;
     margin-bottom: 20px;
   }
 }
@@ -163,6 +167,14 @@ li::before {
   position: relative;
   transition: 0.2s;
   left: -4px;
+}
+
+@media only screen and (max-width: 640px) {
+  .button_primary,
+  .button_secondary,
+  .button_primary_white {
+    width: 100%;
+  }
 }
 
 .input-field {
@@ -302,7 +314,7 @@ textarea.materialize-textarea.valid:focus,
   display: inline-block;
   /* height: 25px; */
   line-height: 25px;
-  font-size: 22px;
+  font-size: 20px;
   color: black;
   margin: 10px 0;
   -webkit-user-select: none;
@@ -405,7 +417,7 @@ input[type="reset"] {
 
 @media only screen and (max-width: 640px) {
   .header {
-    margin: 50px 50px 50px 16px;
+    margin: 50px 50px 50px 32px;
   }
 }
 
@@ -435,7 +447,7 @@ input[type="reset"] {
 
 @media only screen and (max-width: 640px) {
   .container {
-    padding: 0 15px;
+    /* padding: 0 15px; */
   }
 }
 
@@ -594,7 +606,7 @@ li::before {
 
 .footer_green,
 .footer_white {
-  margin-top: 100px;
+  margin-top: 20px;
   height: 30px;
   padding-top: 50px;
   padding-bottom: 150px;
@@ -689,4 +701,56 @@ li::before {
 }
 .row {
   margin-bottom: 0px;
+}
+
+.shirt_container {
+  overflow: hidden;
+  background: radial-gradient(
+    at 75% bottom,
+    rgb(232 114 114) 0%,
+    rgb(144 26 63) 100%
+  );
+
+  margin: 0;
+  padding: 0;
+  /* margin-bottom: 30px; */
+}
+
+.shirt_wrapper {
+  height: 350px;
+  max-width: 700px;
+  padding-left: 30px;
+  padding-top: 30px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 640px) {
+  .shirt_wrapper {
+    height: auto;
+  }
+}
+
+.shirt_text {
+  max-width: 420px;
+}
+@media only screen and (max-width: 640px) {
+  .shirt_text {
+    max-width: 1000px;
+    padding-right: 30px;
+  }
+}
+
+.shirt_img {
+  height: 350px;
+  position: relative;
+  top: -301px;
+  right: -425px;
+}
+
+@media only screen and (max-width: 640px) {
+  .shirt_img {
+    top: 5px;
+    right: 18px;
+    height: 109vw;
+  }
 }
