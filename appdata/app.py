@@ -65,9 +65,12 @@ def index():
     pl = requests.get('http://api.ipstack.com/check?access_key=785b92a2d12f1ff90e699b814867de6f')
     payload = pl.json()
     print(payload)
-    if payload['region_code'] == "BY":
+
+    if payload['country_code'] == "NL":
         print('NoBavaria')
         return render_template('bavaria.html')
+
+
 
 
     if request.method == "POST":
