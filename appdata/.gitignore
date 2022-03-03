@@ -2,5 +2,9 @@ assets2/
 env/
 static/upload/*/*
 templates/*.bak
+.scannerwork/
+.ipynb_checkpoints/
+__pycache__/
+.vscode/
 
 *.ipynb

@@ -61,37 +61,17 @@ USER FLOW 1
 @app.route('/', methods=['GET', 'POST'])
 def index():
 
-    ext_ip = requests.get('https://api.ipify.org').content.decode('utf8')
     pl = requests.get('http://api.ipstack.com/check?access_key=785b92a2d12f1ff90e699b814867de6f')
     payload = pl.json()
-    print(payload)
-
-    '''
-        if payload['country_code'] == "NL" or payload['country_code'] == "nl":
-        print('NoBavaria')
-        return render_template('bavaria.html')
-    '''
 
     if request.method == "POST":
         session_id = set_session_id()
         os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
         cid = db.get_costumer_id()
-        cid = cid
         d = dict(request.form)
-        # for c in cid:
-        #     print(c, d['costumer_id'])
-        #     if str(c[0]) == str(d['costumer_id']):
-        #         return redirect(url_for('error', e=100))
 
         d['session_id'] = session_id
-
-
-        #if d['opt1'] == "on":
-        #    d['opt1'] = str(datetime.now())
-        #if d['opt2'] == "on":
-        #    d['opt2'] = str(datetime.now())
-        #if d['opt3'] == "on":
-        #    d['opt3'] = str(datetime.now())
+        d['country'] = payload['country_code']
 
 
 
@@ -116,9 +96,6 @@ def index():
 
         p3 = f'{session_id}.cust'
         pickle.dump(d, open(os.path.join(app.config['UPLOAD_FOLDER'], session_id, p3), 'wb'))
-        #db.set_costumer_data(d)
-
-        #return redirect(url_for('checking', sid=session_id))
 
         expire_date = datetime.now() + timedelta(minutes=5)
         resp = make_response(redirect(url_for('checking', sid=session_id)))
