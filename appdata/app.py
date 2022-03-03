@@ -66,12 +66,11 @@ def index():
     payload = pl.json()
     print(payload)
 
-    if payload['country_code'] == "NL":
+    '''
+        if payload['country_code'] == "NL" or payload['country_code'] == "nl":
         print('NoBavaria')
         return render_template('bavaria.html')
-
-
-
+    '''
 
     if request.method == "POST":
         session_id = set_session_id()
