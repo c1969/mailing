@@ -73,10 +73,9 @@ def is_token_valid():
         "Authorization": f"Bearer {token}"
     }
     try:
-        response = requests.get(f"{get_idp_uri()}/auth/connect/userinfo", headers=headers)
+        response = requests.get(f"{get_idp_uri()}/auth/connect/userinfo", headers = headers)
         return response.status_code == 200
-    except Exception as e:
-        print(str(e))
+    except Exception:
         return False
 
 def redirect_to_login():
@@ -93,13 +92,13 @@ def login():
         "client_secret": get_client_secret(),
         "redirect_uri": get_redirect_uri()
     }
-    token_response = requests.get(f"{get_idp_uri()}/auth/connect/token", params = payload)
+    token_response = requests.post(f"{get_idp_uri()}/auth/connect/token", data = payload)
     if token_response.status_code == 200:
         response = make_response(redirect(url_for('index')))
-        response.set_cookie('token', token_response.json()["id_token"])
+        response.set_cookie('token', token_response.json()["access_token"])
         return response
 
-    return redirect_to_login()
+    return redirect("https://hakro.com")
 
 '''
 USER FLOW 1
