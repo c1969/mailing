@@ -27,6 +27,11 @@ UPLOAD_FOLDER = 'static/upload/'
 ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'tiff'}
 ALLOWED_EXTENSIONS_DATA = {'xlsx', 'csv'}
 
+IDP_URI = os.getenv('IDP_URI', 'https://idp.dev.hakro.com')
+CLIENT_ID = os.getenv('CLIENT_ID', 'hakro-dialog-dev')
+REDIRECT_URI = os.getenv('REDIRECT_URI', 'https://localhost:5000/idp/login')
+CLIENT_SECRET = os.getenv("CLIENT_SECRET", "qPij5vw9DZPx2pZz0wKCMdRSFJ55NT")
+
 app = Flask(__name__)
 
 app.wsgi_app = ProxyFix(app.wsgi_app)
@@ -55,44 +60,32 @@ def allowed_file_data(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS_DATA
 
-def get_idp_uri():
-    return os.getenv('IDP_URI', 'https://idp.dev.hakro.com')
-
-def get_client_id():
-    return os.getenv('CLIENT_ID', 'hakro-dialog-dev')
-
-def get_redirect_uri():
-    return os.getenv('REDIRECT_URI', 'https://localhost:5000/idp/login')
-
-def get_client_secret():
-    return os.getenv("CLIENT_SECRET", "qPij5vw9DZPx2pZz0wKCMdRSFJ55NT")
-
 def is_token_valid():
     token = request.cookies.get("token")
     headers = {
         "Authorization": f"Bearer {token}"
     }
     try:
-        response = requests.get(f"{get_idp_uri()}/auth/connect/userinfo", headers = headers)
+        response = requests.get(f"{IDP_URI}/auth/connect/userinfo", headers = headers)
         return response.status_code == 200
     except Exception:
         return False
 
 def redirect_to_login():
-    response = make_response(redirect(f"{get_idp_uri()}/auth/connect/authorize?scope=openid+profile+email+offline_access&response_type=code&client_id={get_client_id()}&redirect_uri={get_redirect_uri()}"))
-    response.set_cookie("token", "", expires=0)
+    response = make_response(redirect(f"{IDP_URI}/auth/connect/authorize?scope=openid+profile+email+offline_access&response_type=code&client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}"))
+    response.set_cookie("token", "", expires = 0)
     return response
 
 @app.route('/idp/login')
 def login():
     payload = {
         "grant_type": "authorization_code",
-        "client_id": get_client_id(),
+        "client_id": CLIENT_ID,
         "code": request.args.get("code"),
-        "client_secret": get_client_secret(),
-        "redirect_uri": get_redirect_uri()
+        "client_secret": CLIENT_SECRET,
+        "redirect_uri": REDIRECT_URI
     }
-    token_response = requests.post(f"{get_idp_uri()}/auth/connect/token", data = payload)
+    token_response = requests.post(f"{IDP_URI}/auth/connect/token", data = payload)
     if token_response.status_code == 200:
         response = make_response(redirect(url_for('index')))
         response.set_cookie('token', token_response.json()["access_token"])
