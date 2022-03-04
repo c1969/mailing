@@ -22,7 +22,7 @@ import numpy as np
 
 from itsdangerous import URLSafeSerializer
 
-import requests
+import jwt
 
 UPLOAD_FOLDER = 'static/upload/'
 ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'tiff'}
@@ -63,6 +63,14 @@ def allowed_file_data(filename):
 
 def is_token_valid():
     token = request.cookies.get("token")
+    
+    if token is None:
+        return False
+
+    decoded = jwt.decode(token, options={"verify_signature": False})
+    if decoded["client_id"] != CLIENT_ID and decoded["iss"] != IDP_URI + "/auth":
+        return False
+
     headers = {
         "Authorization": f"Bearer {token}"
     }
