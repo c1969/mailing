@@ -1,6 +1,7 @@
 import os
 import re
 import csv
+import json, socket, requests
 from flask import Flask, redirect, render_template, session, url_for, request, g, make_response, flash, send_from_directory, send_file, Response, abort
 from werkzeug.utils import secure_filename
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -96,32 +97,24 @@ def login():
 '''
 USER FLOW 1
 '''
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if not is_token_valid():
         return redirect_to_login()
 
+    pl = requests.get('http://api.ipstack.com/check?access_key=785b92a2d12f1ff90e699b814867de6f')
+    payload = pl.json()
+
     if request.method == "POST":
         session_id = set_session_id()
         os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
         cid = db.get_costumer_id()
-        cid = cid
         d = dict(request.form)
-        # for c in cid:
-        #     print(c, d['costumer_id'])
-        #     if str(c[0]) == str(d['costumer_id']):
-        #         return redirect(url_for('error', e=100))
 
         d['session_id'] = session_id
+        d['country'] = payload['country_code']
 
-        '''
-        if d['opt1'] == "on":
-            d['opt1'] = str(datetime.now())
-        if d['opt2'] == "on":
-            d['opt2'] = str(datetime.now())
-        if d['opt3'] == "on":
-            d['opt3'] = str(datetime.now())
-        '''
 
 
         file_data = request.files['file_data']
@@ -145,9 +138,6 @@ def index():
 
         p3 = f'{session_id}.cust'
         pickle.dump(d, open(os.path.join(app.config['UPLOAD_FOLDER'], session_id, p3), 'wb'))
-        #db.set_costumer_data(d)
-
-        #return redirect(url_for('checking', sid=session_id))
 
         expire_date = datetime.now() + timedelta(minutes=5)
         resp = make_response(redirect(url_for('checking', sid=session_id)))
@@ -155,7 +145,8 @@ def index():
         resp.set_cookie('_cid', token, expires=expire_date)
         return resp
 
-    return render_template('index.html')
+    return render_template('index.html', d=payload)
+
 
 @app.route('/checking', methods=['GET', 'POST'])
 def checking():

@@ -1,0 +1,1 @@
+sonar-scanner.bat -D"sonar.projectKey=dialog.hakro.com" -D"sonar.sources=." -D"sonar.host.url=https://sonar.td.hakro.com" -D"sonar.login=9ec19d660bbd18a4e23514ba1cea4845b35e22e0"
