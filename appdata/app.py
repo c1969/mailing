@@ -61,7 +61,11 @@ USER FLOW 1
 @app.route('/', methods=['GET', 'POST'])
 def index():
 
-    pl = requests.get('http://api.ipstack.com/check?access_key=785b92a2d12f1ff90e699b814867de6f')
+    if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
+        remote_address = request.environ['REMOTE_ADDR']
+    else:
+        remote_address = request.environ['HTTP_X_FORWARDED_FOR']
+    pl = requests.get(f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
     payload = pl.json()
 
     if request.method == "POST":
