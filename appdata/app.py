@@ -54,19 +54,27 @@ def allowed_file_data(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS_DATA
 
-'''
-USER FLOW 1
-'''
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-
+def get_request_location():
     if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
         remote_address = request.environ['REMOTE_ADDR']
     else:
         remote_address = request.environ['HTTP_X_FORWARDED_FOR']
     pl = requests.get(f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
-    payload = pl.json()
+    return pl.json()
+
+def get_flipbook_link(location):
+    if location["country_code"] == "CH":
+        return "https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
+    return "https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
+
+'''
+USER FLOW 1
+'''
+@app.route('/', methods=['GET', 'POST'])
+def index():
+
+    payload = get_request_location()
+    payload["flipbook_link"] = get_flipbook_link(payload)
 
     if request.method == "POST":
         session_id = set_session_id()
@@ -76,8 +84,6 @@ def index():
 
         d['session_id'] = session_id
         d['country'] = payload['country_code']
-
-
 
         file_data = request.files['file_data']
         file_logo = request.files['file_logo']
