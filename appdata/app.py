@@ -212,7 +212,7 @@ def summary():
 
     if df is not None:
         y, x = df.shape
-        if x > 7:
+        if x != 7:
             return redirect(url_for('error', e=202))
         if y > 2500:
             return redirect(url_for('error', e=203))
