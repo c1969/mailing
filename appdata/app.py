@@ -22,9 +22,16 @@ import numpy as np
 
 from itsdangerous import URLSafeSerializer
 
+import jwt
+
 UPLOAD_FOLDER = 'static/upload/'
 ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'tiff'}
 ALLOWED_EXTENSIONS_DATA = {'xlsx', 'csv'}
+
+IDP_URI = os.getenv('IDP_URI', 'https://idp.dev.hakro.com')
+CLIENT_ID = os.getenv('CLIENT_ID', 'hakro-dialog-dev')
+REDIRECT_URI = os.getenv('REDIRECT_URI', 'https://localhost:5000/idp/login')
+CLIENT_SECRET = os.getenv("CLIENT_SECRET", "qPij5vw9DZPx2pZz0wKCMdRSFJ55NT")
 
 app = Flask(__name__)
 
@@ -54,6 +61,47 @@ def allowed_file_data(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS_DATA
 
+def is_token_valid():
+    token = request.cookies.get("token")
+    
+    if token is None:
+        return False
+
+    decoded = jwt.decode(token, options={"verify_signature": False})
+    if decoded["client_id"] != CLIENT_ID and decoded["iss"] != IDP_URI + "/auth":
+        return False
+
+    headers = {
+        "Authorization": f"Bearer {token}"
+    }
+    try:
+        response = requests.get(f"{IDP_URI}/auth/connect/userinfo", headers = headers)
+        return response.status_code == 200
+    except Exception:
+        return False
+
+def redirect_to_login():
+    response = make_response(redirect(f"{IDP_URI}/auth/connect/authorize?scope=openid+profile+email+offline_access&response_type=code&client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}"))
+    response.set_cookie("token", "", expires = 0)
+    return response
+
+@app.route('/idp/login')
+def login():
+    payload = {
+        "grant_type": "authorization_code",
+        "client_id": CLIENT_ID,
+        "code": request.args.get("code"),
+        "client_secret": CLIENT_SECRET,
+        "redirect_uri": REDIRECT_URI
+    }
+    token_response = requests.post(f"{IDP_URI}/auth/connect/token", data = payload)
+    if token_response.status_code == 200:
+        response = make_response(redirect(url_for('index')))
+        response.set_cookie('token', token_response.json()["access_token"])
+        return response
+
+    return redirect("https://hakro.com")
+
 def get_request_location():
     if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
         remote_address = request.environ['REMOTE_ADDR']
@@ -72,6 +120,8 @@ USER FLOW 1
 '''
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if not is_token_valid():
+        return redirect_to_login()
 
     location = get_request_location()
     flipbook_link = get_flipbook_link(location)
@@ -118,7 +168,9 @@ def index():
 
 @app.route('/checking', methods=['GET', 'POST'])
 def checking():
-
+    if not is_token_valid():
+        return redirect_to_login()
+    
     hash_cookie = request.cookies.get('_cid')
     if hash_cookie == None:
         return redirect(url_for('index'))
@@ -138,6 +190,8 @@ def checking():
 
 @app.route('/summary', methods=['GET', 'POST'])
 def summary():
+    if not is_token_valid():
+        return redirect_to_login()
 
     hash_cookie = request.cookies.get('_cid')
     if hash_cookie == None:
@@ -212,6 +266,9 @@ def summary():
 
 @app.route('/done', methods=['GET', 'POST'])
 def done():
+    if not is_token_valid():
+        return redirect_to_login()
+    
     hash_cookie = request.cookies.get('_cid')
     if hash_cookie == None:
         return redirect(url_for('index'))
@@ -234,6 +291,9 @@ USER FLOW 2
 '''
 @app.route('/qr/<qrid>', methods=['GET', 'POST'])
 def qr(qrid):
+    if not is_token_valid():
+        return redirect_to_login()
+    
     if qrid == None:
         return abort(404)
     d = db.get_retailer_by_qr(qrid)
@@ -248,6 +308,9 @@ def qr(qrid):
 
 @app.route('/dk', methods=['GET', 'POST'])
 def dk():
+    if not is_token_valid():
+        return redirect_to_login()
+    
     qrid = request.args.get('qrid', True)
     d = db.get_retailer_by_qr(qrid)
     e = db.get_dealer_for_retailer(d[0][1])
@@ -256,12 +319,18 @@ def dk():
 
 @app.route('/du', methods=['GET', 'POST'])
 def du():
+    if not is_token_valid():
+        return redirect_to_login()
+    
     qrid = request.args.get('qrid', True)
 
     return render_template('du.html', e=None)
 
 @app.route('/error', methods=['GET', 'POST'])
 def error():
+    if not is_token_valid():
+        return redirect_to_login()
+    
     errorcode = request.args.get('e')
     err = E.get_error(errorid=errorcode)
 
@@ -273,4 +342,4 @@ def handle_csrf_error(e):
     return render_template('error.html', err=e.description, csrf_err=csrf_err), 400
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0", ssl_context='adhoc')
