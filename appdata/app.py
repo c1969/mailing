@@ -125,7 +125,10 @@ def index():
         d = dict(request.form)
 
         d['session_id'] = session_id
-        d['country'] = payload['country_code']
+        if  payload['country_code']:
+            d['country'] = payload['country_code']
+        else:
+            d['country'] = "Unknown"
 
 
 
