@@ -63,7 +63,7 @@ def get_request_location():
     return pl.json()
 
 def get_flipbook_link(location):
-    if location["country_code"] == "CH":
+    if location.get("country_code") == "CH":
         return "https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
     return "https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
 
@@ -73,8 +73,8 @@ USER FLOW 1
 @app.route('/', methods=['GET', 'POST'])
 def index():
 
-    payload = get_request_location()
-    payload["flipbook_link"] = get_flipbook_link(payload)
+    location = get_request_location()
+    flipbook_link = get_flipbook_link(location)
 
     if request.method == "POST":
         session_id = set_session_id()
@@ -83,7 +83,7 @@ def index():
         d = dict(request.form)
 
         d['session_id'] = session_id
-        d['country'] = payload['country_code']
+        d['country'] = location['country_code']
 
         file_data = request.files['file_data']
         file_logo = request.files['file_logo']
@@ -113,7 +113,7 @@ def index():
         resp.set_cookie('_cid', token, expires=expire_date)
         return resp
 
-    return render_template('index.html', d=payload)
+    return render_template('index.html', location=location, flipbook_link=flipbook_link)
 
 
 @app.route('/checking', methods=['GET', 'POST'])
