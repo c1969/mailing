@@ -6,8 +6,14 @@ services:
         build: ./appdata
         container_name: flask_mailer
         restart: always
+        env_file:
+            - .env
         environment: 
-            - APP_NAME=hakromailing
+            APP_NAME: hakromailing
+            IDP_URI: ${IDP_URI}
+            CLIENT_ID: ${CLIENT_ID}
+            CLIENT_SECRET: ${CLIENT_SECRET}
+            REDIRECT_URI: ${REDIRECT_URI}
         expose: 
             - 9293
     
