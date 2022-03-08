@@ -451,16 +451,28 @@ input[type="reset"] {
   }
 }
 
+.overlay_logo_container {
+  width: 174px;
+  height: 70px;
+  position: absolute;
+  top: 63.3%;
+  left: 11.3%;
+  display: flex;
+  align-items: flex-end;
+}
+
 .container img {
   max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .overlay_logo {
-  width: 15%;
-  position: absolute;
-  top: 62%;
-  left: 17.5%;
+  position: relative;
 }
+
 .overlay_logo_text {
   width: 31%;
   position: absolute;

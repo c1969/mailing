@@ -42,7 +42,11 @@
         <div class="img_preview">
           <img class="img_shadow" src="{{url_for('static', filename='images/umschlag_leer.png')}}" alt=""
             class="image_01" />
-          <img src="{{ logo }}" class="overlay_logo" alt="" />
+          <div class="overlay_logo_container">
+
+            <img src="{{ logo }}" class="overlay_logo" alt="" />
+
+          </div>
           <p class="overlay_logo_text">
             {{ p['costumer_name']}}, {{ p['streetname'] }}, {{ p['plz'] }} {{
             p['city'] }}
