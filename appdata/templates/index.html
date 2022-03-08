@@ -22,6 +22,7 @@
   </div>
 
   <div class="desktop">
+
     <div id="cookie-modal" class="modal">
       <div class="modal-content">
         <h4>Auch bei uns gibt es Cookies</h4>
@@ -34,9 +35,7 @@
         <a href="#" onclick="acceptCookies()" class="waves-effect waves-green btn-flat">Einverstanden</a>
       </div>
     </div>
-    <button data-target="cookie-modal" class="btn modal-trigger">Cookie Temp</button>
-
-
+    <button data-target="cookie-modal" class="btn modal-trigger">Informationen zu Cookies</button>
 
     <div class="container">
       <div class="col s12">
@@ -453,10 +452,13 @@
       });
 
       const showCookieConsent = () => {
-        cookieModal.open();
+        if (sessionStorage.getItem("cookie-accepted") !== "true") {
+          cookieModal.open();
+        }
       };
-
+      
       const acceptCookies = () => {
+        sessionStorage.setItem("cookie-accepted", "true");
         cookieModal.close();
       }
       
