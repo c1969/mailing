@@ -71,14 +71,20 @@ def is_token_valid():
     if decoded["client_id"] != CLIENT_ID and decoded["iss"] != IDP_URI + "/auth":
         return False
 
+    response = get_user_info(token)
+    if response is None:
+        return False
+    
+    return response.status_code == 200
+
+def get_user_info(token):
     headers = {
         "Authorization": f"Bearer {token}"
     }
     try:
-        response = requests.get(f"{IDP_URI}/auth/connect/userinfo", headers = headers)
-        return response.status_code == 200
+        return requests.get(f"{IDP_URI}/auth/connect/userinfo", headers = headers)
     except Exception:
-        return False
+        return None
 
 def redirect_to_login():
     response = make_response(redirect(f"{IDP_URI}/auth/connect/authorize?scope=openid+profile+email+offline_access&response_type=code&client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}"))
@@ -97,7 +103,7 @@ def login():
     token_response = requests.post(f"{IDP_URI}/auth/connect/token", data = payload)
     if token_response.status_code == 200:
         response = make_response(redirect(url_for('index')))
-        response.set_cookie('token', token_response.json()["access_token"])
+        response.set_cookie("token", token_response.json()["access_token"])
         return response
 
     return redirect("https://hakro.com")
@@ -133,7 +139,7 @@ def index():
         d = dict(request.form)
 
         d['session_id'] = session_id
-        if  location['country_code']:
+        if  location.get('country_code'):
             d['country'] = location['country_code']
         else:
             d['country'] = "Unknown"
