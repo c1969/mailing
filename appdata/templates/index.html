@@ -21,8 +21,8 @@
     <a href="https://www.hakro.com">Weiter zu Hakro.com</a>
   </div>
 
-  <div class="desktop" onload="Cookie()">
-    <div id="modal1" class="modal">
+  <div class="desktop">
+    <div id="cookie-modal" class="modal">
       <div class="modal-content">
         <h4>Auch bei uns gibt es Cookies</h4>
         <p>Auf der Seite https://dialog.hakro.com verwenden wir nur 1 Cookie und das ist auch noch von uns selbst.
@@ -31,11 +31,10 @@
       </div>
       <div class="modal-footer">
         <a href="https://hakro.com" class="modal-close waves-effect waves-green btn-flat">nicht für mich</a>
-        <a href="" class="modal-close waves-effect waves-green btn-flat">Einverstanden</a>
+        <a href="#" onclick="acceptCookies()" class="waves-effect waves-green btn-flat">Einverstanden</a>
       </div>
     </div>
-
-    <!-- <button data-target="modal1" class="btn modal-trigger">Cookie Temp</button> -->
+    <button data-target="cookie-modal" class="btn modal-trigger">Cookie Temp</button>
 
 
 
@@ -449,11 +448,19 @@
       });
     </script>
     <script>
-      function Cookie() {
-        const elems = document.querySelectorAll('.modal');
-        const instances = M.Modal.init(elems, options);
-        instances.open();
+      const cookieModal = M.Modal.init(document.getElementById("cookie-modal"), {
+        dismissible: false
+      });
+
+      const showCookieConsent = () => {
+        cookieModal.open();
+      };
+
+      const acceptCookies = () => {
+        cookieModal.close();
       }
+      
+      $(document).ready(showCookieConsent);
     </script>
   </div>
 </body>
