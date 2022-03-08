@@ -14,12 +14,6 @@ services:
             CLIENT_ID: ${CLIENT_ID}
             CLIENT_SECRET: ${CLIENT_SECRET}
             REDIRECT_URI: ${REDIRECT_URI}
-        expose: 
-            - 9293
-    
-    nginx:
-        build: ./nginx
-        container_name: nginx_mailer
-        restart: always
+            
         ports: 
             - "8085:8085"

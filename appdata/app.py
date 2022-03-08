@@ -133,7 +133,12 @@ def index():
         d = dict(request.form)
 
         d['session_id'] = session_id
-        d['country'] = location['country_code']
+        if  location['country_code']:
+            d['country'] = location['country_code']
+        else:
+            d['country'] = "Unknown"
+
+
 
         file_data = request.files['file_data']
         file_logo = request.files['file_logo']
@@ -218,7 +223,7 @@ def summary():
 
     if df is not None:
         y, x = df.shape
-        if x > 7:
+        if x != 7:
             return redirect(url_for('error', e=202))
         if y > 2500:
             return redirect(url_for('error', e=203))
