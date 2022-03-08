@@ -1,6 +1,4 @@
-import os
-import re
-import csv
+import os, csv
 import json, socket, requests
 from flask import Flask, redirect, render_template, session, url_for, request, g, make_response, flash, send_from_directory, send_file, Response, abort
 from werkzeug.utils import secure_filename
@@ -223,8 +221,10 @@ def summary():
     logo_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_logo'])
     data_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_data'])
     if s1['file_data'].endswith('.csv') or s1['file_data'].endswith('.CSV') :
-            sniffer = csv.Sniffer()
-            df = pd.read_csv(data_path, header=None, sep=';')
+            with open(data_path, 'r') as csvfile:
+                dialect = csv.Sniffer().sniff(csvfile.readline())
+                sepsis = dialect.delimiter
+            df = pd.read_csv(data_path, header=None, sep=sepsis)
             dfx = df.iloc[:10]
     elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX'):
             df = pd.read_excel(data_path, header=None)
