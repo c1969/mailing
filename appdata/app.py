@@ -217,21 +217,22 @@ def summary():
     s1 = data_cookie['data']
 
     session_id = request.args.get('sid')
-    
-    logo_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_logo'])
+    MAX_RES = 10
+    fl = s1['file_logo'].rsplit('.', 1)
+    logo_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, fl[0]+".png")
     data_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_data'])
     if s1['file_data'].endswith('.csv') or s1['file_data'].endswith('.CSV') :
             with open(data_path, 'r') as csvfile:
                 dialect = csv.Sniffer().sniff(csvfile.readline())
                 sepsis = dialect.delimiter
             df = pd.read_csv(data_path, header=None, sep=sepsis)
-            dfx = df.iloc[:10]
+            dfx = df.iloc[:MAX_RES]
     elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX'):
             df = pd.read_excel(data_path, header=None)
-            dfx = df.iloc[:10]
+            dfx = df.iloc[:MAX_RES]
     elif s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
             df = pd.read_excel(data_path, header=None)
-            dfx = df.iloc[:10]
+            dfx = df.iloc[:MAX_RES]
     else:
         return redirect(url_for('error', e=200))
 
@@ -275,7 +276,7 @@ def summary():
         box_size=15,
         border=1,
     )
-    qr.add_data('https://hakro.com')
+    qr.add_data(f'https://dialog.hakro.com/qr/{session_id}')
     qr.make(fit=True)
     qr_filename = os.path.join(app.config['UPLOAD_FOLDER'], s1['session_id'], f'qr_{s1["session_id"]}.png')
     qr_code = qr.make_image(fill_color="black", back_color="transparent")

@@ -26,16 +26,20 @@
     <div id="cookie-modal" class="modal">
       <div class="modal-content">
         <h4>Auch bei uns gibt es Cookies</h4>
-        <p>Auf der Seite https://dialog.hakro.com verwenden wir nur 1 Cookie und das ist auch noch von uns selbst.
-          Dieses Cookie nutzen wir um die sichere Datenübertragung sicherzustellen. Tatsächlich nutzen wir keinerlei
-          3t-Anbieter zur Analyse oder ähnlicher Dinge.</p>
+        <p>Auf der Seite <strong>https://dialog.hakro.com</strong>verwenden wir nur 1 Cookie und das ist auch noch von uns selbst.
+          Dieses Cookie nutzen wir um die sichere Datenübertragung sicherzustellen. Für Ihren Standort nutzen wir eine GeoLocation API über Ihre IP Addresse.</p>
       </div>
       <div class="modal-footer">
         <a href="https://hakro.com" class="modal-close waves-effect waves-red btn-flat">nicht für mich</a>
         <a onclick="acceptCookies()" class="waves-effect waves-green btn-flat">Einverstanden</a>
       </div>
     </div>
-    <button data-target="cookie-modal" class="btn modal-trigger">Informationen zu Cookies</button>
+    <!--
+      <button data-target="cookie-modal" class="btn modal-trigger">Informationen zu Cookies</button>
+-->
+
+
+
 
     <div class="container">
       <div class="col s12">
@@ -122,13 +126,14 @@
             <div class="row">
               <div class="input-field col s4">
                 <label for="plz">Postleitzahl *</label>
-                <input type="text" name="plz" id="plz" value="{{ location.zip or '' }}" class="validate" required="required" pattern="\d*" />
+                <input type="text" name="plz" id="plz" value="{{ location.zip or '' }}" class="validate"
+                  required="required" pattern="\d*" />
                 <span class="helper-text" data-error="Bitte geben Ihre Posleitzahl ein"></span>
               </div>
               <div class="input-field col s8">
                 <label for="city">Ort *</label>
-                <input type="text" name="city" id="city" value="{{ location.city or '' }}" class="validate" required="required"
-                  pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
+                <input type="text" name="city" id="city" value="{{ location.city or '' }}" class="validate"
+                  required="required" pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
                 <span class="helper-text" data-error="Bitte geben Sie ihren Ort ein"></span>
               </div>
             </div>
@@ -456,12 +461,12 @@
           cookieModal.open();
         }
       };
-      
+
       const acceptCookies = () => {
         sessionStorage.setItem("cookie-accepted", "true");
         cookieModal.close();
       }
-      
+
       $(document).ready(showCookieConsent);
     </script>
   </div>
