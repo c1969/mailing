@@ -16,6 +16,7 @@ import qrcode
 
 from db_routine import dbx
 from errors import Errors
+from imager import Imager
 
 import pandas as pd
 import numpy as np
@@ -138,11 +139,9 @@ def index():
         cid = db.get_costumer_id()
         d = dict(request.form)
 
+
         d['session_id'] = session_id
-        if  location.get('country_code'):
-            d['country'] = location['country_code']
-        else:
-            d['country'] = "Unknown"
+        d['country'] = "Unknown"
 
 
 
@@ -162,7 +161,8 @@ def index():
             filename_logo = secure_filename(file_logo.filename)
             fdl = filename_logo.rsplit('.', 1)
             fname_logo = session_id + "." +fdl[1]
-            file_logo.save(os.path.join(app.config['UPLOAD_FOLDER'], session_id, fname_logo))
+            fpath = os.path.join(app.config['UPLOAD_FOLDER'], session_id, fname_logo)
+            file_logo.save(fpath)
             d['file_logo'] = fname_logo
 
         p3 = f'{session_id}.cust'
@@ -190,10 +190,18 @@ def checking():
 
     session_id = request.args.get('sid')
 
-    #logo_path = os.path.join(app.config['UPLOAD_FOLDER'], p[1], p[12])
-    #data_path = os.path.join(app.config['UPLOAD_FOLDER'], p[1], p[11])
+    i = Imager()
+    #print(os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_logo']))
+    im = i.genImage(os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_logo']))
+    print(f'debug: {im.size}')
 
-    #resp = make_response(redirect(url_for('index', sid=session_id)))
+    x, y = im.size
+    o = i.getOrientation(x, y)
+    print(o)
+    res = i.harmonize(im, x, y, o, session_id)
+    print(res)
+
+
     resp = make_response(redirect(url_for('summary', sid=session_id)))
     token = auth_s.dumps({"id": 0, "data": s1})
     resp.set_cookie('_cid', token)
@@ -351,6 +359,22 @@ def error():
 def handle_csrf_error(e):
     csrf_err = True
     return render_template('error.html', err=e.description, csrf_err=csrf_err), 400
+
+'''
+Metrics
+'''
+@app.route('/metrics/<passw>/kpi', methods=['GET'])
+def metrics(passw):
+    if not is_token_valid():
+        return redirect_to_login()
+
+    p = str(passw)
+    mems = ['91541']
+    if p not in mems:
+        return redirect(url_for('index'))
+
+    return render_template('metrics.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", ssl_context='adhoc')

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="de">
+
+<head>
+	<title>HAKRO Dialog</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}">
+	<noscript>
+		<link rel="stylesheet" href="static/assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body>
+	<div id="content">
+		<a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.png')}}" alt=""></a>
+	</div>
+	<div class="container">
+		<div class="col s6">
+			<h1>Hallo</h1>
+			
+			<button class="waves-effect waves-light btn" onclick="history.back()"
+			style="background-color: transparent; border-radius: 20px; border-color: black; color: black;"
+			type="submit">Zurück</button>
+		</div>
+	</div>
+	<div class="footer_green">
+		<div class="footer_container">
+		  <div>
+			<a class="footer_item_white" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
+		  </div>
+		  <div>
+			<a class="footer_item_white" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all rights
+			  reserved</a>
+		  </div>
+		</div>
+	  </div>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
+
+
+</body>
+
+</html>

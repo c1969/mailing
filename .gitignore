@@ -4,3 +4,6 @@ appdata/assets
 .env
 appdata/.scannerwork
 .scannerwork
+appdata/.ipynb_checkpoints/
+appdata/__pycache__/
+appdata/.vscode/
