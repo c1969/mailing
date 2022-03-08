@@ -360,5 +360,21 @@ def handle_csrf_error(e):
     csrf_err = True
     return render_template('error.html', err=e.description, csrf_err=csrf_err), 400
 
+'''
+Metrics
+'''
+@app.route('/metrics/<passw>/kpi', methods=['GET'])
+def metrics(passw):
+    if not is_token_valid():
+        return redirect_to_login()
+
+    p = str(passw)
+    mems = ['91541']
+    if p not in mems:
+        return redirect(url_for('index'))
+
+    return render_template('metrics.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", ssl_context='adhoc')
