@@ -317,9 +317,9 @@
         if ((file = this.files[0])) {
           img = new Image();
           img.onload = function () {
-            if (this.width > 4000 || this.height > 3000) {
+            if (this.width < 1180 && this.height < 472) {
               clearFileInput();
-              showNotification("Das Logo überschreitet die maximale Größe - bitte reduzieren (4000 x 3000 Pixel)");
+              showNotification("Die Mindestanforderung sind 1180 Pixel in der Höhe oder 472 Pixel in der Breite");
             }
           };
           img.onerror = function () {
