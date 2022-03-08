@@ -102,21 +102,29 @@ def login():
 
     return redirect("https://hakro.com")
 
-'''
-USER FLOW 1
-'''
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if not is_token_valid():
-        return redirect_to_login()
-
+def get_request_location():
     if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
         remote_address = request.environ['REMOTE_ADDR']
     else:
         remote_address = request.environ['HTTP_X_FORWARDED_FOR']
     pl = requests.get(f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
-    payload = pl.json()
+    return pl.json()
+
+def get_flipbook_link(location):
+    if location.get("country_code") == "CH":
+        return "https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
+    return "https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
+
+'''
+USER FLOW 1
+'''
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if not is_token_valid():
+        return redirect_to_login()
+
+    location = get_request_location()
+    flipbook_link = get_flipbook_link(location)
 
     if request.method == "POST":
         session_id = set_session_id()
@@ -125,8 +133,8 @@ def index():
         d = dict(request.form)
 
         d['session_id'] = session_id
-        if  payload['country_code']:
-            d['country'] = payload['country_code']
+        if  location['country_code']:
+            d['country'] = location['country_code']
         else:
             d['country'] = "Unknown"
 
@@ -160,7 +168,7 @@ def index():
         resp.set_cookie('_cid', token, expires=expire_date)
         return resp
 
-    return render_template('index.html', d=payload)
+    return render_template('index.html', location=location, flipbook_link=flipbook_link)
 
 
 @app.route('/checking', methods=['GET', 'POST'])
