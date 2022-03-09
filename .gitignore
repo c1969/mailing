@@ -9,3 +9,5 @@ appdata/__pycache__/
 appdata/.vscode/
 appdata/temp/*
 appdata/static/export/*.zip
+appdata/static/export/qr/*.png
+appdata/*.ipynb
