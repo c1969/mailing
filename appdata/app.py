@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 from PIL import Image
 import qrcode
 
-from db_routine import dbx
+from db_routine import dbx, dby
 from errors import Errors
 from imager import Imager
 
@@ -47,6 +47,7 @@ csrf = CSRFProtect(app)
 auth_s = URLSafeSerializer("blubbblubfdfsdb12edoejfdolfndjnfflkjnfnlfndajlkn", "auth") 
 
 db = dbx()
+db_qr = dby()
 E = Errors()
 
 def set_session_id():
@@ -245,7 +246,9 @@ def summary():
     else:
         return redirect(url_for('error', e=201))
 
-    
+    df_nan = df.isnull().values.any()
+    if df_nan:
+        return redirect(url_for('error', e=204))
 
     len_df = len(df)
     if request.method == 'POST':
@@ -276,7 +279,7 @@ def summary():
         box_size=15,
         border=1,
     )
-    qr.add_data(f'https://dialog.hakro.com/qr/{session_id}')
+    qr.add_data(f'https://dialog.hakro.com')
     qr.make(fit=True)
     qr_filename = os.path.join(app.config['UPLOAD_FOLDER'], s1['session_id'], f'qr_{s1["session_id"]}.png')
     qr_code = qr.make_image(fill_color="black", back_color="transparent")
@@ -311,8 +314,11 @@ USER FLOW 2
 '''
 @app.route('/qr/<qrid>', methods=['GET', 'POST'])
 def qr(qrid):
-    if not is_token_valid():
-        return redirect_to_login()
+    '''
+       if not is_token_valid():
+        return redirect_to_login() 
+    '''
+
     
     if qrid == None:
         return abort(404)
@@ -324,16 +330,32 @@ def qr(qrid):
         else:
             return redirect(url_for('du', qrid=qrid))
     else: #dealer unknown
-        return redirect(url_for('du', qrid=0))
+        #Daten von Sven fehlen - SteuerCD
+        #return redirect(url_for('du', qrid=0))
+        return redirect("https://www.hakro.com", code=302)
+
 
 @app.route('/dk', methods=['GET', 'POST'])
 def dk():
     if not is_token_valid():
         return redirect_to_login()
-    
+
     qrid = request.args.get('qrid', True)
-    d = db.get_retailer_by_qr(qrid)
-    e = db.get_dealer_for_retailer(d[0][1])
+
+    if request.method == 'GET':
+        d = db.get_retailer_by_qr(qrid)
+        e = db.get_dealer_for_retailer(d[0][1])
+
+    if request.method == 'POST':
+        f = dict(request.form)
+        print(f)
+        f['known'] = 1
+        res = db_qr.set_qr_feedback(f)
+        if res:
+            return redirect(url_for('qrdone'))
+        else:
+            return redirect("https://www.hakro.com", code=302)
+
 
     return render_template('dk.html', d=d[0], e=e[0])
 
@@ -345,6 +367,10 @@ def du():
     qrid = request.args.get('qrid', True)
 
     return render_template('du.html', e=None)
+
+@app.route('/qrdone', methods=['GET', 'POST'])
+def qrdone():
+    return render_template('qrdone.html')
 
 @app.route('/error', methods=['GET', 'POST'])
 def error():

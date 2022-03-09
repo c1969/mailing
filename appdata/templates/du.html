@@ -7,60 +7,217 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}">
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/dk.css')}}">
 	<noscript>
 		<link rel="stylesheet" href="static/assets/css/noscript.css" />
 	</noscript>
 </head>
 
 <body>
-	{{ flask_consent_code() }}
-	<div id="content">
-		<a href="/" class="brand-logo"><img src="{{url_for('static', filename='images/hakro-logo.png')}}" alt=""></a>
+	<div class="header">
+		<a href="/"><img class="brand-logo" src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
 	</div>
 	<div class="container">
 		<div class="col s6">
-			<br><br><br>
+
 			<div class="section">
-				<h1>Fachhändler finden,</h1>
-				<h3>unsere zahlreichen qualifizierten Fachhändler sind mit Know-how und Erfahrung immer für Sie da.
-					Einen
-					Fachhändler in Ihrer Nähe finden Sie ganz einfach mit unserer Händlersuche.</h3>
+				<h1>Guten Tag, {{d[2]}} {{d[3]}},</h1>
+				<h2>schön, dass Sie sich für nachhaltige, faire und haltbare Teambekleidung von HAKRO interessieren.
+				</h2>
+				<p>
+					Ihr
+					Fachhändler, {{ e[2] }} in {{ e[7] }}, berät Sie gerne persönlich, schickt Ihnen weitere
+					Informationen
+					und hält Sie mit seinem Newsletter auf dem Laufenden. Ganz wie Sie möchten. Bitte prüfen Sie
+					noch einmal Ihre Daten bevor Sie Kontakt aufnehmen.
+				</p>
 			</div>
+
 			<div class="section">
-				<form method="post" enctype="multipart/form-data">
+				<form method=" post" enctype="multipart/form-data">
 					<div class="row">
 						<div class="input-field col s12">
-							<label for="plz">Postleitzahl *</label>
-							<input type="text" name="plz" id="plz" required=required />
+							<label for="name">Vor- und Nachname *</label>
+							<input type="text" name="name" id="name" value="{{d[2]}} {{d[3]}}" required="required" />
 						</div>
 					</div>
-					<button class="waves-effect waves-light btn"
-					style="background-color: transparent; border-radius: 20px; border-color: black; color: black;"
-					type="submit">Fachhändler finden</button>
-		
-			</div>
-			<div class="section">
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="costumer_name">Firma *</label>
+							<input type="text" name="costumer_name" id="company_name" value="{{d[4]}}"
+								required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="streetname">Straße und Hausnummer *</label>
+							<input type="text" name="streetname" id="streetname" value="{{d[5]}} {{d[6]}}"
+								required="required" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s4">
+							<label for="plz">Postleitzahl *</label>
+							<input type="text" name="plz" id="plz" value="{{d[7]}}" required="required" />
+						</div>
+						<div class="input-field col s8">
+							<label for="city">Ort *</label>
+							<input type="text" name="city" id="city" value="{{d[8]}}" required="required" />
+						</div>
+					</div>
+					<p style="font-size: 16px">
+						* Pflichtfelder
+					</p>
+					<div class="input-field col s4">
+						<p>
+							<label>
+								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
+								<span>Ja, ich möchte Ihren Newsletter abonnieren.</span>
+							</label>
+						</p>
+					</div>
+					<h2 style="margin-top: 60px;">
+						HAKRO-Teamwear interessiert mich:
+					</h2>
+					<div class="input-field col s4">
+						<p style="margin-bottom: 0px;">
+							<label>
+								<input class="filled-in" type="checkbox" id="email" name="email" value="on" />
+								<span>Bitte schicken Sie mir eine E-Mail.</span>
+							</label>
+						</p>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="email">Meine E-Mail-Adresse
+							</label>
+							<input type="email" name="email_txt" id="email_txt" />
+						</div>
+					</div>
+					<div class="input-field col s4">
+						<p style="margin-bottom: 0px;">
+							<label>
+								<input class="filled-in" type="checkbox" id="callme" name="callme" value="on" />
+								<span>Bitte rufen Sie mich an.</span>
+							</label>
+						</p>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<label for="phone">Meine Telefonnummer</label>
+							<input type="tel" name="callme_txt" id="callme_txt" />
+						</div>
+					</div>
 
 			</div>
 		</div>
 	</div>
-	<!--	Footer -->
-	<footer class="page-footer" style="background-color: #B6C24F;">
-		<div class="container">
-			<div class="row">
-				<div class="col l12 s12">
 
+	<!-- Waschtest -->
+
+	<div class="washtest">
+		<div class="shirt_container white_text">
+			<div class="shirt_wrapper">
+				<div class="shirt_text">
+					<h1 style="margin-top: 24px;">hält länger als jede Waschmaschine</h1>
+					<p>
+						Mach mit beim Waschtest und überzeuge
+						dich selbst von der herausragenden Qualität
+						und Langlebigkeit unserer Produkte.
+					</p>
+					<p style="font-weight: bold;">
+						Jetzt Gratis-Shirt anfordern!
+					</p>
+				</div>
+				<div>
+					<img class="shirt_img" src="{{url_for('static', filename='images/waschtest.png')}}" />
+				</div>
+			</div>
+
+		</div>
+		<div class="container">
+			<div class="col s6">
+				<div class="section">
+					<div class="input-field col s4">
+						<p>
+							<label>
+								<input class="filled-in" type="checkbox" id="shirt" name="shirt" value="on" required="required" />
+								<span>Ja, Gratis-Shirt anfordern.</span>
+							</label>
+						</p>
+					</div>
+				</div>
+				<div class="container" style="height: 90px;">
+					<div class="col s6">
+						<div class="section">
+							<button class="button_primary" type="submit">senden</button>
+						</div>
+						</form>
+					</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Dealer -->
+
+	<div class="no-washtest">
+		<footer class="page-footer" style="background-color: #B6C24F; padding-bottom: 40px;">
+			<div class="container">
+				<div class="col l12 s12">
+					<h3 style="margin-top: 30px;" class="white-text">Ihr persönlicher Fachhändler:</h3>
+					<p style="font-weight: bold;">
+						{{ e[2] }}
+					</p>
+					<p>
+						{{ e[4] }}<br>
+						{{ e[5] }}<br>
+						{{ e[6] }} {{ e[7] }}<br>
+					</p>
+					<p>
+						{{ e[9] }}<br />
+						<a href="mailto:{{ e[8] }}" style="color: white;">{{ e[8] }}</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<!-- White Footer -->
+
+	<div class="no-washtest">
+		<div class="footer_white">
+			<div class="footer_container">
+				<div>
+					<a class="footer_item_black" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
+				</div>
+				<div>
+					<a class="footer_item_black" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
+						rights
+						reserved</a>
 				</div>
 			</div>
 		</div>
-		<div class="footer-copyright">
-			<div class="container" href="https://www.hakro.com/">
-				© 2022 HAKRO
-				<a class="grey-text text-lighten-4 right" href="https://www.hakro.com/impressum">Impressum</a>
+	</div>
+
+	<!-- Green Footer-->
+
+	<div class="washtest">
+		<div class="footer_green" style="margin-top: 0px;">
+			<div class="footer_container">
+				<div>
+					<a class="footer_item_white" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
+				</div>
+				<div>
+					<a class="footer_item_white" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
+						rights
+						reserved</a>
+				</div>
 			</div>
 		</div>
-	</footer>
-
+	</div>
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
