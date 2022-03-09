@@ -22,6 +22,7 @@ import numpy as np
 from itsdangerous import URLSafeSerializer
 
 import jwt
+import logging
 
 UPLOAD_FOLDER = 'static/upload/'
 ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'tiff'}
@@ -114,6 +115,7 @@ def get_request_location():
     else:
         remote_address = request.environ['HTTP_X_FORWARDED_FOR']
     pl = requests.get(f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
+    app.logger.info(str(pl.json()))
     return pl.json()
 
 def get_flipbook_link(location):
@@ -137,12 +139,8 @@ def index():
         os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
         cid = db.get_costumer_id()
         d = dict(request.form)
-
-
         d['session_id'] = session_id
-        d['country'] = "Unknown"
-
-
+        d["country"] = location.get("country_code", "Unknown")
 
         file_data = request.files['file_data']
         file_logo = request.files['file_logo']
@@ -173,7 +171,7 @@ def index():
         resp.set_cookie('_cid', token, expires=expire_date)
         return resp
 
-    return render_template('index.html', location=location, flipbook_link=flipbook_link)
+    return render_template('index.html', flipbook_link=flipbook_link)
 
 
 @app.route('/checking', methods=['GET', 'POST'])
@@ -367,7 +365,7 @@ def du():
     
     qrid = request.args.get('qrid', True)
 
-    return render_template('du.html', e=None)
+    return render_template('du.html', d=None, e=None)
 
 @app.route('/qrdone', methods=['GET', 'POST'])
 def qrdone():
