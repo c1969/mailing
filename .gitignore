@@ -8,4 +8,4 @@ appdata/.ipynb_checkpoints/
 appdata/__pycache__/
 appdata/.vscode/
 appdata/temp/*
-appdata/static/export/
+appdata/static/export/*.zip
