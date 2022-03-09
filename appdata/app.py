@@ -22,6 +22,7 @@ import numpy as np
 from itsdangerous import URLSafeSerializer
 
 import jwt
+import logging
 
 UPLOAD_FOLDER = 'static/upload/'
 ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'tiff'}
@@ -110,14 +111,14 @@ def login():
 
 def get_request_location():
     if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
-        print("REMOTE_ADDR")
+        app.logger.error("REMOTE_ADDR")
         remote_address = request.environ['REMOTE_ADDR']
     else:
-        print("HTTP_X_FORWARDED_FOR")
+        app.logger.error("HTTP_X_FORWARDED_FOR")
         remote_address = request.environ['HTTP_X_FORWARDED_FOR']
-    print(remote_address)
+    app.logger.error(remote_address)
     pl = requests.get(f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
-    print(str(pl.json()))
+    app.logger.error(str(pl.json()))
     return pl.json()
 
 def get_flipbook_link(location):
