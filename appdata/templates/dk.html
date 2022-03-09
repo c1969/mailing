@@ -19,7 +19,6 @@
 	</div>
 	<div class="container">
 		<div class="col s6">
-
 			<div class="section">
 				<h1>Guten Tag, {{d[2]}} {{d[3]}},</h1>
 				<h2>schön, dass Sie sich für nachhaltige, faire und haltbare Teambekleidung von HAKRO interessieren.
@@ -32,7 +31,6 @@
 					noch einmal Ihre Daten bevor Sie Kontakt aufnehmen.
 				</p>
 			</div>
-
 			<div class="section">
 				<form method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
@@ -111,14 +109,13 @@
 							<input type="tel" name="callme_txt" id="callme_txt" />
 						</div>
 					</div>
-
 			</div>
 		</div>
 	</div>
 
 	<!-- Waschtest -->
-	<!--
-		<div class="washtest">
+
+	<div class="washtest">
 		<div class="shirt_container white_text">
 			<div class="shirt_wrapper">
 				<div class="shirt_text">
@@ -136,7 +133,6 @@
 					<img class="shirt_img" src="{{url_for('static', filename='images/waschtest.png')}}" />
 				</div>
 			</div>
-
 		</div>
 		<div class="container">
 			<div class="col s6">
@@ -144,27 +140,25 @@
 					<div class="input-field col s4">
 						<p>
 							<label>
-								<input class="filled-in" type="checkbox" id="shirt" name="shirt" value="on" required="required" />
+								<input class="filled-in" type="checkbox" id="shirt" name="shirt" value="on"
+									required="required" />
 								<span>Ja, Gratis-Shirt anfordern.</span>
 							</label>
 						</p>
 					</div>
 				</div>
--->
-
-	<div class="container" style="height: 90px;">
-		<div class="col s6">
-			<div class="section">
-				<button class="button_primary" type="submit">senden</button>
+				<div style="height: 90px;">
+					<div class="col s6">
+						<div class="section">
+							<button class="button_primary" type="submit">senden</button>
+						</div>
+					</div>
+				</div>
+				</form>
 			</div>
 		</div>
+		</form>
 	</div>
-	</form>
-	</div>
-	</div>
-	</form>
-	</div>
-
 
 	<!-- Dealer -->
 
@@ -225,6 +219,7 @@
 	</div>
 
 	<!-- Scripts -->
+
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
@@ -248,7 +243,6 @@
 			}
 		});
 	</script>
-
 </body>
 
 </html>
