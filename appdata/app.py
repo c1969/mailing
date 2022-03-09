@@ -365,7 +365,7 @@ def du():
     
     qrid = request.args.get('qrid', True)
 
-    return render_template('du.html', e=None)
+    return render_template('du.html', d=None, e=None)
 
 @app.route('/qrdone', methods=['GET', 'POST'])
 def qrdone():
