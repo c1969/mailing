@@ -228,12 +228,13 @@ def summary():
                 sepsis = dialect.delimiter
             df = pd.read_csv(data_path, header=None, sep=sepsis)
             dfx = df.iloc[:MAX_RES]
-    elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX'):
+    elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX') \
+        or s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
+        try:
             df = pd.read_excel(data_path, header=None)
             dfx = df.iloc[:MAX_RES]
-    elif s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
-            df = pd.read_excel(data_path, header=None)
-            dfx = df.iloc[:MAX_RES]
+        except Exception:
+            return redirect(url_for('error', e=200))
     else:
         return redirect(url_for('error', e=200))
 
