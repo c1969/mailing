@@ -111,14 +111,11 @@ def login():
 
 def get_request_location():
     if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
-        app.logger.error("REMOTE_ADDR")
         remote_address = request.environ['REMOTE_ADDR']
     else:
-        app.logger.error("HTTP_X_FORWARDED_FOR")
         remote_address = request.environ['HTTP_X_FORWARDED_FOR']
-    app.logger.error(remote_address)
     pl = requests.get(f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
-    app.logger.error(str(pl.json()))
+    app.logger.info(str(pl.json()))
     return pl.json()
 
 def get_flipbook_link(location):
@@ -174,7 +171,7 @@ def index():
         resp.set_cookie('_cid', token, expires=expire_date)
         return resp
 
-    return render_template('index.html', location=location, flipbook_link=flipbook_link)
+    return render_template('index.html', flipbook_link=flipbook_link)
 
 
 @app.route('/checking', methods=['GET', 'POST'])
