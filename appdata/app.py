@@ -110,10 +110,14 @@ def login():
 
 def get_request_location():
     if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
+        print("REMOTE_ADDR")
         remote_address = request.environ['REMOTE_ADDR']
     else:
+        print("HTTP_X_FORWARDED_FOR")
         remote_address = request.environ['HTTP_X_FORWARDED_FOR']
+    print(remote_address)
     pl = requests.get(f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
+    print(str(pl.json()))
     return pl.json()
 
 def get_flipbook_link(location):
@@ -137,12 +141,8 @@ def index():
         os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
         cid = db.get_costumer_id()
         d = dict(request.form)
-
-
         d['session_id'] = session_id
-        d['country'] = "Unknown"
-
-
+        d["country"] = location.get("country_code", "Unknown")
 
         file_data = request.files['file_data']
         file_logo = request.files['file_logo']
