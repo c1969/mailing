@@ -74,7 +74,7 @@
             </p>
           </div>
           <div class="section">
-            <h2>Personalisierte Rückseite:</h2>
+            <h2>PERSONALISIERTE R&Uuml;CKSEITE</h2>
             <ul>
               <li>Eindruck Ihrer gewerblichen Kunden- und Empfängeradressen</li>
               <li>Ihr Firmenlogo und Ihre Firmenanschrift</li>
@@ -89,18 +89,15 @@
             </div>
           </div>
           <div class="section">
-            <h2>Personalisiertes Vorwort:</h2>
+            <h2>PERSONALISIERTES VORWORT</h2>
             <ul>
               <li>Eindruck des Empfängernamens in der Anrede</li>
-              <li>
-                Ihre Firmenanschrift inklusive der Kontaktdaten des direkten
-                Ansprechpartners aus Ihrem Unternehmen
-              </li>
-              <li>QR-Code über den Ihr Newsletter abonniert werden kann</li>
+              <li>Ihre Firmenanschrift inklusive der Kontaktdaten des direkten Ansprechpartners aus Ihrem Unternehmen</li>
+              <li>QR-Code, über den Ihr Newsletter abonniert werden kann</li>
             </ul>
             <img
               class="img_shadow"
-              src="{{url_for('static', filename='images/Hakro_NHB12444_1_02_resized.jpg')}}"
+              src="{{url_for('static', filename='images/vorwort_leer_nozoom.png')}}"
               alt=""
             />
             <div class="sticky_container">
@@ -115,7 +112,7 @@
                   <br />
                   <span id="output_name">Ihr Ansprechpartner</span><br />
                   <span id="output_phone">Telefonnummer</span>,
-                  <span id="output_email">E-Mail Adresse</span><br />
+                  <span id="output_email">E-Mail-Adresse</span><br />
                   <div class="qr_note">
                     Scannen Sie für weitere Informationen den QR-Code mithilfe
                     Ihres Smartphones.
@@ -140,10 +137,10 @@
               unser Team Kundenbeziehungen & Service unter + 49 (0) 7935 / 9118
               100 oder per E-Mail unter
               <a
-                href="mailto:info@hakro.com?subject=HAKRO Verkaufsmailing"
+                href="mailto:kundenbeziehungen@hakro.com?subject=HAKRO Verkaufsmailing"
                 target="blank"
-                >info@hakro.com</a
-              >
+                >kundenbeziehungen@hakro.com</a
+              >.
             </p>
           </div>
 
@@ -249,7 +246,7 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <label for="email">E-Mail Adresse *</label>
+                  <label for="email">E-Mail-Adresse *</label>
                   <input
                     type="email"
                     name="email"
@@ -299,9 +296,9 @@
                 <p>
                   Bitte laden Sie eine wie folgt strukturierte Liste Ihrer
                   Empfängeradressen hoch. Sollten Sie unser HAKRO
-                  Verkaufsmailing an mehr als 2.500 Empfänger*innen versenden
-                  wollen, bitten wir Sie unser Team Kundenbeziehungen & Service
-                  unter + 49 (0) 7935 / 9118 100 oder per E-Mail unter
+                  Verkaufsmailing an mehr als 2.500 Empfängern versenden wollen,
+                  bitten wir Sie, unser Team Kundenbeziehungen & Service unter +
+                  49 (0) 7935 / 9118 100 oder per E-Mail unter
                   <a href="mailto:kundenbeziehungen@hakro.com" target="blank"
                     >kundenbeziehungen@hakro.com</a
                   >
@@ -363,8 +360,8 @@
                 <div style="margin: 10px 0 20px 0">
                   <a
                     style="font-size: 18px"
-                    href="/static/template/kundenliste_template.xlsx"
-                    download="Excel-Vorlage"
+                    href="/static/template/Excel-Vorlage_Empfaengeradressen.xlsx"
+                    download="Excel-Vorlage_Empfaengeradressen"
                     >Excel-Vorlage herunterladen</a
                   >
                 </div>
@@ -416,8 +413,9 @@
                   E-Mail an
                   <a href="mailto:kundenbeziehungen@hakro.com" target="blank"
                     >kundenbeziehungen@hakro.com</a
-                  >. oder wenden Sie sich telefonisch unter +49 (0) 7935/9118
-                  100 an unsere Kolleginnen und Kollegen aus dem Team
+                  >
+                  oder wenden Sie sich telefonisch unter +49 (0) 7935/9118 100
+                  an unsere Kolleginnen und Kollegen aus dem Team
                   Kundenbeziehungen & Service.
                 </p>
               </div>
@@ -510,7 +508,7 @@
         const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * 24;
 
         // Set the date we're counting down to
-        const countdownDate = new Date("Mar 18, 2022 00:00:00").getTime();
+        const countdownDate = new Date("Mar 17, 2022 12:00:00").getTime();
 
         const showCountdown = () => {
           // Get today's date and time
