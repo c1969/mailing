@@ -1,475 +1,659 @@
 <!DOCTYPE html>
 <html lang="de">
+  <head>
+    <title>HAKRO Dialog</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='assets/css/hakro.css')}}"
+    />
+    <noscript>
+      <link rel="stylesheet" href="static/assets/css/noscript.css" />
+    </noscript>
+  </head>
 
-<head>
-  <title>HAKRO Dialog</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}" />
-  <noscript>
-    <link rel="stylesheet" href="static/assets/css/noscript.css" />
-  </noscript>
-</head>
-
-<body>
-  <div class="header">
-    <a href="/"><img class="brand-logo" src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
-  </div>
-  <div class="mobile">
-    <h2>Bitte rufen sie diese Seite über Ihren Mac oder PC auf.</h2>
-    <a href="https://www.hakro.com">Weiter zu Hakro.com</a>
-  </div>
-
-  <div class="desktop">
-
-    <div id="cookie-modal" class="modal">
-      <div class="modal-content">
-        <h4>Auch bei uns gibt es Cookies</h4>
-        <p>Auf der Seite <strong>https://dialog.hakro.com</strong>verwenden wir nur 1 Cookie und das ist auch noch von uns selbst.
-          Dieses Cookie nutzen wir um die sichere Datenübertragung sicherzustellen. Für Ihren Standort nutzen wir eine GeoLocation API über Ihre IP Addresse.</p>
-      </div>
-      <div class="modal-footer">
-        <a href="https://hakro.com" class="modal-close waves-effect waves-red btn-flat">nicht für mich</a>
-        <a onclick="acceptCookies()" class="waves-effect waves-green btn-flat">Einverstanden</a>
-      </div>
+  <body>
+    <div class="header">
+      <a href="/"
+        ><img
+          class="brand-logo"
+          src="{{url_for('static', filename='images/hakro-logo.svg')}}"
+          alt=""
+      /></a>
     </div>
-    <!--
+    <div class="mobile">
+      <h2>Bitte rufen sie diese Seite über Ihren Mac oder PC auf.</h2>
+      <a href="https://www.hakro.com">Weiter zu Hakro.com</a>
+    </div>
+
+    <div class="desktop">
+      <div id="cookie-modal" class="modal">
+        <div class="modal-content">
+          <h4>Auch bei uns gibt es Cookies</h4>
+          <p>
+            Auf der Seite <strong>https://dialog.hakro.com</strong>verwenden wir
+            nur 1 Cookie und das ist auch noch von uns selbst. Dieses Cookie
+            nutzen wir um die sichere Datenübertragung sicherzustellen. Für
+            Ihren Standort nutzen wir eine GeoLocation API über Ihre IP
+            Addresse.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a
+            href="https://hakro.com"
+            class="modal-close waves-effect waves-red btn-flat"
+            >nicht für mich</a
+          >
+          <a onclick="acceptCookies()" class="waves-effect waves-green btn-flat"
+            >Einverstanden</a
+          >
+        </div>
+      </div>
+      <!--
       <button data-target="cookie-modal" class="btn modal-trigger">Informationen zu Cookies</button>
 -->
 
-
-
-
-    <div class="container">
-      <div class="col s12">
-        <div class="section">
-          <h1>Liebe HAKRO-Partner,</h1>
-          <h2><span id="countdown"></span>!</h2>
-          <p>
-            Der Countdown zur Teilnahme am ersten HAKRO-Verkaufs-Mailing mit
-            Händlereindruck läuft. Wir brauchen nur noch einige wenige Angaben
-            und Dateien von Ihnen – schon sind Sie dabei. Und so könnte Ihr individualisiertes Mailing aussehen:
-          </p>
-
-        </div>
-        <div class="section">
-          <h2>Personalisierte Rückseite:</h2>
-          <ul>
-            <li>Eindruck Ihrer Empfängeradressen</li>
-            <li>Ihr Firmenlogo und Ihre Absenderdaten</li>
-          </ul>
-          <div class="center-align">
-            <img class="img_shadow" src="{{url_for('static', filename='images/umschlag_beispiel.png')}}" alt=""
-              class="responsive-img" />
+      <div class="container">
+        <div class="col s12">
+          <div class="section">
+            <h1>LIEBE HAKRO FACHHANDELSPARTNER,</h1>
+            <h2><span id="countdown"></span>!</h2>
+            <p>
+              Der Countdown zur Teilnahme am ersten HAKRO Verkaufsmailing mit
+              Ihrem persönlichen Eindruck läuft. Gestalten Sie mit uns in nur
+              wenigen Schritten Ihr individualisiertes Verkaufsmailing. So
+              einfach sind Sie dabei:
+            </p>
           </div>
-        </div>
-        <div class="section">
-          <h2>Personalisiertes Vorwort:</h2>
-          <ul>
-            <li>Eindruck des Empfängernamens in der Anrede</li>
-            <li>Ihre Firma mit direktem Ansprechpartner und Kontaktdaten</li>
-            <li>QR-Code über den Ihr Newsletter abonniert werden kann</li>
-          </ul>
-          <img class="img_shadow" src="{{url_for('static', filename='images/vorwort_leer_nozoom.png')}}" alt="" />
-          <div class="sticky_container">
-            <div class="sticky_element">
-              <img src="{{url_for('static', filename='images/qr_code.png')}}" class="overlay_sticky_qr" />
-              <div class="overlay_sticky_text">
-                <span>Ihr Fachhändler ist gerne für Sie da:</span><br />
-                <span id="output_company_name">Ihre Firma</span>,
-                <span id="output_streetname">Ihre Straße</span>,
-                <span id="output_plz">PLZ</span>
-                <span id="output_city">Ort</span>,<br />
-                Ansprechpartner: <span id="output_name">Ansprechpartner</span><br />
-                Tel. <span id="output_phone">Telefonnummer</span>,
-                E-mail: <span id="output_email">E-Mail Adresse</span><br />
-                <div class="qr_note">FÜR WEITERE INFORMATIONEN
-                  EINFACH DEN QR-CODE MIT IHREM SMARTPHONE FOTOGRAFIEREN</div>
-              </div>
+          <div class="section">
+            <h2>Personalisierte Rückseite:</h2>
+            <ul>
+              <li>Eindruck Ihrer gewerblichen Kunden- und Empfängeradressen</li>
+              <li>Ihr Firmenlogo und Ihre Firmenanschrift</li>
+            </ul>
+            <div class="center-align">
+              <img
+                class="img_shadow"
+                src="{{url_for('static', filename='images/umschlag_beispiel.png')}}"
+                alt=""
+                class="responsive-img"
+              />
             </div>
           </div>
-        </div>
-        <div style="margin-top: 160px" class="section">
-          <a href="{{ flipbook_link }}" target="blank">Hier können Sie das
-            Mailing als Flipbook ansehen</a>
-        </div>
-        <div class="section">
-          <h2>Hier personalisieren Sie Ihren Eindruck im Mailing</h2>
-          <p>
-            Bitte tragen Sie die Angaben ein, die wir für Sie eindrucken
-            sollen. Bei Fragen zu unserem Verkaufsmailing hilft Ihnen gerne unser Team Kundenbetreuung & Service unter
-            + 49 (0) 7935 / 9118 100 oder per E-Mail unter
-            <a href="mailto:info@hakro.com?subject=HAKRO Verkaufsmailing" target="blank">info@hakro.com</a>
-          </p>
-        </div>
-
-        <div class="section">
-          <form method="post" enctype="multipart/form-data">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="costumer_name">Name Ihrer Firma *</label>
-                <input type="text" name="costumer_name" id="company_name" class="validate" required="required"
-                  pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
-                <span class="helper-text" data-error="Bitte geben Sie Ihre Firma ein"></span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="streetname">Straße und Hausnummer *</label>
-                <input type="text" name="streetname" id="streetname" class="validate" required="required"
-                  pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
-                <span class="helper-text" data-error="Bitte geben Sie Ihre Straße und Hausnummer ein"></span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s4">
-                <label for="plz">Postleitzahl *</label>
-                <input type="text" name="plz" id="plz" class="validate"
-                  required="required" pattern="\d*" />
-                <span class="helper-text" data-error="Bitte geben Ihre Posleitzahl ein"></span>
-              </div>
-              <div class="input-field col s8">
-                <label for="city">Ort *</label>
-                <input type="text" name="city" id="city" class="validate"
-                  required="required" pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+" />
-                <span class="helper-text" data-error="Bitte geben Sie Ihren Ort ein"></span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="name">Ansprechpartner</label>
-                <input type="text" name="name" id="name" class="validate" />
-                <span class="helper-text" data-error="Bitte geben Sie Ihren Ansprechpartner ein"></span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="phone">Telefonnummer *</label>
-                <input type="tel" name="phone" id="phone" class="validate" required="required" pattern="\d*" />
-                <span class="helper-text"
-                  data-error="Bitte geben Sie ihre Telefonnummer ohne Leer- oder Sonderzeichen ein"></span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="email">E-Mail Adresse *</label>
-                <input type="email" name="email" id="email" class="validate" required="required"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
-                <span class="helper-text" data-error="Bitte geben Sie eine gültige E-Mail Adresse"></span>
-              </div>
-            </div>
-            <div class="section">
-              <h2>Ihr Firmenlogo</h2>
-              <p style="margin-bottom: 0">
-                Bitte laden Sie ihr Firmenlogo in einem der folgenden Dateitypen hoch. Farbige
-                Logos werden in Graustufen gedruckt.
-              </p>
-              <div class="input-field col s12" style="padding: 0">
-                <div class="file-field input-field">
-                  <div class="button_secondary">
-                    <span>Datei</span>
-                    <input type="file" name="file_logo" id="file_logo" class="validate" required="required"
-                      accept="image/png, image/jpg, image/jpeg, image/tiff" />
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" id="file_path"
-                      placeholder=".png | .jpg | .jpeg | .tiff *" />
+          <div class="section">
+            <h2>Personalisiertes Vorwort:</h2>
+            <ul>
+              <li>Eindruck des Empfängernamens in der Anrede</li>
+              <li>
+                Ihre Firmenanschrift inklusive der Kontaktdaten des direkten
+                Ansprechpartners aus Ihrem Unternehmen
+              </li>
+              <li>QR-Code über den Ihr Newsletter abonniert werden kann</li>
+            </ul>
+            <img
+              class="img_shadow"
+              src="{{url_for('static', filename='images/Hakro_NHB12444_1_02_resized.jpg')}}"
+              alt=""
+            />
+            <div class="sticky_container">
+              <div class="sticky_element">
+                <img
+                  src="{{url_for('static', filename='images/qr_code.png')}}"
+                  class="overlay_sticky_qr"
+                />
+                <div class="overlay_sticky_text">
+                  <span>Ihr HAKRO Fachhändler ist gerne für Sie da:</span><br />
+                  <span id="output_company_address">Ihre Firmenanschrift</span>
+                  <br />
+                  <span id="output_name">Ihr Ansprechpartner</span><br />
+                  <span id="output_phone">Telefonnummer</span>,
+                  <span id="output_email">E-Mail Adresse</span><br />
+                  <div class="qr_note">
+                    Scannen Sie für weitere Informationen den QR-Code mithilfe
+                    Ihres Smartphones.
                   </div>
                 </div>
               </div>
             </div>
-            <div class="section">
-              <h2>Ihre Empfängeradressen</h2>
-              <p>
-                Bitte laden Sie eine wie folgt strukturierte Liste Ihrer
-                Empfängeradressen hoch.
+          </div>
+          <div style="margin-top: 160px" class="section">
+            <a href="{{ flipbook_link }}" target="blank"
+              >EINE FLIPBOOK-VORSCHAU DES HAKRO VERKAUFSMAILINGS KÖNNEN SIE HIER
+              IN AUSZÜGEN EINSEHEN</a
+            >
+          </div>
+          <div class="section">
+            <h2>
+              PERSONALISIEREN SIE IHREN HÄNDLEREINDRUCK IM HAKRO VERKAUFSMAILING
+            </h2>
+            <p>
+              Bitte tragen Sie die Angaben ein, die wir für Sie eindrucken
+              dürfen. Bei Fragen zu unserem Verkaufsmailing hilft Ihnen gerne
+              unser Team Kundenbeziehungen & Service unter + 49 (0) 7935 / 9118
+              100 oder per E-Mail unter
+              <a
+                href="mailto:info@hakro.com?subject=HAKRO Verkaufsmailing"
+                target="blank"
+                >info@hakro.com</a
+              >
+            </p>
+          </div>
 
-                Bitte kontaktieren Sie uns vor dem Upload wenn Ihre Liste mehr als 2.500
-                Empfänger enthält unter
-                + 49 (0) 7935 / 9118 770 oder per E-Mail unter
-                <a href="mailto:dialog@hakro.com" target="blank">dialog@hakro.com</a>
-              </p>
-              <div style="overflow: scroll">
-                <table>
-                  <thead>
-                    <tr>
-                      <th style="background-color: white">Spalte 1</th>
-                      <th style="background-color: white">Spalte 2</th>
-                      <th style="background-color: white">Spalte 3</th>
-                      <th style="background-color: white">Spalte 4</th>
-                      <th style="background-color: white">Spalte 5</th>
-                      <th style="background-color: white">Spalte 6</th>
-                      <th style="background-color: white">Spalte 7</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Vorname</td>
-                      <td>Nachname</td>
-                      <td>Firma</td>
-                      <td>Straße</td>
-                      <td>Hausnr.</td>
-                      <td>PLZ</td>
-                      <td>Ort</td>
-                    </tr>
-                    <tr>
-                      <td>Vorname</td>
-                      <td>Nachname</td>
-                      <td>Firma</td>
-                      <td>Straße</td>
-                      <td>Hausnr.</td>
-                      <td>PLZ</td>
-                      <td>Ort</td>
-                    </tr>
-                    <tr>
-                      <td>Vorname</td>
-                      <td>Nachname</td>
-                      <td>Firma</td>
-                      <td>Straße</td>
-                      <td>Hausnr.</td>
-                      <td>PLZ</td>
-                      <td>Ort</td>
-                    </tr>
-                    <tr>
-                      <td>...</td>
-                      <td>...</td>
-                      <td>...</td>
-                      <td>...</td>
-                      <td>...</td>
-                      <td>...</td>
-                      <td>...</td>
-                    </tr>
-                  </tbody>
-                </table>
+          <div class="section">
+            <form method="post" enctype="multipart/form-data">
+              <input
+                type="hidden"
+                name="csrf_token"
+                value="{{ csrf_token() }}"
+              />
+              <div class="row">
+                <div class="input-field col s12">
+                  <label for="costumer_name">Name Ihrer Firma *</label>
+                  <input
+                    type="text"
+                    name="costumer_name"
+                    id="company_name"
+                    class="validate"
+                    required="required"
+                    pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+"
+                  />
+                  <span
+                    class="helper-text"
+                    data-error="Bitte geben Sie Ihre Firma ein"
+                  ></span>
+                </div>
               </div>
-              <div style="margin: 10px 0 20px 0">
-
-                <a style="font-size: 18px" href="/static/template/kundenliste_template.xlsx"
-                  download="Excel Template">Excel Template
-                  herunterladen</a>
+              <div class="row">
+                <div class="input-field col s12">
+                  <label for="streetname">Straße und Hausnummer *</label>
+                  <input
+                    type="text"
+                    name="streetname"
+                    id="streetname"
+                    class="validate"
+                    required="required"
+                    pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+"
+                  />
+                  <span
+                    class="helper-text"
+                    data-error="Bitte geben Sie Ihre Straße und Hausnummer ein"
+                  ></span>
+                </div>
               </div>
-              <div class="input-field col s12" style="padding: 0">
-                <div class="file-field input-field">
-                  <div class="button_secondary">
-                    <span>Datei</span>
-                    <input type="file" name="file_data" id="file_data" class="validate" required="required"
-                      accept="text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet " />
+              <div class="row">
+                <div class="input-field col s4">
+                  <label for="plz">Postleitzahl *</label>
+                  <input
+                    type="text"
+                    name="plz"
+                    id="plz"
+                    class="validate"
+                    required="required"
+                    pattern="\d*"
+                  />
+                  <span
+                    class="helper-text"
+                    data-error="Bitte geben Ihre Postleitzahl ein"
+                  ></span>
+                </div>
+                <div class="input-field col s8">
+                  <label for="city">Ort *</label>
+                  <input
+                    type="text"
+                    name="city"
+                    id="city"
+                    class="validate"
+                    required="required"
+                    pattern="[A-Za-z0-9].{1,}[^()/><\][\\\x22,;|]+"
+                  />
+                  <span
+                    class="helper-text"
+                    data-error="Bitte geben Sie Ihren Ort ein"
+                  ></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <label for="name">Ansprechpartner</label>
+                  <input type="text" name="name" id="name" class="validate" />
+                  <span
+                    class="helper-text"
+                    data-error="Bitte geben Sie Ihren Ansprechpartner ein"
+                  ></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <label for="phone">Telefonnummer *</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    class="validate"
+                    required="required"
+                    pattern="\d*"
+                  />
+                  <span
+                    class="helper-text"
+                    data-error="Bitte geben Sie ihre Telefonnummer ohne Leer- oder Sonderzeichen ein"
+                  ></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <label for="email">E-Mail Adresse *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="validate"
+                    required="required"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  />
+                  <span
+                    class="helper-text"
+                    data-error="Bitte geben Sie eine gültige E-Mail Adresse"
+                  ></span>
+                </div>
+              </div>
+              <div class="section">
+                <h2>IHR FIRMENLOGO</h2>
+                <p style="margin-bottom: 0">
+                  Bitte laden Sie Ihr Firmenlogo in einem der folgenden
+                  Dateitypen hoch. Farbige Logos werden in Graustufen gedruckt.
+                </p>
+                <div class="input-field col s12" style="padding: 0">
+                  <div class="file-field input-field">
+                    <div class="button_secondary">
+                      <span>Datei</span>
+                      <input
+                        type="file"
+                        name="file_logo"
+                        id="file_logo"
+                        class="validate"
+                        required="required"
+                        accept="image/png, image/jpg, image/jpeg, image/tiff"
+                      />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input
+                        class="file-path validate"
+                        type="text"
+                        id="file_path"
+                        placeholder=".png | .jpg | .jpeg | .tiff *"
+                      />
+                    </div>
                   </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder=".csv oder .xslx *" />
+                </div>
+              </div>
+              <div class="section">
+                <h2>UPLOAD IHRER EMPF&Auml;NGERADRESSEN</h2>
+                <p>
+                  Bitte laden Sie eine wie folgt strukturierte Liste Ihrer
+                  Empfängeradressen hoch. Sollten Sie unser HAKRO
+                  Verkaufsmailing an mehr als 2.500 Empfänger*innen versenden
+                  wollen, bitten wir Sie unser Team Kundenbeziehungen & Service
+                  unter + 49 (0) 7935 / 9118 100 oder per E-Mail unter
+                  <a href="mailto:kundenbeziehungen@hakro.com" target="blank"
+                    >kundenbeziehungen@hakro.com</a
+                  >
+                  zu kontaktieren.
+                </p>
+                <div style="overflow: scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="background-color: white">Spalte 1</th>
+                        <th style="background-color: white">Spalte 2</th>
+                        <th style="background-color: white">Spalte 3</th>
+                        <th style="background-color: white">Spalte 4</th>
+                        <th style="background-color: white">Spalte 5</th>
+                        <th style="background-color: white">Spalte 6</th>
+                        <th style="background-color: white">Spalte 7</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Vorname</td>
+                        <td>Nachname</td>
+                        <td>Firma</td>
+                        <td>Straße</td>
+                        <td>Hausnr.</td>
+                        <td>PLZ</td>
+                        <td>Ort</td>
+                      </tr>
+                      <tr>
+                        <td>Vorname</td>
+                        <td>Nachname</td>
+                        <td>Firma</td>
+                        <td>Straße</td>
+                        <td>Hausnr.</td>
+                        <td>PLZ</td>
+                        <td>Ort</td>
+                      </tr>
+                      <tr>
+                        <td>Vorname</td>
+                        <td>Nachname</td>
+                        <td>Firma</td>
+                        <td>Straße</td>
+                        <td>Hausnr.</td>
+                        <td>PLZ</td>
+                        <td>Ort</td>
+                      </tr>
+                      <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div style="margin: 10px 0 20px 0">
+                  <a
+                    style="font-size: 18px"
+                    href="/static/template/kundenliste_template.xlsx"
+                    download="Excel-Vorlage"
+                    >Excel-Vorlage herunterladen</a
+                  >
+                </div>
+                <div class="input-field col s12" style="padding: 0">
+                  <div class="file-field input-field">
+                    <div class="button_secondary">
+                      <span>Datei</span>
+                      <input
+                        type="file"
+                        name="file_data"
+                        id="file_data"
+                        class="validate"
+                        required="required"
+                        accept="text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet "
+                      />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input
+                        class="file-path validate"
+                        type="text"
+                        placeholder=".csv oder .xslx *"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
 
-            </div>
-
-            <div>
-              <h2>Hinweis zum Datenschutz:</h2>
-              <p>
-                Ihre Daten sind sicher: Die Daten werden ausschließlich von einem externen
-                Lettershop-Anbieter für den einmaligen Versand genutzt und
-                danach sofort gelöscht.
-              </p>
-            </div>
-            <div class="section">
               <div>
-                <button class="button_primary" type="submit">Weiter</button>
+                <h2>HINWEIS ZUM DATENSCHUTZ:</h2>
+                <p>
+                  Ihre Daten sind sicher: Die Daten werden ausschließlich von
+                  einem externen Lettershop-Dienstleister für den einmaligen
+                  Versand des HAKRO Verkaufsmailing genutzt und danach sofort
+                  gelöscht.
+                </p>
               </div>
-            </div>
-            <div class="section">
-              <p style="font-size: 16px; margin-top: 50px;">
-                * Pflichtfelder
-              </p>
-            </div>
-          </form>
+              <div class="section">
+                <div>
+                  <button class="button_primary" type="submit">Weiter</button>
+                </div>
+              </div>
+              <div class="section">
+                <p style="font-size: 16px; margin-top: 50px">* Pflichtfelder</p>
+              </div>
+              <div>
+                <p>
+                  Wir freuen uns auf Ihre Teilnahme an unserem ersten HAKRO
+                  Verkaufsmailing. Sie haben Fragen? Senden Sie uns gerne eine
+                  E-Mail an
+                  <a href="mailto:kundenbeziehungen@hakro.com" target="blank"
+                    >kundenbeziehungen@hakro.com</a
+                  >. oder wenden Sie sich telefonisch unter +49 (0) 7935/9118
+                  100 an unsere Kolleginnen und Kollegen aus dem Team
+                  Kundenbeziehungen & Service.
+                </p>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer_green">
-      <div class="footer_container">
-        <div>
-          <a class="footer_item_white" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
+      <div class="footer_green">
+        <div class="footer_container">
+          <div>
+            <a
+              class="footer_item_white"
+              target="blank"
+              href="https://www.hakro.com/impressum"
+              >Impressum</a
+            >
+          </div>
+          <div>
+            <a
+              class="footer_item_white"
+              target="blank"
+              href="https://www.hakro.com/"
+            >
+              2022 HAKRO GmbH, all rights reserved</a
+            >
+          </div>
         </div>
-        <div>
-          <a class="footer_item_white" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all rights
-            reserved</a>
+      </div>
+      <div id="notification" class="modal">
+        <div class="modal-content">
+          <h4>Hinweis</h4>
+          <p id="notification-message"></p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+            >Schlie&szlig;en</a
+          >
         </div>
       </div>
-    </div>
-    <div id="notification" class="modal">
-      <div class="modal-content">
-        <h4>Hinweis</h4>
-        <p id="notification-message"></p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Schlie&szlig;en</a>
-      </div>
-    </div>
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
-    <script>
-      var _URL = window.URL || window.webkitURL;
+      <!-- Scripts -->
+      <script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-2.1.1.min.js"
+      ></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script
+        type="text/javascript"
+        src="{{url_for('static', filename='assets/js/hakro.js')}}"
+      ></script>
+      <script>
+        var _URL = window.URL || window.webkitURL;
 
-      $("#file_logo").change(function (e) {
-        var file, img;
-        if ((file = this.files[0])) {
-          img = new Image();
-          img.onload = function () {
-            if (this.width < 1180 && this.height < 472) {
+        $("#file_logo").change(function (e) {
+          var file, img;
+          if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+              if (this.width < 1180 && this.height < 472) {
+                clearFileInput();
+                showNotification(
+                  "Die Mindestanforderung sind 1180 Pixel in der Breite oder 472 Pixel in der Höhe"
+                );
+              }
+            };
+            img.onerror = function () {
               clearFileInput();
-              showNotification("Die Mindestanforderung sind 1180 Pixel in der Breite oder 472 Pixel in der Höhe");
-            }
-          };
-          img.onerror = function () {
-            clearFileInput();
-            showNotification("keine gültige Bilddatei: " + file.type);
-          };
-          img.src = _URL.createObjectURL(file);
-        }
-      });
-
-      const showNotification = (message) => {
-        $("#notification-message").text(message);
-        const element = document.getElementById("notification");
-        const modal = M.Modal.init(element);
-        modal.open();
-      };
-
-      const clearFileInput = () => {
-        document.getElementById("file_logo").value = null;
-        document.getElementById("file_path").value = null;
-      };
-    </script>
-    <script>
-      const MILLISECONDS_PER_SECOND = 1000;
-      const MILLISECONDS_PER_MINUTE = MILLISECONDS_PER_SECOND * 60;
-      const MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * 60;
-      const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * 24;
-
-      // Set the date we're counting down to
-      const countdownDate = new Date("Apr 1, 2022 15:37:25").getTime();
-
-      const showCountdown = () => {
-        // Get today's date and time
-        const now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        const distance = countdownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        const days = getDays(distance);
-        const hours = getHours(distance)
-        const minutes = getMinutes(distance);
-        const seconds = getSeconds(distance);
-
-        const remainingTime = [days, hours, minutes/*, seconds*/]
-          .filter(t => t.value > 0)
-          .map(t => t.value + " " + t.unit)
-          .join(", ");
-
-        // If the count down is over, write some text
-        if (distance <= 0) {
-          document.getElementById("countdown").innerHTML = "EXPIRED";
-          if (intervalId) {
-            clearInterval(intervalId);
+              showNotification("keine gültige Bilddatei: " + file.type);
+            };
+            img.src = _URL.createObjectURL(file);
           }
-        }
+        });
 
-        // Output the result in an element with id="countdown"
-        document.getElementById("countdown").innerHTML = "Nur noch " + remainingTime;
-      };
-
-      const getDays = (distance) => {
-        return {
-          value: Math.floor(distance / MILLISECONDS_PER_DAY),
-          unit: "Tage"
+        const showNotification = (message) => {
+          $("#notification-message").text(message);
+          const element = document.getElementById("notification");
+          const modal = M.Modal.init(element);
+          modal.open();
         };
-      }
 
-      const getHours = (distance) => {
-        return {
-          value: Math.floor((distance % MILLISECONDS_PER_DAY) / MILLISECONDS_PER_HOUR),
-          unit: "Stunden"
+        const clearFileInput = () => {
+          document.getElementById("file_logo").value = null;
+          document.getElementById("file_path").value = null;
         };
-      };
+      </script>
+      <script>
+        const MILLISECONDS_PER_SECOND = 1000;
+        const MILLISECONDS_PER_MINUTE = MILLISECONDS_PER_SECOND * 60;
+        const MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * 60;
+        const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * 24;
 
-      const getMinutes = (distance) => {
-        return {
-          value: Math.floor((distance % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE),
-          unit: "Minuten"
+        // Set the date we're counting down to
+        const countdownDate = new Date("Mar 18, 2022 00:00:00").getTime();
+
+        const showCountdown = () => {
+          // Get today's date and time
+          const now = new Date().getTime();
+
+          // Find the distance between now and the count down date
+          const distance = countdownDate - now;
+
+          // Time calculations for days, hours, minutes and seconds
+          const days = getDays(distance);
+          const hours = getHours(distance);
+          const minutes = getMinutes(distance);
+          const seconds = getSeconds(distance);
+
+          const remainingTime = [days, hours, minutes /*, seconds*/]
+            .filter((t) => t.value > 0)
+            .map((t) => t.value + " " + t.unit)
+            .join(", ");
+
+          // If the count down is over, write some text
+          if (distance <= 0) {
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+            if (intervalId) {
+              clearInterval(intervalId);
+            }
+          }
+
+          // Output the result in an element with id="countdown"
+          document.getElementById("countdown").innerHTML =
+            "Nur noch " + remainingTime;
         };
-      };
 
-      const getSeconds = (distance) => {
-        return {
-          value: Math.floor((distance % MILLISECONDS_PER_MINUTE) / MILLISECONDS_PER_SECOND),
-          unit: "Sekunden"
+        const getDays = (distance) => {
+          return {
+            value: Math.floor(distance / MILLISECONDS_PER_DAY),
+            unit: "Tage",
+          };
         };
-      };
 
-      showCountdown();
-      // Update the count down every 1 second
-      const intervalId = setInterval(showCountdown, 1000);      
-    </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#company_name").on("input", function () {
-          $("#output_company_name").text($(this).val());
-        });
-        $("#streetname").on("input", function () {
-          $("#output_streetname").text($(this).val());
-        });
-        $("#plz").on("input", function () {
-          $("#output_plz").text($(this).val());
-        });
-        $("#city").on("input", function () {
-          $("#output_city").text($(this).val());
-        });
-        $("#name").on("input", function () {
-          $("#output_name").text($(this).val());
-        });
-        $("#email").on("input", function () {
-          $("#output_email").text($(this).val());
-        });
-        $("#phone").on("input", function () {
-          $("#output_phone").text($(this).val());
-        });
-      });
-    </script>
-    <script type="text/javascript">
-      var csrftoken = "{{ csrf_token() }}"
-    </script>
-    <script>
-      M.AutoInit();
-      $(document).ready(function () {
-        M.updateTextFields();
-      });
-    </script>
-    <script>
-      const cookieModal = M.Modal.init(document.getElementById("cookie-modal"), {
-        dismissible: false
-      });
+        const getHours = (distance) => {
+          return {
+            value: Math.floor(
+              (distance % MILLISECONDS_PER_DAY) / MILLISECONDS_PER_HOUR
+            ),
+            unit: "Stunden",
+          };
+        };
 
-      const showCookieConsent = () => {
-        if (sessionStorage.getItem("cookie-accepted") !== "true") {
-          cookieModal.open();
-        }
-      };
+        const getMinutes = (distance) => {
+          return {
+            value: Math.floor(
+              (distance % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE
+            ),
+            unit: "Minuten",
+          };
+        };
 
-      const acceptCookies = () => {
-        sessionStorage.setItem("cookie-accepted", "true");
-        cookieModal.close();
-      }
+        const getSeconds = (distance) => {
+          return {
+            value: Math.floor(
+              (distance % MILLISECONDS_PER_MINUTE) / MILLISECONDS_PER_SECOND
+            ),
+            unit: "Sekunden",
+          };
+        };
 
-      $(document).ready(showCookieConsent);
-    </script>
-  </div>
-</body>
+        showCountdown();
+        // Update the count down every 1 second
+        const intervalId = setInterval(showCountdown, 1000);
+      </script>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script>
+        $(document).ready(function () {
+          let company = "";
+          let street = "";
+          let zip = "";
+          let city = "";
 
+          $("#company_name").on("input", function () {
+            company = $(this).val();
+            updateCompanyAddress();
+          });
+          $("#streetname").on("input", function () {
+            street = $(this).val();
+            updateCompanyAddress();
+          });
+          $("#plz").on("input", function () {
+            zip = $(this).val();
+            updateCompanyAddress();
+          });
+          $("#city").on("input", function () {
+            city = $(this).val();
+            updateCompanyAddress();
+          });
+          $("#name").on("input", function () {
+            $("#output_name").text($(this).val());
+          });
+          $("#email").on("input", function () {
+            $("#output_email").text($(this).val());
+          });
+          $("#phone").on("input", function () {
+            $("#output_phone").text($(this).val());
+          });
+
+          const updateCompanyAddress = () => {
+            const address = [company, street, zip + " " + city]
+              .filter((s) => s && s !== "" && s !== " ")
+              .join(", ");
+            document.getElementById("output_company_address").innerHTML =
+              address;
+          };
+        });
+      </script>
+      <script type="text/javascript">
+        var csrftoken = "{{ csrf_token() }}";
+      </script>
+      <script>
+        M.AutoInit();
+        $(document).ready(function () {
+          M.updateTextFields();
+        });
+      </script>
+      <script>
+        const cookieModal = M.Modal.init(
+          document.getElementById("cookie-modal"),
+          {
+            dismissible: false,
+          }
+        );
+
+        const showCookieConsent = () => {
+          if (sessionStorage.getItem("cookie-accepted") !== "true") {
+            cookieModal.open();
+          }
+        };
+
+        const acceptCookies = () => {
+          sessionStorage.setItem("cookie-accepted", "true");
+          cookieModal.close();
+        };
+
+        $(document).ready(showCookieConsent);
+      </script>
+    </div>
+  </body>
 </html>
