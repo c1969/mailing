@@ -55,6 +55,10 @@ li > a.scrolly {
   text-transform: uppercase;
 }
 
+li {
+  list-style-position: inside;
+}
+
 h1 {
   font-size: 50px;
   line-height: 50px;
@@ -562,13 +566,9 @@ th {
 
 ul {
   list-style: none;
+  list-style-position: outside;
   text-indent: -35px;
   margin-left: 28px;
-}
-
-li::before {
-  content: "• ";
-  color: var(--hakro-red);
 }
 
 .mobile {

@@ -120,8 +120,8 @@ def get_request_location():
 
 def get_flipbook_link(location):
     if location.get("country_code") == "CH":
-        return "https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
-    return "https://cdn.flipsnack.com/widget/v2/widget.html?hash=v7t8ukhgvu"
+        return "https://www.flipsnack.com/C5EBD6AA9F7/7hger3547s/full-view.html"
+    return "https://www.flipsnack.com/C5EBD6AA9F7/87fvghjnb3/full-view.html"
 
 '''
 USER FLOW 1
