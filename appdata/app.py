@@ -225,12 +225,12 @@ def summary():
                 dialect = csv.Sniffer().sniff(csvfile.readline())
                 sepsis = dialect.delimiter
             df = pd.read_csv(data_path, header=None, sep=sepsis)
-            dfx = df.iloc[:MAX_RES]
+            dfx = df.where(pd.notnull(df), "").iloc[:MAX_RES]
     elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX') \
         or s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
         try:
             df = pd.read_excel(data_path, header=None)
-            dfx = df.iloc[:MAX_RES]
+            dfx = df.where(pd.notnull(df), "").iloc[:MAX_RES]
         except Exception:
             return redirect(url_for('error', e=200))
     else:
@@ -238,14 +238,14 @@ def summary():
 
     if df is not None:
         y, x = df.shape
-        if x != 7:
+        if x < 7 or x > 9:
             return redirect(url_for('error', e=202))
         if y > 2500:
             return redirect(url_for('error', e=203))
     else:
         return redirect(url_for('error', e=201))
 
-    df_nan = df.isnull().values.any()
+    df_nan = df.iloc[:, 0:6].isnull().values.any()
     if df_nan:
         return redirect(url_for('error', e=204))
 
@@ -266,6 +266,8 @@ def summary():
             d['number'] = v[4]
             d['zipcode'] = v[5]
             d['city'] = v[6]
+            d['country'] = v.get(7)
+            d['salutation'] = v.get(8)
             d['qr'] = qrid
             d['url'] = f'https://dialog.hakro.com/qr/{qrid}'
             db.set_retailer_data(d)
