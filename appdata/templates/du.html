@@ -169,7 +169,7 @@
 										id="email"
 										name="email"
 										value="on"
-										onclick="checkRequiredInput(this, 'email_txt')"
+										onclick="checkRequiredInput(this, 'email_txt'); toggleShirtCheckbox()"
 									/>
 									<span
 										>Bitte schicken Sie mir eine
@@ -186,13 +186,13 @@
 									name="email_txt"
 									id="email_txt"
 									class="validate"
-									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
 									disabled
 									required
 								/>
 								<span
 									class="helper-text"
-									data-error="Bitte geben Sie eine g&uuml;ltige E-Mail Adresse"
+									data-error="Bitte geben Sie eine g&uuml;ltige E-Mail Adresse ein"
 								></span>
 							</div>
 						</div>
@@ -205,7 +205,7 @@
 										id="callme"
 										name="callme"
 										value="on"
-										onclick="checkRequiredInput(this, 'callme_txt')"
+										onclick="checkRequiredInput(this, 'callme_txt'); toggleShirtCheckbox()"
 									/>
 									<span>Bitte rufen Sie mich an.</span>
 								</label>
@@ -380,6 +380,6 @@
 		<!-- Scripts -->
 		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-		<script src="{{url_for('static', filename='assets/js/du.js')}}"></script>
+		<script src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
 	</body>
 </html>
