@@ -1,248 +1,411 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="de">
+	<head>
+		<title>HAKRO Dialog</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, user-scalable=no"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{url_for('static', filename='assets/css/hakro.css')}}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{url_for('static', filename='assets/css/dk.css')}}"
+		/>
+		<noscript>
+			<link rel="stylesheet" href="static/assets/css/noscript.css" />
+		</noscript>
+	</head>
 
-<head>
-	<title>HAKRO Dialog</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/hakro.css')}}">
-	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/dk.css')}}">
-	<noscript>
-		<link rel="stylesheet" href="static/assets/css/noscript.css" />
-	</noscript>
-</head>
-
-<body>
-	<div class="header">
-		<a href="/"><img class="brand-logo" src="{{url_for('static', filename='images/hakro-logo.svg')}}" alt="" /></a>
-	</div>
-	<div class="container">
-		<div class="col s6">
-			<div class="section">
-				<h1>Guten Tag, {{d[2]}} {{d[3]}},</h1>
-				<h2>schön, dass Sie sich für nachhaltige, faire und haltbare Teambekleidung von HAKRO interessieren.
-				</h2>
-				<p>
-					Ihr
-					Fachhändler, {{ e[2] }} in {{ e[7] }}, berät Sie gerne persönlich, schickt Ihnen weitere
-					Informationen
-					und hält Sie mit seinem Newsletter auf dem Laufenden. Ganz wie Sie möchten. Bitte prüfen Sie
-					noch einmal Ihre Daten bevor Sie Kontakt aufnehmen.
-				</p>
-			</div>
-			<div class="section">
-				<form method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-					<input type="hidden" name="qrid" value="{{ d[9] }}" />
-					<input type="hidden" name="sid" value="{{ e[1] }}" />
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="name">Vor- und Nachname *</label>
-							<input type="text" name="name" id="name" value="{{d[2]}} {{d[3]}}" required="required" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="costumer_name">Firma *</label>
-							<input type="text" name="costumer_name" id="company_name" value="{{d[4]}}"
-								required="required" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="streetname">Straße und Hausnummer *</label>
-							<input type="text" name="streetname" id="streetname" value="{{d[5]}} {{d[6]}}"
-								required="required" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s4">
-							<label for="plz">Postleitzahl *</label>
-							<input type="text" name="plz" id="plz" value="{{d[7]}}" required="required" />
-						</div>
-						<div class="input-field col s8">
-							<label for="city">Ort *</label>
-							<input type="text" name="city" id="city" value="{{d[8]}}" required="required" />
-						</div>
-					</div>
-					<p style="font-size: 16px">
-						* Pflichtfelder
-					</p>
-					<div class="input-field col s4">
-						<p>
-							<label>
-								<input class="filled-in" type="checkbox" id="newsletter" name="newsletter" value="on" />
-								<span>Ja, ich möchte Ihren Newsletter abonnieren.</span>
-							</label>
-						</p>
-					</div>
-					<h2 style="margin-top: 60px;">
-						HAKRO-Teamwear interessiert mich:
-					</h2>
-					<div class="input-field col s4">
-						<p style="margin-bottom: 0px;">
-							<label>
-								<input class="filled-in" type="checkbox" id="email" name="email" value="on" />
-								<span>Bitte schicken Sie mir eine E-Mail.</span>
-							</label>
-						</p>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="email">Meine E-Mail-Adresse
-							</label>
-							<input type="email" name="email_txt" id="email_txt" />
-						</div>
-					</div>
-					<div class="input-field col s4">
-						<p style="margin-bottom: 0px;">
-							<label>
-								<input class="filled-in" type="checkbox" id="callme" name="callme" value="on" />
-								<span>Bitte rufen Sie mich an.</span>
-							</label>
-						</p>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<label for="phone">Meine Telefonnummer</label>
-							<input type="tel" name="callme_txt" id="callme_txt" />
-						</div>
-					</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Waschtest -->
-
-	<div class="washtest">
-		<div class="shirt_container white_text">
-			<div class="shirt_wrapper">
-				<div class="shirt_text">
-					<h1 style="margin-top: 24px;">hält länger als jede Waschmaschine</h1>
-					<p>
-						Mach mit beim Waschtest und überzeuge
-						dich selbst von der herausragenden Qualität
-						und Langlebigkeit unserer Produkte.
-					</p>
-					<p style="font-weight: bold;">
-						Jetzt Gratis-Shirt anfordern!
-					</p>
-				</div>
-				<div>
-					<img class="shirt_img" src="{{url_for('static', filename='images/waschtest.png')}}" />
-				</div>
-			</div>
+	<body>
+		<div class="header">
+			<a href="/"
+				><img
+					class="brand-logo"
+					src="{{url_for('static', filename='images/hakro-logo.svg')}}"
+					alt=""
+			/></a>
 		</div>
 		<div class="container">
 			<div class="col s6">
 				<div class="section">
-					<div class="input-field col s4">
+					<h1>Guten Tag, {{d[2]}} {{d[3]}},</h1>
+					<h2
+						>sch&ouml;n, dass Sie sich f&uuml;r nachhaltige, faire
+						und haltbare Teambekleidung von HAKRO interessieren.
+					</h2>
+					<p>
+						Ihr Fachh&auml;ndler, {{ e[2] }} in {{ e[7] }},
+						ber&auml;t Sie gerne pers&ouml;nlich, schickt Ihnen
+						weitere Informationen und h&auml;lt Sie mit seinem
+						Newsletter auf dem Laufenden. Ganz wie Sie m&ouml;chten.
+						Bitte pr&uuml;fen Sie noch einmal Ihre Daten bevor Sie
+						Kontakt aufnehmen.
+					</p>
+				</div>
+				<div class="section">
+					<form method="POST" enctype="multipart/form-data">
+						<input
+							type="hidden"
+							name="csrf_token"
+							value="{{ csrf_token() }}"
+						/>
+						<input type="hidden" name="qrid" value="{{ d[9] }}" />
+						<input type="hidden" name="sid" value="{{ e[1] }}" />
+						<div class="row">
+							<div class="input-field col s12">
+								<label for="name">Vor- und Nachname *</label>
+								<input
+									type="text"
+									name="name"
+									id="name"
+									class="validate"
+									value="{{d[2]}} {{d[3]}}"
+									required="required"
+								/>
+								<span
+									class="helper-text"
+									data-error="Bitte geben Sie ihren Vor- und Nachnamen an."
+								></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<label for="company_name">Firma *</label>
+								<input
+									type="text"
+									name="costumer_name"
+									id="company_name"
+									class="validate"
+									value="{{d[4]}}"
+									required="required"
+								/>
+								<span
+									class="helper-text"
+									data-error="Bitte geben Sie ihre Firma ein"
+								></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<label for="streetname"
+									>Straße und Hausnummer *</label
+								>
+								<input
+									type="text"
+									name="streetname"
+									id="streetname"
+									class="validate"
+									value="{{d[5]}} {{d[6]}}"
+									required="required"
+								/>
+								<span
+									class="helper-text"
+									data-error="Bitte geben Sie ihre Stra&szlig;e und Hausnummer ein"
+								></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s4">
+								<label for="plz">Postleitzahl *</label>
+								<input
+									type="text"
+									name="plz"
+									id="plz"
+									class="validate"
+									value="{{d[7]}}"
+									required="required"
+								/>
+								<span
+									class="helper-text"
+									data-error="Bitte geben Ihre Postleitzahl ein"
+								></span>
+							</div>
+							<div class="input-field col s8">
+								<label for="city">Ort *</label>
+								<input
+									type="text"
+									name="city"
+									id="city"
+									class="validate"
+									value="{{d[8]}}"
+									required="required"
+								/>
+								<span
+									class="helper-text"
+									data-error="Bitte geben Sie Ihren Ort ein"
+								></span>
+							</div>
+						</div>
+						<p style="font-size: 16px"> * Pflichtfelder </p>
+						<div class="input-field col s4">
+							<p>
+								<label>
+									<input
+										class="filled-in"
+										type="checkbox"
+										id="newsletter"
+										name="newsletter"
+										value="on"
+									/>
+									<span
+										>Ja, ich m&ouml;chte Ihren Newsletter
+										abonnieren.</span
+									>
+								</label>
+							</p>
+						</div>
+						<h2 style="margin-top: 60px">
+							HAKRO-Teamwear interessiert mich:
+						</h2>
+						<div class="input-field col s4">
+							<p style="margin-bottom: 0px">
+								<label>
+									<input
+										class="filled-in"
+										type="checkbox"
+										id="email"
+										name="email"
+										value="on"
+										onclick="checkRequiredInput(this, 'email_txt')"
+									/>
+									<span
+										>Bitte schicken Sie mir eine
+										E-Mail.</span
+									>
+								</label>
+							</p>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<label for="email">Meine E-Mail-Adresse </label>
+								<input
+									type="email"
+									name="email_txt"
+									id="email_txt"
+									class="validate"
+									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+									disabled
+									required
+								/>
+								<span
+									class="helper-text"
+									data-error="Bitte geben Sie eine g&uuml;ltige E-Mail Adresse ein"
+								></span>
+							</div>
+						</div>
+						<div class="input-field col s4">
+							<p style="margin-bottom: 0px">
+								<label>
+									<input
+										class="filled-in"
+										type="checkbox"
+										id="callme"
+										name="callme"
+										value="on"
+										onclick="checkRequiredInput(this, 'callme_txt')"
+									/>
+									<span>Bitte rufen Sie mich an.</span>
+								</label>
+							</p>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<label for="callme_txt"
+									>Meine Telefonnummer</label
+								>
+								<input
+									type="tel"
+									name="callme_txt"
+									id="callme_txt"
+									class="validate"
+									pattern="\d*"
+									disabled
+									required
+								/>
+								<span
+									class="helper-text"
+									data-error="Bitte geben Sie ihre Telefonnummer ohne Leer- oder Sonderzeichen ein"
+								></span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Waschtest -->
+
+		<div class="washtest">
+			<div class="shirt_container white_text">
+				<div class="shirt_wrapper">
+					<div class="shirt_text">
+						<h1 style="margin-top: 24px"
+							>h&auml;lt l&auml;nger als jede Waschmaschine</h1
+						>
 						<p>
-							<label>
-								<input class="filled-in" type="checkbox" id="shirt" name="shirt" value="on"
-									required="required" />
-								<span>Ja, Gratis-Shirt anfordern.</span>
-							</label>
+							Mach mit beim Waschtest und &uuml;berzeuge dich
+							selbst von der herausragenden Qualit&auml;t und
+							Langlebigkeit unserer Produkte.
+						</p>
+						<p style="font-weight: bold">
+							Jetzt Gratis-Shirt anfordern!
 						</p>
 					</div>
+					<div>
+						<img
+							class="shirt_img"
+							src="{{url_for('static', filename='images/waschtest.png')}}"
+						/>
+					</div>
 				</div>
-				<div style="height: 90px;">
-					<div class="col s6">
-						<div class="section">
-							<button class="button_primary" type="submit">senden</button>
+			</div>
+			<div class="container">
+				<div class="col s6">
+					<div class="section">
+						<div class="input-field col s4">
+							<p>
+								<label>
+									<input
+										class="filled-in"
+										type="checkbox"
+										id="shirt"
+										name="shirt"
+										value="on"
+										required="required"
+									/>
+									<span>Ja, Gratis-Shirt anfordern.</span>
+								</label>
+							</p>
+						</div>
+					</div>
+					<div style="height: 90px">
+						<div class="col s6">
+							<div class="section">
+								<button class="button_primary" type="submit"
+									>senden</button
+								>
+							</div>
 						</div>
 					</div>
 				</div>
-				</form>
 			</div>
 		</div>
-		</form>
-	</div>
 
-	<!-- Dealer -->
+		<!-- Dealer -->
 
-	<div class="no-washtest">
-		<footer class="page-footer" style="background-color: #B6C24F; padding-bottom: 40px;">
-			<div class="container">
-				<div class="col l12 s12">
-					<h3 style="margin-top: 30px;" class="white-text">Ihr persönlicher Fachhändler:</h3>
-					<p style="font-weight: bold;">
-						{{ e[2] }}
-					</p>
-					<p>
-						{{ e[4] }}<br>
-						{{ e[5] }}<br>
-						{{ e[6] }} {{ e[7] }}<br>
-					</p>
-					<p>
-						{{ e[9] }}<br />
-						<a href="mailto:{{ e[8] }}" style="color: white;">{{ e[8] }}</a>
-					</p>
+		<div class="no-washtest">
+			<footer
+				class="page-footer"
+				style="background-color: #b6c24f; padding-bottom: 40px"
+			>
+				<div class="container">
+					<div class="col l12 s12">
+						<h3 style="margin-top: 30px" class="white-text"
+							>Ihr pers&ouml;nlicher Fachh&auml;ndler:</h3
+						>
+						<p style="font-weight: bold"> {{ e[2] }} </p>
+						<p>
+							{{ e[4] }}<br />
+							{{ e[5] }}<br />
+							{{ e[6] }} {{ e[7] }}<br />
+						</p>
+						<p>
+							{{ e[9] }}<br />
+							<a href="mailto:{{ e[8] }}" style="color: white"
+								>{{ e[8] }}</a
+							>
+						</p>
+					</div>
 				</div>
-			</div>
-		</footer>
-	</div>
-
-	<!-- White Footer -->
-
-	<div class="no-washtest">
-		<div class="footer_white">
-			<div class="footer_container">
-				<div>
-					<a class="footer_item_black" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
-				</div>
-				<div>
-					<a class="footer_item_black" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
-						rights
-						reserved</a>
-				</div>
-			</div>
+			</footer>
 		</div>
-	</div>
 
-	<!-- Green Footer-->
+		<!-- White Footer -->
 
-	<div class="washtest">
-		<div class="footer_green" style="margin-top: 0px;">
-			<div class="footer_container">
-				<div>
-					<a class="footer_item_white" target="blank" href="https://www.hakro.com/impressum">Impressum</a>
-				</div>
-				<div>
-					<a class="footer_item_white" target="blank" href="https://www.hakro.com/"> 2022 HAKRO GmbH, all
-						rights
-						reserved</a>
+		<div class="no-washtest">
+			<div class="footer_white">
+				<div class="footer_container">
+					<div>
+						<a
+							class="footer_item_black"
+							target="blank"
+							href="https://www.hakro.com/impressum"
+							>Impressum</a
+						>
+					</div>
+					<div>
+						<a
+							class="footer_item_black"
+							target="blank"
+							href="https://www.hakro.com/"
+						>
+							2022 HAKRO GmbH, all rights reserved</a
+						>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Scripts -->
+		<!-- Green Footer-->
 
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script type="text/javascript" src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
-	<script>
-		var _URL = window.URL || window.webkitURL;
+		<div class="washtest">
+			<div class="footer_green" style="margin-top: 0px">
+				<div class="footer_container">
+					<div>
+						<a
+							class="footer_item_white"
+							target="blank"
+							href="https://www.hakro.com/impressum"
+							>Impressum</a
+						>
+					</div>
+					<div>
+						<a
+							class="footer_item_white"
+							target="blank"
+							href="https://www.hakro.com/"
+						>
+							2022 HAKRO GmbH, all rights reserved</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
 
-		$("#file_logo").change(function (e) {
-			var file, img;
-			if ((file = this.files[0])) {
-				img = new Image();
-				img.onload = function () {
-					if (this.width > 135 || this.height > 101) {
-						alert("Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)");
-						location.reload();
-					}
-				};
-				img.onerror = function () {
-					alert("keine gültige Bilddatei: " + file.type);
-				};
-				img.src = _URL.createObjectURL(file);
-			}
-		});
-	</script>
-</body>
+		<!-- Scripts -->
 
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
+		<script>
+			var _URL = window.URL || window.webkitURL;
+
+			$("#file_logo").change(function (e) {
+				var file, img;
+				if ((file = this.files[0])) {
+					img = new Image();
+					img.onload = function () {
+						if (this.width > 135 || this.height > 101) {
+							alert(
+								"Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)"
+							);
+							location.reload();
+						}
+					};
+					img.onerror = function () {
+						alert("keine gültige Bilddatei: " + file.type);
+					};
+					img.src = _URL.createObjectURL(file);
+				}
+			});
+		</script>
+	</body>
 </html>
