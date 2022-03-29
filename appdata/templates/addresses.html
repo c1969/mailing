@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>HAKRO Dialog</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, user-scalable=no"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+		<noscript>
+			<link rel="stylesheet" href="static/assets/css/noscript.css" />
+		</noscript>
+		<style>
+			body {
+				padding: 1rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<h1>Adressen</h1>
+			<table class="striped">
+				<thead>
+					<tr>
+						<th style="font-size: 20px; font-weight: bold"
+							>Firma</th
+						>
+						<th style="font-size: 20px; font-weight: bold"
+							>Anrede</th
+						>
+						<th style="font-size: 20px; font-weight: bold"
+							>Vorname</th
+						>
+						<th style="font-size: 20px; font-weight: bold"
+							>Nachname</th
+						>
+						<th style="font-size: 20px; font-weight: bold"
+							>Straße</th
+						>
+						<th style="font-size: 20px; font-weight: bold"
+							>Hausnummer</th
+						>
+						<th style="font-size: 20px; font-weight: bold">PLZ</th>
+						<th style="font-size: 20px; font-weight: bold">Ort</th>
+						<th style="font-size: 20px; font-weight: bold">Land</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for address in addresses %}
+					<tr>
+						<td>{{address[0] or ''}}</td>
+						<td>{{address[1] or ''}}</td>
+						<td>{{address[2] or ''}}</td>
+						<td>{{address[3] or ''}}</td>
+						<td>{{address[4] or ''}}</td>
+						<td>{{address[5] or ''}}</td>
+						<td>{{address[6] or ''}}</td>
+						<td>{{address[7] or ''}}</td>
+						<td>{{address[8] or ''}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Scripts -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	</body>
+</html>

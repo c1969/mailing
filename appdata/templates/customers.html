@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>HAKRO Dialog</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, user-scalable=no"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+		<noscript>
+			<link rel="stylesheet" href="static/assets/css/noscript.css" />
+		</noscript>
+		<style>
+			body {
+				padding: 1rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<h1>Aktuelle Zahlen</h1>
+			<div class="row">
+				<div class="col s3">Anzahl Kunden:</div>
+				<div class="col s9">{{statistics.customers}}</div>
+			</div>
+			<div class="row">
+				<div class="col s3">Anzahl Adressen:</div>
+				<div class="col s9">{{statistics.addresses}}</div>
+			</div>
+			<div class="row">
+				<div class="col s3">Schweizer Adressen:</div>
+				<div class="col s9">{{statistics.swiss_addresses}}</div>
+			</div>
+			<div class="row">
+				<div class="col s3">Adressen von Schweizer Kunden:</div>
+				<div class="col s9"
+					>{{statistics.addresses_from_swiss_customers}}</div
+				>
+			</div>
+			<h1>Fachhändler</h1>
+			<table class="striped">
+				<thead>
+					<tr>
+						<th style="font-size: 20px; font-weight: bold"
+							>Firma</th
+						>
+						<th style="font-size: 20px; font-weight: bold">Name</th>
+						<th style="font-size: 20px; font-weight: bold"
+							>Straße</th
+						>
+						<th style="font-size: 20px; font-weight: bold">PLZ</th>
+						<th style="font-size: 20px; font-weight: bold">Ort</th>
+						<th style="font-size: 20px; font-weight: bold"
+							>Registriert am</th
+						>
+						<th style="font-size: 20px; font-weight: bold"></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for customer in customers %}
+					<tr>
+						<td>{{customer[2] or ''}}</td>
+						<td>{{customer[4] or ''}}</td>
+						<td>{{customer[5] or ''}}</td>
+						<td>{{customer[6] or ''}}</td>
+						<td>{{customer[7] or ''}}</td>
+						<td>{{customer[14] or ''}}</td>
+						<td
+							><a
+								href="{{'/addresses/11235813/' + customer[1]}}"
+								target="_blank"
+								>Adressen anzeigen</a
+							></td
+						>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Scripts -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	</body>
+</html>

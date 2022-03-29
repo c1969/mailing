@@ -403,6 +403,42 @@ def metrics(passw):
 
     return render_template('metrics.html')
 
+'''
+Customers
+'''
+@app.route('/customers/<passw>', methods=['GET'])
+def customers(passw):
+    p = str(passw)
+    print(p)
+    mems = ['11235813']
+    if p not in mems:
+        return redirect(url_for('index'))
+
+    customers = db.get_data_costumer()
+
+    statistics = {
+        "customers" : db.count_customers(),
+        "addresses" : db.count_addresses(),
+        "swiss_addresses": db.count_swiss_addresses(),
+        "addresses_from_swiss_customers": db.count_addresses_from_swiss_customers()
+    }
+
+    return render_template('customers.html', customers=customers, statistics=statistics)
+
+'''
+Addresses
+'''
+@app.route('/addresses/<passw>/<session_id>', methods=['GET'])
+def addresses(passw, session_id):
+    p = str(passw)
+    print(p)
+    mems = ['11235813']
+    if p not in mems:
+        return redirect(url_for('index'))
+
+    addresses = db.get_data_retailer(str(session_id))
+
+    return render_template('addresses.html', addresses=addresses)
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", ssl_context='adhoc')

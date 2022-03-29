@@ -9,20 +9,52 @@ class dbx():
     def __init__(self) -> None:
         pass
 
+    def count_customers(self):
+        conn = sqlite3.connect(DATABASE_FLOW_1)
+        if conn:
+            c = conn.cursor()
+            sql = """ select count(distinct costumer_name) from data_costumer """
+            c.execute(sql)
+            return c.fetchone()[0]
+
+    def count_addresses(self):
+        conn = sqlite3.connect(DATABASE_FLOW_1)
+        if conn:
+            c = conn.cursor()
+            sql = """ select count(*) from (select distinct firstname, lastname, company, street, number, zipcode, city from data_retailer) """
+            c.execute(sql)
+            return c.fetchone()[0]
+
+    def count_swiss_addresses(self):
+        conn = sqlite3.connect(DATABASE_FLOW_1)
+        if conn:
+            c = conn.cursor()
+            sql = """ select count(*) from (select distinct firstname, lastname, company, street, number, zipcode, city, country from data_retailer where upper(country) in ('SCHWEIZ', 'CH')) """
+            c.execute(sql)
+            return c.fetchone()[0]
+
+    def count_addresses_from_swiss_customers(self):
+        conn = sqlite3.connect(DATABASE_FLOW_1)
+        if conn:
+            c = conn.cursor()
+            sql = """ select count(*) from (select distinct firstname, lastname, company, street, number, zipcode, city, country from data_retailer where session_id in (select distinct session_id from data_costumer where upper(country) like 'CH')) """
+            c.execute(sql)
+            return c.fetchone()[0]
+
     def get_data_costumer(self):
         conn = sqlite3.connect(DATABASE_FLOW_1)
         if conn:
             c = conn.cursor()
-            sql = """ SELECT * FROM data_costumer """
+            sql = """ SELECT * FROM data_costumer order by costumer_name"""
             c.execute(sql)
             return c.fetchall()
 
-    def get_data_retailer(self):
+    def get_data_retailer(self, session_id):
         conn = sqlite3.connect(DATABASE_FLOW_1)
         if conn:
             c = conn.cursor()
-            sql = """ SELECT * FROM data_retailer """
-            c.execute(sql)
+            sql = """ SELECT distinct company, salutation, firstname, lastname, street, number, zipcode, city, country FROM data_retailer where session_id = ? order by company"""
+            c.execute(sql, (session_id, ))
             return c.fetchall()
 
     def set_costumer_data(self, d):
