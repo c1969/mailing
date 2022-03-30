@@ -113,10 +113,10 @@ print("Creating qr.zip")
 output_3 = p + "/" + f'qr_{getnow()}'
 shutil.make_archive(output_3, 'zip', os.path.join('static', 'export', 'qr'))
 
-time.sleep(1)
+#time.sleep(1)
 
-print("Creating all.zip")
-output_4 = p + "/" + f'all_{getnow()}'
-shutil.make_archive(output_4, 'zip', os.path.join('static', 'export'))
+#print("Creating all.zip")
+#output_4 = p + "/" + f'all_{getnow()}'
+#shutil.make_archive(output_4, 'zip', os.path.join('static', 'export'))
 
 print("Export finished")
