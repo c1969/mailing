@@ -384,8 +384,18 @@ def dk():
 
     if request.method == 'GET':
         qrid = request.args.get('qrid', True)
-        d = db.get_retailer_by_qr(qrid)
-        e = db.get_dealer_for_retailer(d[0][1])
+        r = db.get_retailer_by_qr(qrid)[0]
+        retailer = {
+            "session_id": r[1],
+            "name": " ".join(filter(None, [r[2], r[3]])),
+            "company": r[4],
+            "street": " ".join(filter(None, [r[5], r[6]])),
+            "zip": r[7],
+            "city": r[8],
+            "qrid": r[9]
+        }
+        dealer = db.get_dealer_for_retailer(retailer["session_id"])[0]
+        return render_template('dk.html', retailer=retailer, dealer=dealer)
 
     if request.method == 'POST':
         f = dict(request.form)
@@ -394,10 +404,8 @@ def dk():
         res = db_qr.set_qr_feedback(f)
         if res:
             return redirect(url_for('qrdone'))
-        else:
-            return redirect("https://www.hakro.com", code=302)
 
-    return render_template('dk.html', d=d[0], e=e[0])
+    return redirect("https://www.hakro.com", code=302)
 
 
 @app.route('/du', methods=['GET', 'POST'])
