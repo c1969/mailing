@@ -151,7 +151,8 @@ def magalog():
     url = "https://www.flipsnack.com/C5EBD6AA9F7/hakro-verkaufsmailing-2022_de-at/full-view.html"
     if location.get("country_code") == "CH":
         url = "https://www.flipsnack.com/C5EBD6AA9F7/hakro-verkaufsmailing-2022_ch/full-view.html"
-    return redirect(url, code=301)
+    resp = requests.get(url)
+    return resp.text
 
 
 '''
