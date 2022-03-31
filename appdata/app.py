@@ -145,6 +145,15 @@ def index():
     return render_template('index.html')
 
 
+@app.route("/magalog", methods=["GET"])
+def magalog():
+    location = get_request_location()
+    url = "https://www.flipsnack.com/C5EBD6AA9F7/hakro-verkaufsmailing-2022_de-at/full-view.html"
+    if location.get("country_code") == "CH":
+        url = "https://www.flipsnack.com/C5EBD6AA9F7/hakro-verkaufsmailing-2022_ch/full-view.html"
+    response = make_response(redirect(url))
+    return response
+
 '''
 USER FLOW 1
 '''
