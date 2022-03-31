@@ -130,7 +130,7 @@ def get_request_location():
         remote_address = request.environ['HTTP_X_FORWARDED_FOR']
     pl = requests.get(
         f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
-    app.logger.info(str(pl.json()))
+    app.logger.error(str(pl.json()))
     return pl.json()
 
 
