@@ -36,7 +36,7 @@
 		<div class="container">
 			<div class="col s6">
 				<div class="section">
-					<h1>Guten Tag, {{d[2]}} {{d[3]}},</h1>
+					<h1>Liebe Teamplayer*innen,</h1>
 					<h2
 						>sch&ouml;n, dass Sie sich f&uuml;r nachhaltige, faire
 						und haltbare Teambekleidung von HAKRO interessieren.
@@ -67,7 +67,7 @@
 									name="name"
 									id="name"
 									class="validate"
-									value="{{d[2]}} {{d[3]}}"
+									value="{{-d[2]-}} {{-d[3]-}}"
 									required="required"
 								/>
 								<span
@@ -84,7 +84,7 @@
 									name="costumer_name"
 									id="company_name"
 									class="validate"
-									value="{{d[4]}}"
+									value="{{-d[4]-}}"
 									required="required"
 								/>
 								<span
@@ -103,7 +103,7 @@
 									name="streetname"
 									id="streetname"
 									class="validate"
-									value="{{d[5]}} {{d[6]}}"
+									value="{{-d[5]-}} {{-d[6]-}}"
 									required="required"
 								/>
 								<span
@@ -120,7 +120,7 @@
 									name="plz"
 									id="plz"
 									class="validate"
-									value="{{d[7]}}"
+									value="{{-d[7]-}}"
 									required="required"
 								/>
 								<span
@@ -135,12 +135,46 @@
 									name="city"
 									id="city"
 									class="validate"
-									value="{{d[8]}}"
+									value="{{-d[8]-}}"
 									required="required"
 								/>
 								<span
 									class="helper-text"
 									data-error="Bitte geben Sie Ihren Ort ein"
+								></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<label for="email">Ihre E-Mail-Adresse </label>
+								<input
+									type="email"
+									name="email_txt"
+									id="email_txt"
+									class="validate"
+									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+								/>
+								<span
+									class="helper-text"
+									data-error="Bitte geben Sie eine g&uuml;ltige E-Mail Adresse ein"
+								></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<label for="callme_txt"
+									>Ihre Telefonnummer</label
+								>
+								<input
+									type="tel"
+									name="callme_txt"
+									id="callme_txt"
+									class="validate"
+									pattern="\d*"
+								/>
+								<span
+									class="helper-text"
+									data-error="Bitte geben Sie ihre Telefonnummer ohne Leer- oder Sonderzeichen ein"
 								></span>
 							</div>
 						</div>
@@ -162,159 +196,33 @@
 								</label>
 							</p>
 						</div>
-						<h2 style="margin-top: 60px">
-							HAKRO-Teamwear interessiert mich:
-						</h2>
-						<div class="input-field col s4">
-							<p style="margin-bottom: 0px">
-								<label>
-									<input
-										class="filled-in"
-										type="checkbox"
-										id="email"
-										name="email"
-										value="on"
-										onclick="checkRequiredInput(this, 'email_txt')"
-									/>
-									<span
-										>Bitte schicken Sie mir eine
-										E-Mail.</span
-									>
-								</label>
-							</p>
-						</div>
-						<div class="row">
-							<div class="input-field col s12">
-								<label for="email">Meine E-Mail-Adresse </label>
-								<input
-									type="email"
-									name="email_txt"
-									id="email_txt"
-									class="validate"
-									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-									disabled
-									required
-								/>
-								<span
-									class="helper-text"
-									data-error="Bitte geben Sie eine g&uuml;ltige E-Mail Adresse ein"
-								></span>
-							</div>
-						</div>
-						<div class="input-field col s4">
-							<p style="margin-bottom: 0px">
-								<label>
-									<input
-										class="filled-in"
-										type="checkbox"
-										id="callme"
-										name="callme"
-										value="on"
-										onclick="checkRequiredInput(this, 'callme_txt')"
-									/>
-									<span>Bitte rufen Sie mich an.</span>
-								</label>
-							</p>
-						</div>
-						<div class="row">
-							<div class="input-field col s12">
-								<label for="callme_txt"
-									>Meine Telefonnummer</label
-								>
-								<input
-									type="tel"
-									name="callme_txt"
-									id="callme_txt"
-									class="validate"
-									pattern="\d*"
-									disabled
-									required
-								/>
-								<span
-									class="helper-text"
-									data-error="Bitte geben Sie ihre Telefonnummer ohne Leer- oder Sonderzeichen ein"
-								></span>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<!-- Waschtest -->
-
-		<div class="washtest">
-			<div class="shirt_container white_text">
-				<div class="shirt_wrapper">
-					<div class="shirt_text">
-						<h1 style="margin-top: 24px"
-							>h&auml;lt l&auml;nger als jede Waschmaschine</h1
+						<button
+							class="button_primary"
+							type="submit"
+							style="float: none"
+							>Kontakt aufnehmen</button
 						>
-						<p>
-							Mach mit beim Waschtest und &uuml;berzeuge dich
-							selbst von der herausragenden Qualit&auml;t und
-							Langlebigkeit unserer Produkte.
-						</p>
-						<p style="font-weight: bold">
-							Jetzt Gratis-Shirt anfordern!
-						</p>
-					</div>
-					<div>
-						<img
-							class="shirt_img"
-							src="{{url_for('static', filename='images/waschtest.png')}}"
-						/>
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="col s6">
-					<div class="section">
-						<div class="input-field col s4">
-							<p>
-								<label>
-									<input
-										class="filled-in"
-										type="checkbox"
-										id="shirt"
-										name="shirt"
-										value="on"
-										required="required"
-									/>
-									<span>Ja, Gratis-Shirt anfordern.</span>
-								</label>
-							</p>
-						</div>
-					</div>
-					<div style="height: 90px">
-						<div class="col s6">
-							<div class="section">
-								<button class="button_primary" type="submit"
-									>senden</button
-								>
-							</div>
-						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
 
 		<!-- Dealer -->
 
-		<div class="no-washtest">
+		<div class="no-washtest" style="margin-top: 50px">
 			<footer
 				class="page-footer"
-				style="background-color: #b6c24f; padding-bottom: 40px"
+				style="background-color: #b6c24f; padding: 50px 0 50px 0"
 			>
 				<div class="container">
 					<div class="col l12 s12">
-						<h3 style="margin-top: 30px" class="white-text"
+						<h3 class="white-text" style="margin-top: 0"
 							>Ihr pers&ouml;nlicher Fachh&auml;ndler:</h3
 						>
 						<p style="font-weight: bold"> {{ e[2] }} </p>
 						<p>
-							{{ e[4] }}<br />
-							{{ e[5] }}<br />
+							{% if e[4] %} {{ e[4] }}<br />
+							{% endif %} {{ e[5] }}<br />
 							{{ e[6] }} {{ e[7] }}<br />
 						</p>
 						<p>
@@ -354,58 +262,9 @@
 			</div>
 		</div>
 
-		<!-- Green Footer-->
-
-		<div class="washtest">
-			<div class="footer_green" style="margin-top: 0px">
-				<div class="footer_container">
-					<div>
-						<a
-							class="footer_item_white"
-							target="blank"
-							href="https://www.hakro.com/impressum"
-							>Impressum</a
-						>
-					</div>
-					<div>
-						<a
-							class="footer_item_white"
-							target="blank"
-							href="https://www.hakro.com/"
-						>
-							2022 HAKRO GmbH, all rights reserved</a
-						>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<!-- Scripts -->
 
 		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-		<script src="{{url_for('static', filename='assets/js/hakro.js')}}"></script>
-		<script>
-			var _URL = window.URL || window.webkitURL;
-
-			$("#file_logo").change(function (e) {
-				var file, img;
-				if ((file = this.files[0])) {
-					img = new Image();
-					img.onload = function () {
-						if (this.width > 135 || this.height > 101) {
-							alert(
-								"Das Logo überschreitet die maximale Größe - bitte reduzieren (135 x 100 Pixel)"
-							);
-							location.reload();
-						}
-					};
-					img.onerror = function () {
-						alert("keine gültige Bilddatei: " + file.type);
-					};
-					img.src = _URL.createObjectURL(file);
-				}
-			});
-		</script>
 	</body>
 </html>

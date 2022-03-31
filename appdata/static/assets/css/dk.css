@@ -1,8 +1,12 @@
 .washtest {
-  /* display: none; */
-  display: block;
+	/* display: none; */
+	display: none;
 }
 .no-washtest {
-  display: none;
-  /* display: block; */
+	display: block;
+	/* display: block; */
+}
+
+.footer_white {
+	padding: 50px 0 50px 0;
 }

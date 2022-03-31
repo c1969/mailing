@@ -380,12 +380,9 @@ def qr(qrid):
 
 @app.route('/dk', methods=['GET', 'POST'])
 def dk():
-    if not is_token_valid():
-        return redirect_to_login()
-
-    qrid = request.args.get('qrid', True)
 
     if request.method == 'GET':
+        qrid = request.args.get('qrid', True)
         d = db.get_retailer_by_qr(qrid)
         e = db.get_dealer_for_retailer(d[0][1])
 
