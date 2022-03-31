@@ -1,5 +1,8 @@
-import os, csv
-import json, socket, requests
+import os
+import csv
+import json
+import socket
+import requests
 from flask import Flask, redirect, render_template, session, url_for, request, g, make_response, flash, send_from_directory, send_file, Response, abort
 from werkzeug.utils import secure_filename
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -45,26 +48,31 @@ consent.add_standard_categories()
 
 csrf = CSRFProtect(app)
 
-auth_s = URLSafeSerializer("blubbblubfdfsdb12edoejfdolfndjnfflkjnfnlfndajlkn", "auth") 
+auth_s = URLSafeSerializer(
+    "blubbblubfdfsdb12edoejfdolfndjnfflkjnfnlfndajlkn", "auth")
 
 db = dbx()
 db_qr = dby()
 E = Errors()
 
+
 def set_session_id():
     return str(uuid.uuid4())
+
 
 def allowed_file_image(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS_IMAGE
 
+
 def allowed_file_data(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS_DATA
 
+
 def is_token_valid():
     token = request.cookies.get("token")
-    
+
     if token is None:
         return False
 
@@ -75,22 +83,26 @@ def is_token_valid():
     response = get_user_info(token)
     if response is None:
         return False
-    
+
     return response.status_code == 200
+
 
 def get_user_info(token):
     headers = {
         "Authorization": f"Bearer {token}"
     }
     try:
-        return requests.get(f"{IDP_URI}/auth/connect/userinfo", headers = headers)
+        return requests.get(f"{IDP_URI}/auth/connect/userinfo", headers=headers)
     except Exception:
         return None
 
+
 def redirect_to_login():
-    response = make_response(redirect(f"{IDP_URI}/auth/connect/authorize?scope=openid+profile+email+offline_access&response_type=code&client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}"))
-    response.set_cookie("token", "", expires = 0)
+    response = make_response(redirect(
+        f"{IDP_URI}/auth/connect/authorize?scope=openid+profile+email+offline_access&response_type=code&client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}"))
+    response.set_cookie("token", "", expires=0)
     return response
+
 
 @app.route('/idp/login')
 def login():
@@ -101,7 +113,8 @@ def login():
         "client_secret": CLIENT_SECRET,
         "redirect_uri": REDIRECT_URI
     }
-    token_response = requests.post(f"{IDP_URI}/auth/connect/token", data = payload)
+    token_response = requests.post(
+        f"{IDP_URI}/auth/connect/token", data=payload)
     if token_response.status_code == 200:
         response = make_response(redirect(url_for('index')))
         response.set_cookie("token", token_response.json()["access_token"])
@@ -109,25 +122,36 @@ def login():
 
     return redirect("https://hakro.com")
 
+
 def get_request_location():
     if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
         remote_address = request.environ['REMOTE_ADDR']
     else:
         remote_address = request.environ['HTTP_X_FORWARDED_FOR']
-    pl = requests.get(f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
+    pl = requests.get(
+        f'http://api.ipstack.com/{remote_address}?access_key=785b92a2d12f1ff90e699b814867de6f')
     app.logger.info(str(pl.json()))
     return pl.json()
+
 
 def get_flipbook_link(location):
     if location.get("country_code") == "CH":
         return "https://www.flipsnack.com/C5EBD6AA9F7/7hger3547s/full-view.html"
     return "https://www.flipsnack.com/C5EBD6AA9F7/87fvghjnb3/full-view.html"
 
+
+@app.route("/", methods=["GET"])
+def index():
+    return render_template('index.html')
+
+
 '''
 USER FLOW 1
 '''
-@app.route('/', methods=['GET', 'POST'])
-def index():
+
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
     if not is_token_valid():
         return redirect_to_login()
 
@@ -146,24 +170,27 @@ def index():
         file_logo = request.files['file_logo']
         if file_data.filename == '' or file_logo.filename == '':
             flash('No selected file')
-            #return redirect(request.url)
+            # return redirect(request.url)
         if file_data and allowed_file_data(file_data.filename):
             filename_data = secure_filename(file_data.filename)
             fdd = filename_data.rsplit('.', 1)
-            fname_file = session_id + "." +fdd[1]
-            file_data.save(os.path.join(app.config['UPLOAD_FOLDER'], session_id, fname_file))
+            fname_file = session_id + "." + fdd[1]
+            file_data.save(os.path.join(
+                app.config['UPLOAD_FOLDER'], session_id, fname_file))
             d['file_data'] = fname_file
 
         if file_logo and allowed_file_image(file_logo.filename):
             filename_logo = secure_filename(file_logo.filename)
             fdl = filename_logo.rsplit('.', 1)
-            fname_logo = session_id + "." +fdl[1]
-            fpath = os.path.join(app.config['UPLOAD_FOLDER'], session_id, fname_logo)
+            fname_logo = session_id + "." + fdl[1]
+            fpath = os.path.join(
+                app.config['UPLOAD_FOLDER'], session_id, fname_logo)
             file_logo.save(fpath)
             d['file_logo'] = fname_logo
 
         p3 = f'{session_id}.cust'
-        pickle.dump(d, open(os.path.join(app.config['UPLOAD_FOLDER'], session_id, p3), 'wb'))
+        pickle.dump(d, open(os.path.join(
+            app.config['UPLOAD_FOLDER'], session_id, p3), 'wb'))
 
         expire_date = datetime.now() + timedelta(minutes=5)
         resp = make_response(redirect(url_for('checking', sid=session_id)))
@@ -171,14 +198,14 @@ def index():
         resp.set_cookie('_cid', token, expires=expire_date)
         return resp
 
-    return render_template('index.html', flipbook_link=flipbook_link)
+    return render_template('upload.html', flipbook_link=flipbook_link)
 
 
 @app.route('/checking', methods=['GET', 'POST'])
 def checking():
     if not is_token_valid():
         return redirect_to_login()
-    
+
     hash_cookie = request.cookies.get('_cid')
     if hash_cookie == None:
         return redirect(url_for('index'))
@@ -189,7 +216,8 @@ def checking():
 
     i = Imager()
     #print(os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_logo']))
-    im = i.genImage(os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_logo']))
+    im = i.genImage(os.path.join(
+        app.config['UPLOAD_FOLDER'], session_id, s1['file_logo']))
     print(f'debug: {im.size}')
 
     x, y = im.size
@@ -198,11 +226,11 @@ def checking():
     res = i.harmonize(im, x, y, o, session_id)
     print(res)
 
-
     resp = make_response(redirect(url_for('summary', sid=session_id)))
     token = auth_s.dumps({"id": 0, "data": s1})
     resp.set_cookie('_cid', token)
     return resp
+
 
 @app.route('/summary', methods=['GET', 'POST'])
 def summary():
@@ -218,16 +246,18 @@ def summary():
     session_id = request.args.get('sid')
     MAX_RES = 10
     fl = s1['file_logo'].rsplit('.', 1)
-    logo_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, fl[0]+".png")
-    data_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id, s1['file_data'])
-    if s1['file_data'].endswith('.csv') or s1['file_data'].endswith('.CSV') :
-            with open(data_path, 'r') as csvfile:
-                dialect = csv.Sniffer().sniff(csvfile.readline())
-                sepsis = dialect.delimiter
-            df = pd.read_csv(data_path, header=None, sep=sepsis)
-            dfx = df.where(pd.notnull(df), "").iloc[:MAX_RES]
+    logo_path = os.path.join(
+        app.config['UPLOAD_FOLDER'], session_id, fl[0]+".png")
+    data_path = os.path.join(
+        app.config['UPLOAD_FOLDER'], session_id, s1['file_data'])
+    if s1['file_data'].endswith('.csv') or s1['file_data'].endswith('.CSV'):
+        with open(data_path, 'r') as csvfile:
+            dialect = csv.Sniffer().sniff(csvfile.readline())
+            sepsis = dialect.delimiter
+        df = pd.read_csv(data_path, header=None, sep=sepsis)
+        dfx = df.where(pd.notnull(df), "").iloc[:MAX_RES]
     elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX') \
-        or s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
+            or s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
         try:
             df = pd.read_excel(data_path, header=None)
             dfx = df.where(pd.notnull(df), "").iloc[:MAX_RES]
@@ -282,17 +312,19 @@ def summary():
     )
     qr.add_data(f'https://dialog.hakro.com')
     qr.make(fit=True)
-    qr_filename = os.path.join(app.config['UPLOAD_FOLDER'], s1['session_id'], f'qr_{s1["session_id"]}.png')
+    qr_filename = os.path.join(
+        app.config['UPLOAD_FOLDER'], s1['session_id'], f'qr_{s1["session_id"]}.png')
     qr_code = qr.make_image(fill_color="black", back_color="transparent")
     qr_code.save(qr_filename)
 
-    return render_template('summary.html', df=df, logo=logo_path, p=s1, len_df=len_df,qr=qr_filename, dfx=dfx)
+    return render_template('summary.html', df=df, logo=logo_path, p=s1, len_df=len_df, qr=qr_filename, dfx=dfx)
+
 
 @app.route('/done', methods=['GET', 'POST'])
 def done():
     if not is_token_valid():
         return redirect_to_login()
-    
+
     hash_cookie = request.cookies.get('_cid')
     if hash_cookie == None:
         return redirect(url_for('index'))
@@ -300,7 +332,7 @@ def done():
     s1 = data_cookie['data']
 
     #session_id = s1['session_id']
-    #TODO EXP DATE in Verganenheit
+    # TODO EXP DATE in Verganenheit
     s1 = {}
     expire_date = datetime.now() - timedelta(days=1)
 
@@ -313,6 +345,8 @@ def done():
 '''
 USER FLOW 2
 '''
+
+
 @app.route('/qr/<qrid>', methods=['GET', 'POST'])
 def qr(qrid):
     '''
@@ -320,19 +354,18 @@ def qr(qrid):
         return redirect_to_login() 
     '''
 
-    
     if qrid == None:
         return abort(404)
     d = db.get_retailer_by_qr(qrid)
-    if d: #dealer known
+    if d:  # dealer known
         e = db.get_dealer_for_retailer(d[0][1])
         if e:
             return redirect(url_for('dk', qrid=qrid))
         else:
             return redirect(url_for('du', qrid=qrid))
-    else: #dealer unknown
-        #Daten von Sven fehlen - SteuerCD
-        #return redirect(url_for('du', qrid=0))
+    else:  # dealer unknown
+        # Daten von Sven fehlen - SteuerCD
+        # return redirect(url_for('du', qrid=0))
         return redirect("https://www.hakro.com", code=302)
 
 
@@ -357,40 +390,46 @@ def dk():
         else:
             return redirect("https://www.hakro.com", code=302)
 
-
     return render_template('dk.html', d=d[0], e=e[0])
+
 
 @app.route('/du', methods=['GET', 'POST'])
 def du():
     if not is_token_valid():
         return redirect_to_login()
-    
+
     qrid = request.args.get('qrid', True)
 
     return render_template('du.html', d=None, e=None)
+
 
 @app.route('/qrdone', methods=['GET', 'POST'])
 def qrdone():
     return render_template('qrdone.html')
 
+
 @app.route('/error', methods=['GET', 'POST'])
 def error():
     if not is_token_valid():
         return redirect_to_login()
-    
+
     errorcode = request.args.get('e')
     err = E.get_error(errorid=errorcode)
 
     return render_template('error.html', err=err[0])
+
 
 @app.errorhandler(CSRFError)
 def handle_csrf_error(e):
     csrf_err = True
     return render_template('error.html', err=e.description, csrf_err=csrf_err), 400
 
+
 '''
 Metrics
 '''
+
+
 @app.route('/metrics/<passw>/kpi', methods=['GET'])
 def metrics(passw):
     if not is_token_valid():
@@ -403,9 +442,12 @@ def metrics(passw):
 
     return render_template('metrics.html')
 
+
 '''
 Customers
 '''
+
+
 @app.route('/customers/<passw>', methods=['GET'])
 def customers(passw):
     p = str(passw)
@@ -417,17 +459,20 @@ def customers(passw):
     customers = db.get_data_costumer()
 
     statistics = {
-        "customers" : db.count_customers(),
-        "addresses" : db.count_addresses(),
+        "customers": db.count_customers(),
+        "addresses": db.count_addresses(),
         "swiss_addresses": db.count_swiss_addresses(),
         "addresses_from_swiss_customers": db.count_addresses_from_swiss_customers()
     }
 
     return render_template('customers.html', customers=customers, statistics=statistics)
 
+
 '''
 Addresses
 '''
+
+
 @app.route('/addresses/<passw>/<session_id>', methods=['GET'])
 def addresses(passw, session_id):
     p = str(passw)
@@ -439,6 +484,7 @@ def addresses(passw, session_id):
     addresses = db.get_data_retailer(str(session_id))
 
     return render_template('addresses.html', addresses=addresses)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", ssl_context='adhoc')
