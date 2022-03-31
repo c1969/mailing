@@ -27,6 +27,8 @@ from itsdangerous import URLSafeSerializer
 import jwt
 import logging
 
+import re
+
 UPLOAD_FOLDER = 'static/upload/'
 ALLOWED_EXTENSIONS_IMAGE = {'png', 'jpg', 'jpeg', 'tiff'}
 ALLOWED_EXTENSIONS_DATA = {'xlsx', 'csv'}
@@ -152,7 +154,9 @@ def magalog():
     if location.get("country_code") == "CH":
         url = "https://www.flipsnack.com/C5EBD6AA9F7/hakro-verkaufsmailing-2022_ch/full-view.html"
     resp = requests.get(url)
-    return resp.text
+    website = re.sub("<title>.+</title>",
+                     "<title>HAKRO Magalog</title>", resp.text)
+    return website
 
 
 '''
