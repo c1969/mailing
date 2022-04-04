@@ -147,16 +147,45 @@ def index():
     return render_template('index.html')
 
 
-@app.route("/magalog", methods=["GET"])
-def magalog():
+@app.route("/magalog/<customer>", methods=["GET"])
+@csrf.exempt
+def magalog(customer):
+    path = str(customer)
+    if path:
+        result = db.get_flipsnack_url(path)
+        if result:
+            return load_flipsnack_content(result[0])
+
     location = get_request_location()
     url = "https://www.flipsnack.com/C5EBD6AA9F7/hakro-verkaufsmailing-2022_de-at/full-view.html"
-    if location.get("country_code") == "CH":
+    if (path and path.upper() == "CH") or location.get("country_code") == "CH":
         url = "https://www.flipsnack.com/C5EBD6AA9F7/hakro-verkaufsmailing-2022_ch/full-view.html"
+    return load_flipsnack_content(url)
+
+
+@app.route("/magalog", methods=["GET"])
+def magalog_ch():
+    return load_flipsnack_content("https://www.flipsnack.com/C5EBD6AA9F7/hakro-verkaufsmailing-2022_ch/full-view.html")
+
+
+def load_flipsnack_content(url):
     resp = requests.get(url)
-    website = re.sub("<title>.+</title>",
-                     "<title>HAKRO Magalog</title>", resp.text)
-    return website
+    return re.sub("<title>.+</title>",
+                  "<title>HAKRO Magalog</title>", resp.text)
+
+
+@app.route("/magalog/upload", methods=["POST"])
+@csrf.exempt
+def magalog_upload():
+    df = pd.read_excel(request.get_data())
+    for k, v in df.iterrows():
+        row = {
+            "customer": v["Kunde"],
+            "path": v["Kunde kurz"],
+            "flipsnack_url": v["flipsnack"]
+        }
+        db.insert_magalog_url(row)
+    return "Upload successful!"
 
 
 '''

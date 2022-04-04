@@ -4,6 +4,7 @@ import sqlite3
 DATABASE_FLOW_1 = os.path.join("db/db.db")
 DATABASE_FLOW_2 = os.path.join("db/qr.db")
 
+
 class dbx():
 
     def __init__(self) -> None:
@@ -62,8 +63,8 @@ class dbx():
         if conn:
             c = conn.cursor()
             sql = 'INSERT INTO data_costumer ({}) VALUES ({})'.format(
-            ','.join(list(d.keys())),
-            ','.join(list(['?']*len(d))))
+                ','.join(list(d.keys())),
+                ','.join(list(['?']*len(d))))
 
             c.execute(sql, tuple(d.values()))
             conn.commit()
@@ -98,8 +99,8 @@ class dbx():
         if conn:
             c = conn.cursor()
             sql = 'INSERT INTO data_retailer ({}) VALUES ({})'.format(
-            ','.join(list(d.keys())),
-            ','.join(list(['?']*len(d))))
+                ','.join(list(d.keys())),
+                ','.join(list(['?']*len(d))))
 
             c.execute(sql, tuple(d.values()))
             conn.commit()
@@ -128,6 +129,31 @@ class dbx():
         else:
             return False
 
+    def get_flipsnack_url(self, path):
+        connection = sqlite3.connect(DATABASE_FLOW_1)
+        if connection:
+            cursor = connection.cursor()
+            sql = 'select flipsnack_url from magalog_url where path = ?'
+            cursor.execute(sql, (path, ))
+            return cursor.fetchone()
+        else:
+            return False
+
+    def insert_magalog_url(self, data):
+        connection = sqlite3.connect(DATABASE_FLOW_1)
+        if connection:
+            cursor = connection.cursor()
+            sql = "insert into magalog_url({}) values({})".format(
+                ",".join(list(data.keys())),
+                ",".join(list(["?"]*len(data))))
+            cursor.execute(sql, tuple(data.values()))
+            connection.commit()
+            connection.close()
+            return True
+        else:
+            return False
+
+
 class dby():
 
     def __init__(self) -> None:
@@ -138,8 +164,8 @@ class dby():
         if conn:
             c = conn.cursor()
             sql = 'INSERT INTO mailing ({}) VALUES ({})'.format(
-            ','.join(list(d.keys())),
-            ','.join(list(['?']*len(d))))
+                ','.join(list(d.keys())),
+                ','.join(list(['?']*len(d))))
 
             c.execute(sql, tuple(d.values()))
             conn.commit()
@@ -147,4 +173,3 @@ class dby():
             return True
         else:
             return False
-
