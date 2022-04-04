@@ -163,11 +163,6 @@ def magalog(customer):
     return load_flipsnack_content(url)
 
 
-@app.route("/magalog", methods=["GET"])
-def magalog_ch():
-    return load_flipsnack_content("https://www.flipsnack.com/C5EBD6AA9F7/hakro-verkaufsmailing-2022_ch/full-view.html")
-
-
 def load_flipsnack_content(url):
     resp = requests.get(url)
     return re.sub("<title>.+</title>",
