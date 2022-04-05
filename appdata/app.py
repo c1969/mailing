@@ -165,8 +165,7 @@ def magalog(customer):
 
 def load_flipsnack_content(url):
     resp = requests.get(url)
-    return re.sub("<title>.+</title>",
-                  "<title>HAKRO Magalog</title>", resp.text)
+    return resp.text
 
 
 @app.route("/magalog/upload", methods=["POST"])
