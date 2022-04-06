@@ -54,7 +54,7 @@ class dbx():
         conn = sqlite3.connect(DATABASE_FLOW_1)
         if conn:
             c = conn.cursor()
-            sql = """ SELECT distinct company, salutation, firstname, lastname, street, number, zipcode, city, country FROM data_retailer where session_id = ? order by company"""
+            sql = """ SELECT distinct company, salutation, firstname, lastname, street, number, zipcode, city, country, id FROM data_retailer where session_id = ? order by company"""
             c.execute(sql, (session_id, ))
             return c.fetchall()
 
@@ -147,6 +147,32 @@ class dbx():
                 ",".join(list(data.keys())),
                 ",".join(list(["?"]*len(data))))
             cursor.execute(sql, tuple(data.values()))
+            connection.commit()
+            connection.close()
+            return True
+        else:
+            return False
+
+    def delete_customer(self, session_id):
+        connection = sqlite3.connect(DATABASE_FLOW_1)
+        if connection:
+            cursor = connection.cursor()
+            delete_addresses_sql = "delete from data_retailer where session_id = ?"
+            delete_customer_sql = "delete from data_costumer where session_id = ?"
+            cursor.execute(delete_addresses_sql, (session_id, ))
+            cursor.execute(delete_customer_sql, (session_id, ))
+            connection.commit()
+            connection.close()
+            return True
+        else:
+            return False
+
+    def delete_address(self, id):
+        connection = sqlite3.connect(DATABASE_FLOW_1)
+        if connection:
+            cursor = connection.cursor()
+            sql = "delete from data_retailer where id = ?"
+            cursor.execute(sql, (id, ))
             connection.commit()
             connection.close()
             return True

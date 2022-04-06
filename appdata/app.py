@@ -490,14 +490,8 @@ Customers
 '''
 
 
-@app.route('/customers/<passw>', methods=['GET'])
-def customers(passw):
-    p = str(passw)
-    print(p)
-    mems = ['11235813']
-    if p not in mems:
-        return redirect(url_for('index'))
-
+@app.route('/customers', methods=['GET'])
+def customers():
     customers = db.get_data_costumer()
 
     statistics = {
@@ -510,22 +504,30 @@ def customers(passw):
     return render_template('customers.html', customers=customers, statistics=statistics)
 
 
+@app.route("/customers/<session_id>", methods=["DELETE"])
+def delete_customer(session_id):
+    db.delete_customer(session_id)
+    return make_response("", 204)
+
+
 '''
 Addresses
 '''
 
 
-@app.route('/addresses/<passw>/<session_id>', methods=['GET'])
-def addresses(passw, session_id):
-    p = str(passw)
-    print(p)
-    mems = ['11235813']
-    if p not in mems:
-        return redirect(url_for('index'))
-
+@app.route('/addresses/<session_id>', methods=['GET'])
+def addresses(session_id):
     addresses = db.get_data_retailer(str(session_id))
+    customer = db.get_costumer_data(str(session_id))
+    if not customer:
+        return render_template("no_addresses.html")
+    return render_template('addresses.html', addresses=addresses, customer=customer[0])
 
-    return render_template('addresses.html', addresses=addresses)
+
+@app.route("/addresses/<id>", methods=["DELETE"])
+def delete_address(id):
+    db.delete_address(id)
+    return make_response("", 204)
 
 
 if __name__ == '__main__':
