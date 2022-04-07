@@ -142,9 +142,9 @@ def get_flipbook_link(location):
     return "https://www.flipsnack.com/C5EBD6AA9F7/87fvghjnb3/full-view.html"
 
 
-@app.route("/", methods=["GET"])
-def index():
-    return render_template('index.html')
+@app.route("/expired", methods=["GET"])
+def expired():
+    return render_template('expired.html')
 
 
 @app.route("/magalog/<customer>", methods=["GET"])
@@ -187,8 +187,8 @@ USER FLOW 1
 '''
 
 
-@app.route('/upload', methods=['GET', 'POST'])
-def upload():
+@app.route('/', methods=['GET', 'POST'])
+def index():
     if not is_token_valid():
         return redirect_to_login()
 
@@ -235,7 +235,7 @@ def upload():
         resp.set_cookie('_cid', token, expires=expire_date)
         return resp
 
-    return render_template('upload.html', flipbook_link=flipbook_link)
+    return render_template('index.html', flipbook_link=flipbook_link)
 
 
 @app.route('/checking', methods=['GET', 'POST'])
@@ -305,7 +305,7 @@ def summary():
 
     if df is not None:
         y, x = df.shape
-        if x < 7 or x > 9:
+        if x < 7 or x > 11:
             return redirect(url_for('error', e=202))
         if y > 2500:
             return redirect(url_for('error', e=203))
@@ -335,6 +335,8 @@ def summary():
             d['city'] = v[6]
             d['country'] = v.get(7)
             d['salutation'] = v.get(8)
+            d['division'] = v.get(9)
+            d['address_supplement'] = v.get(10)
             d['qr'] = qrid
             d['url'] = f'https://dialog.hakro.com/qr/{qrid}'
             db.set_retailer_data(d)
