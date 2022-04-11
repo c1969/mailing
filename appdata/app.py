@@ -291,12 +291,12 @@ def summary():
         with open(data_path, 'r') as csvfile:
             dialect = csv.Sniffer().sniff(csvfile.readline())
             sepsis = dialect.delimiter
-        df = pd.read_csv(data_path, header=None, sep=sepsis)
+        df = pd.read_csv(data_path, header=None, sep=sepsis, dtype=str)
         dfx = df.where(pd.notnull(df), "").iloc[:MAX_RES]
     elif s1['file_data'].endswith('.xlsx') or s1['file_data'].endswith('.XLSX') \
             or s1['file_data'].endswith('.xls') or s1['file_data'].endswith('.XLS'):
         try:
-            df = pd.read_excel(data_path, header=None)
+            df = pd.read_excel(data_path, header=None, dtype=str)
             dfx = df.where(pd.notnull(df), "").iloc[:MAX_RES]
         except Exception:
             return redirect(url_for('error', e=200))
