@@ -113,16 +113,19 @@
 				<thead>
 					<tr>
 						<th style="font-size: 20px; font-weight: bold"
-							>Firma</th
+						>Firma</th
 						>
 						<th style="font-size: 20px; font-weight: bold">Name</th>
 						<th style="font-size: 20px; font-weight: bold"
-							>Straße</th
+						>Straße</th
 						>
 						<th style="font-size: 20px; font-weight: bold">PLZ</th>
 						<th style="font-size: 20px; font-weight: bold">Ort</th>
 						<th style="font-size: 20px; font-weight: bold"
-							>Registriert am</th
+						>Registriert am</th
+						>
+						<th style="font-size: 20px; font-weight: bold"
+							>Session ID</th
 						>
 						<th style="font-size: 20px; font-weight: bold"></th>
 					</tr>
@@ -136,6 +139,7 @@
 						<td>{{customer[6] or ''}}</td>
 						<td>{{customer[7] or ''}}</td>
 						<td>{{customer[14] or ''}}</td>
+						<td>{{customer[1] or ''}}</td>
 						<td
 							><a
 								href="{{'/addresses/' + customer[1]}}"
