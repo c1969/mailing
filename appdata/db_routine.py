@@ -10,6 +10,25 @@ class dbx():
     def __init__(self) -> None:
         pass
 
+    def count_salutation(self):
+        return self.count(sql=" select salutation, count(*) as amount from data_retailer group by salutation having amount > 9 order by amount desc, salutation collate nocase limit 50 ")
+
+    def count_firstname(self):
+        return self.count(sql=" select firstname, count(*) as amount from data_retailer group by firstname having amount > 9 order by amount desc, firstname collate nocase limit 50 ")
+
+    def count_lastname(self):
+        return self.count(sql=" select lastname, count(*) as amount from data_retailer group by lastname having amount > 9 order by amount desc, lastname collate nocase limit 50 ")
+
+    def count_company(self):
+        return self.count(sql=" select company, count(*) as amount from data_retailer group by company having amount > 9 order by amount desc, company collate nocase limit 50 ")
+
+    def count(self, sql):
+        connection = sqlite3.connect(DATABASE_FLOW_1)
+        if connection:
+            cursor = connection.cursor()
+            cursor.execute(sql)
+            return cursor.fetchall()
+
     def count_customers(self):
         conn = sqlite3.connect(DATABASE_FLOW_1)
         if conn:

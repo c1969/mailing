@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>HAKRO Dialog</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, user-scalable=no"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<noscript>
+			<link rel="stylesheet" href="static/assets/css/noscript.css" />
+		</noscript>
+		<style>
+			body {
+				padding: 1rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<h3>Häufigste Anrede</h3>
+			<table class="striped">
+				<thead>
+					<tr>
+						<th style="font-size: 20px; font-weight: bold; width: 90%;"
+						>Anrede</th
+						>
+						<th style="font-size: 20px; font-weight: bold; width: 10%;">Anzahl</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in salutation %}
+					<tr>
+						<td>{{item[0] or ''}}</td>
+						<td>{{item[1] or ''}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<h3>Häufigster Vorname</h3>
+		<table class="striped">
+			<thead>
+				<tr>
+					<th style="font-size: 20px; font-weight: bold; width: 90%;"
+					>Vorname</th
+					>
+					<th style="font-size: 20px; font-weight: bold; width: 10%;">Anzahl</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in firstname %}
+				<tr>
+					<td>{{item[0] or ''}}</td>
+					<td>{{item[1] or ''}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<h3>Häufigster Nachname</h3>
+	<table class="striped">
+		<thead>
+			<tr>
+				<th style="font-size: 20px; font-weight: bold; width: 90%;"
+				>Nachname</th
+				>
+				<th style="font-size: 20px; font-weight: bold; width: 10%;">Anzahl</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in lastname %}
+			<tr>
+				<td>{{item[0] or ''}}</td>
+				<td>{{item[1] or ''}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<h3>Häufigste Firma</h3>
+	<table class="striped">
+		<thead>
+			<tr>
+				<th style="font-size: 20px; font-weight: bold; width: 90%;"
+				>Firma</th
+				>
+				<th style="font-size: 20px; font-weight: bold; width: 10%;">Anzahl</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in company %}
+			<tr>
+				<td>{{item[0] or ''}}</td>
+				<td>{{item[1] or ''}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+		<!-- Scripts -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	</body>
+</html>

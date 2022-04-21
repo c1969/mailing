@@ -532,5 +532,14 @@ def delete_address(id):
     return make_response("", 204)
 
 
+@app.route("/statistics", methods=["GET"])
+def statistics():
+    salutation = db.count_salutation()
+    firstname = db.count_firstname()
+    lastname = db.count_lastname()
+    company = db.count_company()
+
+    return render_template("statistics.html", salutation=salutation, firstname=firstname, lastname=lastname, company=company)
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", ssl_context='adhoc')
