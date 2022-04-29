@@ -399,7 +399,27 @@ def qr(qrid):
     if d:  # dealer known
         e = db.get_dealer_for_retailer(d[0][1])
         if e:
-            return redirect(url_for('dk', qrid=qrid))
+            if request.method == 'GET':
+                r = d[0]
+                retailer = {
+                    "session_id": r[1],
+                    "name": " ".join(filter(None, [r[2], r[3]])),
+                    "company": r[4],
+                    "street": " ".join(filter(None, [r[5], r[6]])),
+                    "zip": r[7],
+                    "city": r[8],
+                    "qrid": r[9]
+                }
+                dealer = db.get_dealer_for_retailer(retailer["session_id"])[0]
+                return render_template('dk.html', retailer=retailer, dealer=dealer)
+
+            if request.method == 'POST':
+                f = dict(request.form)
+                print(f)
+                f['known'] = 1
+                res = db_qr.set_qr_feedback(f)
+                if res:
+                    return redirect(url_for('qrdone'))
         else:
             return redirect(url_for('du', qrid=qrid))
     else:  # dealer unknown
