@@ -142,7 +142,7 @@ def get_flipbook_link(location):
     return "https://www.flipsnack.com/C5EBD6AA9F7/87fvghjnb3/full-view.html"
 
 
-@app.route("/expired", methods=["GET"])
+@app.route("/", methods=["GET"])
 def expired():
     return render_template('expired.html')
 
@@ -187,7 +187,7 @@ USER FLOW 1
 '''
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def index():
     if not is_token_valid():
         return redirect_to_login()
